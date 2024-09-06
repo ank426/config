@@ -1,0 +1,154 @@
+{
+    "layer": "top",
+    // "margin": "0 0",
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "privacy",
+    ],
+
+    "modules-center": ["hyprland/window"],
+
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        // "backlight",
+        "custom/backlight",
+        "custom/gammastep",
+        "battery",
+        "power-profiles-daemon",
+        // "clock",
+        "custom/clock",
+    ],
+
+
+    "hyprland/submap": {
+        "format": "✌️ ",
+        // "max-length": 8,
+        "tooltip": false,
+        "default-submap": "",
+    },
+
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 16,
+        "transition-duration": 0,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 16,
+            },
+            // {
+            //     "type": "audio-out",
+            //     "tooltip": true,
+            //     "tooltip-icon-size": 16,
+            // },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 16,
+            },
+        ],
+    },
+
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 30,
+      "rewrite": {
+        "(.*) — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - ArchWiki — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - Searx.* — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - Youtube — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) (\\| Proton Mail|- Gmail) — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "• Discord \\| (.*)": "  $1",
+        "(.*)(Ablaze Floorp|Mozilla Firefox) Private Browsing": "󰗹 ",
+        "(.*) - Brave": "  $1", // 🌎
+        "(.*) - mpv": "  $1",
+      },
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "  {icon}  {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "],
+        },
+        "tooltip": false,
+    },
+
+    "network": {
+        "format": "󰖪 ",
+        "format-wifi": "{essid:.10} {signalStrength}%  ",
+        "format-ethernet": "{ipaddr}/{cidr}  ",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "Disconnected  ",
+        "tooltip": false,
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip": false,
+    },
+
+    "custom/backlight": {
+        "exec": "echo \"{\\\"percentage\\\": \"$($XDG_CONFIG_HOME/hypr/scripts/get-exp-brightness-round-5.sh) \"}\"",
+        "return-type": "json",
+        "interval": 1,
+        "format": "{percentage}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+    },
+
+    "custom/gammastep": {
+        "exec": "cat $XDG_STATE_HOME/gammastep/brightness | awk '{print substr($0, 3, 1)}'",
+        "interval": 1,
+        "format": "{}",
+    },
+
+    "battery": {
+        // "interval": 2,
+        "states": {
+            "good": 90,
+            "warning": 10,
+            "critical": 5,
+        },
+        "format-discharging": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-icons": [" ", " ", " ", " ", " "],
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "format-icons": {
+        // "default": "",
+        "performance": " ",
+        "balanced": " ",
+        "power-saver": " ",
+      },
+      "tooltip": false,
+    },
+
+    "clock": {
+        "format": "{:%-I:%M}", // Due to bug %-I not working
+        "tooltip-format": "{:%a, %b %d}",
+    },
+    
+    "custom/clock": {
+        "exec": "date +'%-I:%M'",
+        "interval": 60,
+        "tooltip": false,
+    },
+}

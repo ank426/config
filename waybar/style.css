@@ -1,0 +1,77 @@
+* {
+    /* font-family: "JetBrainsMono Nerd Font", "FontAwesome"; */
+    /* for some reason font awesome isn't rendering fonts not already in nerd fonts */
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 16px;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+#workspaces button {
+    padding: 0 10px;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#workspaces button.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#workspaces button.urgent {
+    background: rgba(128, 0, 0, 0.3);
+}
+
+#privacy, #submap {
+    padding: 0 50px;
+}
+
+#window {
+    font-weight: bold;
+}
+
+#pulseaudio, #network, #backlight, #custom-backlight, #custom-gammastep, #battery, #power-profiles-daemon, #clock, #custom-clock {
+    padding: 0 8px;
+}
+
+#custom-gammastep {
+    padding-left: 2px;
+}
+
+#power-profiles-daemon {
+    padding-left: 0px;
+}
+
+#clock, #custom-clock {
+    font-weight: bold;
+}
+
+/* #battery { */
+/* } */
+/**/
+/* #battery icon { */
+/*     color: red; */
+/* } */
+/**/
+/* #battery.charging { */
+/* } */
+/**/
+/* @keyframes blink { */
+/*     to { */
+/*         background-color: #ffffff; */
+/*         color: black; */
+/*     } */
+/* } */
+/**/
+/* #battery.warning:not(.charging) { */
+/*     color: white; */
+/*     animation-name: blink; */
+/*     animation-duration: 0.5s; */
+/*     animation-timing-function: linear; */
+/*     animation-iteration-count: infinite; */
+/*     animation-direction: alternate; */
+/* } */
+/**/

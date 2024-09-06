@@ -1,0 +1,36 @@
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/state
+
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GOPATH="$XDG_DATA_HOME"/go
+export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
+export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
+export MYSQL_HISTFILE="$XDG_STATE_HOME"/mariadb/history
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc 
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
+export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
+export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
+export PYTHONUSERBASE=$XDG_DATA_HOME/python
+export R_HOME_USER="$XDG_CONFIG_HOME"/R
+export R_PROFILE_USER="$XDG_CONFIG_HOME"/R/profile
+export R_HISTFILE="$XDG_CONFIG_HOME"/R/history
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export TEXMFHOME="$XDG_DATA_HOME"/texmf
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
+export TEXMFCONFIG="$XDG_CONFIG_HOME"/texlive/texmf-config
+export WGETRC="$XDG_CONFIG_HOME"/wgetrc
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+
+export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
+
+export CUDA_PATH=/opt/cuda
+export PATH=/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:$PATH
+export NVCC_CCBIN='/usr/bin/g++-13'
