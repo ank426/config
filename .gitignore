@@ -29,19 +29,26 @@
 !/zsh/
 !/zsh/**
 
+!/systemd/
+!/systemd/user/
 !/systemd/user/gpg-agent.service.d/
 !/systemd/user/gpg-agent.service.d/**
 !/systemd/user/gpg-agent.socket
 
+!/mozilla/
+!/mozilla/firefox/
 !/mozilla/firefox/installs.ini
 !/mozilla/firefox/profiles.ini
+!/mozilla/firefox/main/
 !/mozilla/firefox/main/user.js
 !/mozilla/firefox/main/chrome/
 !/mozilla/firefox/main/chrome/**
 
+!/floorp/
 !/floorp/installs.ini
 !/floorp/profiles.ini
 !/floorp/README.txt
+!/floorp/main/
 !/floorp/main/user.js
 !/floorp/main/chrome/
 !/floorp/main/chrome/**

@@ -1,0 +1,12 @@
+[Unit]
+Description=GnuPG cryptographic agent and passphrase cache
+
+[Socket]
+ListenStream=/run/user/1000/gnupg/d.tod5618fmn9ntp6f1mtuwrap/gnupg/S.gpg-agent
+ListenStream=/run/user/1000/gnupg/d.tod5618fmn9ntp6f1mtuwrap/gnupg/S.gpg-agent.extra
+ListenStream=/run/user/1000/gnupg/d.tod5618fmn9ntp6f1mtuwrap/gnupg/S.gpg-agent.browser
+ListenStream=/run/user/1000/gnupg/d.tod5618fmn9ntp6f1mtuwrap/gnupg/S.gpg-agent.ssh
+
+[Install]
+WantedBy=sockets.target
+
