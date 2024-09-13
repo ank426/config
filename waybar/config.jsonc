@@ -60,6 +60,7 @@
         "(.*) — (Ablaze Floorp|Mozilla Firefox)": "  $1",
         "(.*) - ArchWiki — (Ablaze Floorp|Mozilla Firefox)": "  $1",
         "(.*) - Searx.* — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - PrivAU — (Ablaze Floorp|Mozilla Firefox)": "  $1",
         "(.*) - Youtube — (Ablaze Floorp|Mozilla Firefox)": "  $1",
         "(.*) (\\| Proton Mail|- Gmail) — (Ablaze Floorp|Mozilla Firefox)": "  $1",
         "• Discord \\| (.*)": "  $1",

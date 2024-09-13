@@ -91,10 +91,10 @@ alias arm="$ZDOTDIR"/arm.sh
 alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias R='R --no-save'
-# alias nvim='NVIM_APPNAME=NULL nvim' # VIMINIT="colorscheme vim"
-# alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
-# alias nvim-scratch='NVIM_APPNAME="nvim-scratch" nvim'
-# alias matlab='~/matlab/bin/matlab -nodesktop'
+
+alias firefox="boxxy firefox"
+alias floorp="boxxy floorp"
+alias ollama="boxxy ollama"
 
 # Shell integrations
 eval "$(fzf --zsh)"
