@@ -1,0 +1,15 @@
+return {
+	{
+		"decaycs/decay.nvim",
+		name = "decay",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("decay").setup({
+				style = "dark",
+			})
+			vim.cmd.colorscheme("decay")
+			-- vim.cmd([[ highlight Normal guibg=None ]])
+		end,
+	},
+}

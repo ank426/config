@@ -1,3 +1,7 @@
+# import = [
+# "~/.config/alacrity/decay-dark.toml",
+# ]
+
 [window]
 opacity = 0.6
 padding = { x = 10, y = 10 }
