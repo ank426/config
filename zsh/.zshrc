@@ -29,7 +29,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZP::git
+# zinit snippet OMZP::git
 # zinit snippet OMZP::sudo
 # zinit snippet OMZP::archlinux
 # zinit snippet OMZP::command-not-found
@@ -74,21 +74,23 @@ LS_COLORS='di=01;34:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;33:cd=01;33:su=37;
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+# zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls -A --color'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
-alias c='clear'
-alias lg='lazygit'
-# alias lf='ranger'
 alias less='less -IR'
-alias pacman='pacman --color=always'
-alias paru='paru --color=always'
 
-alias arm="$ZDOTDIR"/arm.sh
+alias s='sudo'
+alias c='clear'
+alias p='paru --color=always'
+alias pm='pacman --color=always'
+alias spm='sudo pacman --color=always'
+alias lg='lazygit'
+
+alias arm='~/.config/bin/arm.sh'
 alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias R='R --no-save'
@@ -99,23 +101,23 @@ alias ollama="boxxy ollama"
 
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init --cmd cd zsh)"
 
-cp-p() {
-	set -e
-	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 |
-		awk '{
-	count += $NF
-	if (count % 10 == 0) {
-		percent = count / total_size * 100
-		printf "%3d%% [", percent
-		for (i=0;i<=percent;i++)
-			printf "="
-			printf ">"
-			for (i=percent;i<100;i++)
-				printf " "
-				printf "]\r"
-			}
-		}
-	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
-}
+# cp-p() {
+# 	set -e
+# 	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 |
+# 		awk '{
+# 	count += $NF
+# 	if (count % 10 == 0) {
+# 		percent = count / total_size * 100
+# 		printf "%3d%% [", percent
+# 		for (i=0;i<=percent;i++)
+# 			printf "="
+# 			printf ">"
+# 			for (i=percent;i<100;i++)
+# 				printf " "
+# 				printf "]\r"
+# 			}
+# 		}
+# 	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
+# }
