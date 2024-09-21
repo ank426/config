@@ -1,5 +1,4 @@
 return {
-	{
-		"kmonad/kmonad-vim",
-	},
+	"kmonad/kmonad-vim",
+	ft = "kbd",
 }

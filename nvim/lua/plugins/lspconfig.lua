@@ -22,7 +22,7 @@ return {
 							"black",
 							"isort",
 							-- typescript
-							"tsserver",
+							"ts_ls",
 							"prettier",
 						},
 					})
@@ -51,7 +51,7 @@ return {
 					},
 				},
 			})
-			require("lspconfig").tsserver.setup({ capabilities = capabilities })
+			require("lspconfig").ts_ls.setup({ capabilities = capabilities })
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),

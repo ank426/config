@@ -1,17 +1,12 @@
 return {
-	{
-		"j-hui/fidget.nvim",
-		config = function()
-			local fidget = require("fidget")
-			fidget.setup({
-				notification = {
-					window = {
-						-- normal_hl = "Identifier",
-						winblend = 0,
-					},
-				},
-			})
-			vim.notify = fidget.notify
-		end,
+	"j-hui/fidget.nvim",
+	opts = {
+		notification = {
+			override_vim_notify = true,
+			window = {
+				normal_hl = "@none",
+				winblend = 0,
+			},
+		},
 	},
 }
