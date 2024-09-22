@@ -1,4 +1,3 @@
 return {
 	"tpope/vim-unimpaired",
-	config = true,
 }
