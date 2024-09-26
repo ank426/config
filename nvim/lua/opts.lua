@@ -42,9 +42,3 @@ vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 
 -- vim.opt.colorcolumn = "80"
-
--- treesitter
--- vim.filetype.add({
--- 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
--- })
--- vim.treesitter.language.register("bash", "zsh")
