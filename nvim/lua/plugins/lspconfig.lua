@@ -3,25 +3,31 @@ return {
     dependencies = {
         {
             "williamboman/mason.nvim",
-            config = true,
+            opts = {},
         },
         {
             "williamboman/mason-lspconfig.nvim",
             opts = {
                 ensure_installed = {
+                    -- Python
                     "basedpyright",
                     "ruff",
+                    -- Lua
+                    "lua_ls"
                 },
             },
         },
     },
     config = function()
-        require("lspconfig").basedpyright.setup({
+        local lspconfig = require("lspconfig")
+
+        -- Python
+        lspconfig.basedpyright.setup({
             on_init = function(client)
                 client.handlers["textDocument/publishDiagnostics"] = function() end
             end,
         })
-        require("lspconfig").ruff.setup({
+        lspconfig.ruff.setup({
             init_options = {
                 settings = {
                     lineLength = 150,
@@ -67,5 +73,9 @@ return {
                 vim.opt.shiftwidth = 2
             end,
         })
+
+        -- Lua
+        lspconfig.lua_ls.setup({})
+
     end,
 }
