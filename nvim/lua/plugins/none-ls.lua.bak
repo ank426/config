@@ -1,0 +1,21 @@
+return {
+    "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
+    config = function ()
+        local null_ls = require("null-ls")
+        local utils = require("null-ls.utils")
+        null_ls.setup({
+            default_timeout = 10000,
+            sources = {
+                null_ls.builtins.diagnostics.mypy.with({
+                    -- prevents it from running when file is in buffer (on creation)
+                    -- bug upstream
+                    runtime_condition = function(params)
+                        return utils.path.exists(params.bufname)
+                    end,
+                }),
+                null_ls.builtins.diagnostics.pylint
+            }
+        })
+    end,
+}

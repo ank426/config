@@ -42,3 +42,5 @@ vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 
 -- vim.opt.colorcolumn = "80"
+
+vim.opt.mouse = ""

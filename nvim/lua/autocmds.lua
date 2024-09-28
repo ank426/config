@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -27,4 +27,22 @@ vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
 	callback = function()
 		vim.opt.guicursor = "a:ver25-blinkon0"
 	end,
+})
+
+-- Display diagnostics as virtual text only if not in insert mode
+vim.api.nvim_create_autocmd("InsertEnter", {
+  pattern = "*",
+  callback = function()
+    vim.diagnostic.config({
+      virtual_text = false,
+    })
+  end
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  callback = function()
+    vim.diagnostic.config({
+      virtual_text = true,
+    })
+  end
 })
