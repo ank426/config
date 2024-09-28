@@ -1,5 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
+    lazy = false,
     dependencies = {
         {
             "williamboman/mason.nvim",
@@ -17,6 +18,11 @@ return {
                 },
             },
         },
+    },
+    keys = {
+        { "<leader>rn", vim.lsp.buf.rename, desc = "[R]e[n]ame" },
+        { "<leader>ca", vim.lsp.buf.code_action, desc = "[C]ode [A]ction" },
+        { "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration" },
     },
     config = function()
         local lspconfig = require("lspconfig")
