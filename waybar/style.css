@@ -2,7 +2,7 @@
     /* font-family: "JetBrainsMono Nerd Font", "FontAwesome"; */
     /* for some reason font awesome isn't rendering fonts not already in nerd fonts */
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 16px;
+    font-size: 15px;
 }
 
 window#waybar {

@@ -13,8 +13,12 @@ return {
                     -- Python
                     "basedpyright",
                     "ruff",
+                    -- Bash
+                    "bashls",
+                    -- C
+                    "clangd",
                     -- Lua
-                    "lua_ls"
+                    "lua_ls",
                 },
             },
         },
@@ -80,6 +84,10 @@ return {
             end,
         })
 
+        -- Bash
+        lspconfig.bashls.setup({})
+        -- C
+        lspconfig.clangd.setup({})
         -- Lua
         lspconfig.lua_ls.setup({})
 

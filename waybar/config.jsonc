@@ -32,30 +32,30 @@
 
     "privacy": {
         "icon-spacing": 4,
-        "icon-size": 16,
+        "icon-size": 15,
         "transition-duration": 0,
         "modules": [
             {
                 "type": "screenshare",
                 "tooltip": true,
-                "tooltip-icon-size": 16,
+                "tooltip-icon-size": 15,
             },
             // {
             //     "type": "audio-out",
             //     "tooltip": true,
-            //     "tooltip-icon-size": 16,
+            //     "tooltip-icon-size": 15,
             // },
             {
                 "type": "audio-in",
                 "tooltip": true,
-                "tooltip-icon-size": 16,
+                "tooltip-icon-size": 15,
             },
         ],
     },
 
     "hyprland/window": {
       "format": "{title}",
-      "max-length": 30,
+      "max-length": 50,
       "rewrite": {
         "(.*) — (Ablaze Floorp|Mozilla Firefox)": "  $1",
         "(.*) - ArchWiki — (Ablaze Floorp|Mozilla Firefox)": "  $1",
@@ -94,7 +94,7 @@
         "format-wifi": "{essid:.5} {signalStrength}%  ",
         "format-ethernet": "{ipaddr}/{cidr}  ",
         "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": "Disconnected  ",
+        "format-disconnected": "  ",
         "tooltip": false,
     },
 
