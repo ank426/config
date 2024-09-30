@@ -2,34 +2,59 @@ return {
   "neovim/nvim-lspconfig",
   lazy = false,
   dependencies = {
-    {
-      "williamboman/mason.nvim",
-      opts = {},
-    },
+    { "williamboman/mason.nvim", opts = {} },
     {
       "williamboman/mason-lspconfig.nvim",
       opts = {
         ensure_installed = {
-          -- Python
-          "basedpyright",
-          "ruff",
           -- Bash
           "bashls",
           -- C
           "clangd",
           -- Lua
           "lua_ls",
+          -- Python
+          "basedpyright",
+          "ruff",
         },
       },
     },
   },
   keys = {
-    { "<leader>rn", vim.lsp.buf.rename,      desc = "[R]e[n]ame", },
-    { "<leader>ca", vim.lsp.buf.code_action, desc = "[C]ode [A]ction", },
-    { "gD",         vim.lsp.buf.declaration, "[G]oto [D]eclaration", },
+    { "<leader>rn", vim.lsp.buf.rename,      desc = "[R]e[n]ame" },
+    { "<leader>ca", vim.lsp.buf.code_action, desc = "[C]ode [A]ction" },
+    { "gD",         vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration" },
   },
   config = function()
     local lspconfig = require("lspconfig")
+
+    -- Bash
+    lspconfig.bashls.setup({})
+
+    -- C
+    lspconfig.clangd.setup({})
+
+    -- Lua
+    lspconfig.lua_ls.setup({
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          format = {
+            enable = true,
+            defaultConfig = {
+              indent_style = "space",
+              indent_size = "2",
+              quote_style = "double",
+              call_arg_parenthesis = "keep",
+              max_line_length = "150",
+              trailing_table_separator = "smart",
+            },
+          },
+        },
+      },
+    })
 
     -- Python
     lspconfig.basedpyright.setup({
@@ -70,32 +95,6 @@ return {
               "SIM105",  -- suppressible-exception
               "FURB110", -- if-exp-instead-of-or-operator
               "RUF018",  -- assignment-in-assert
-            },
-          },
-        },
-      },
-    })
-
-    -- Bash
-    lspconfig.bashls.setup({})
-    -- C
-    lspconfig.clangd.setup({})
-    -- Lua
-    lspconfig.lua_ls.setup({
-      settings = {
-        Lua = {
-          runtime = {
-            version = "LuaJIT",
-          },
-          format = {
-            enable = true,
-            defaultConfig = {
-              indent_style = "space",
-              indent_size = "2",
-              quote_style = "double",
-              call_arg_parenthesis = "keep",
-              max_line_length = "150",
-              trailing_table_separator = "smart",
             },
           },
         },
