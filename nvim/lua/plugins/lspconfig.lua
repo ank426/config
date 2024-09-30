@@ -19,6 +19,16 @@ return {
         },
       },
     },
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+        library = {
+          { path = "luvit-meta/library", words = { "vim%.uv" } },
+        },
+      },
+    },
+    { "Bilal2453/luvit-meta",    lazy = true },
   },
   keys = {
     { "<leader>rn", vim.lsp.buf.rename,      desc = "[R]e[n]ame" },
