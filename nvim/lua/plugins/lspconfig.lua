@@ -28,6 +28,12 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
 
+    lspconfig.util.default_config = vim.tbl_extend(
+      "force",
+      lspconfig.util.default_config,
+      { capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), require("cmp_nvim_lsp").default_capabilities()) }
+    )
+
     -- Bash
     lspconfig.bashls.setup({})
 

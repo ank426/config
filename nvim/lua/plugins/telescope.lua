@@ -45,12 +45,12 @@ return {
       end,
       desc = "[S]earch [N]eovim files",
     },
-    { "gd",         require("telescope.builtin").lsp_definitions,               desc = "[G]oto [D]efinition" },
-    { "gr",         require("telescope.builtin").lsp_references,                desc = "[G]oto [R]eferences" },
-    { "gI",         require("telescope.builtin").lsp_implementations,           desc = "[G]oto [I]mplementation" },
-    { "<leader>D",  require("telescope.builtin").lsp_type_definitions,          desc = "Type [D]efinition" },
-    { "<leader>ds", require("telescope.builtin").lsp_document_symbols,          desc = "[D]ocument [S]ymbols" },
-    { "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, desc = "[W]orkspace [S]ymbols" },
+    { "gd",         require("telescope.builtin").lsp_definitions,               desc = "LSP: [G]oto [D]efinition" },
+    { "gr",         require("telescope.builtin").lsp_references,                desc = "LSP: [G]oto [R]eferences" },
+    { "gI",         require("telescope.builtin").lsp_implementations,           desc = "LSP: [G]oto [I]mplementation" },
+    { "<leader>D",  require("telescope.builtin").lsp_type_definitions,          desc = "LSP: Type [D]efinition" },
+    { "<leader>ds", require("telescope.builtin").lsp_document_symbols,          desc = "LSP: [D]ocument [S]ymbols" },
+    { "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, desc = "LSP: [W]orkspace [S]ymbols" },
   },
   opts = {
     defaults = {
