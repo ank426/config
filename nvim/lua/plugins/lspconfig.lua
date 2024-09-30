@@ -19,6 +19,8 @@ return {
         },
       },
     },
+    -- Putting lazydev here makes it not yell at me when I open a config file.
+    -- But it loads even without lua file
     {
       "folke/lazydev.nvim",
       ft = "lua",
@@ -29,6 +31,7 @@ return {
       },
     },
     { "Bilal2453/luvit-meta",    lazy = true },
+    -- { "j-hui/fidget.nvim",       opts = {} }, -- kickstart has this here
   },
   keys = {
     { "<leader>rn", vim.lsp.buf.rename,      desc = "[R]e[n]ame" },
