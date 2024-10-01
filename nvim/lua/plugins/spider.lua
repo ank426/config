@@ -3,19 +3,19 @@ return {
   keys = {
     {
       "w",
-      "<cmd>=require('spider').motion('w')<CR>",
+      function() require("spider").motion("w") end,
       mode = { "n", "o", "x" },
       desc = "Spider-w",
     },
     {
       "e",
-      "<cmd>=require('spider').motion('e')<CR>",
+      function() require("spider").motion("e") end,
       mode = { "n", "o", "x" },
       desc = "Spider-e",
     },
     {
       "b",
-      "<cmd>=require('spider').motion('b')<CR>",
+      function() require("spider").motion("b") end,
       mode = { "n", "o", "x" },
       desc = "Spider-b",
     },

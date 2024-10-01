@@ -8,6 +8,6 @@ return {
     "LazyGitFilterCurrentFile",
   },
   keys = {
-    { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    { "<leader>lg", vim.cmd.LazyGit, desc = "LazyGit" },
   },
 }

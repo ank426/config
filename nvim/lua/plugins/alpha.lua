@@ -3,8 +3,9 @@ return {
   config = function()
     local dashboard = require("alpha.themes.dashboard")
 
+    -- vim.cmd works but para is string, so better not to
     dashboard.section.buttons.val = {
-      dashboard.button("n", "  New file", "<cmd>ene<CR>"),
+      dashboard.button("n", "  New file", ":ene<CR>"),
       dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
       dashboard.button("r", "  Recent files", ":Telescope oldfiles<CR>"),
       dashboard.button("g", "󰊄  Find text", ":Telescope live_grep<CR>"),

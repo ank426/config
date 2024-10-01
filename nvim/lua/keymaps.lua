@@ -2,7 +2,8 @@
 -- vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>=", "mzgg=G`z")
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<Esc>", "<cmd>noh|echo<CR>")
+vim.keymap.set("n", "<leader>v", vim.cmd.vsp)
+vim.keymap.set("n", "<Esc>", function() vim.cmd("noh|echo") end)
 
 -- Works only with vim.opts.clipboard = "unnamed"
 -- Otherwise very weird

@@ -3,7 +3,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   lazy = false,
   keys = {
-    { "-", "<cmd>Oil<CR>", desc = "Open parent directory" },
+    { "-", vim.cmd.Oil, desc = "Open parent directory" },
   },
   opts = {
     skip_confirm_for_simple_edits = true,
