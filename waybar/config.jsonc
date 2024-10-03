@@ -94,7 +94,7 @@
         "format-wifi": "{essid:.5} {signalStrength}%  ",
         "format-ethernet": "{ipaddr}/{cidr}  ",
         "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": "  ",
+        "format-disconnected": " ",
         "tooltip": false,
     },
 
