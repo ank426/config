@@ -86,16 +86,17 @@ file="$HADOOP_HOME"/etc/hadoop/mapred-site.xml
 head -n -3 "$file" > temp.xml && mv temp.xml "$file"
 cat <<EOF >> $file
 <configuration>
-<property>
-    <name>mapreduce.framework.name</name>
-    <value>yarn</value>
-</property>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
 </configuration>
 EOF
 
 file="$HADOOP_HOME"/etc/hadoop/yarn-site.xml
 head -n -3 "$file" > temp.xml && mv temp.xml "$file"
 cat <<EOF >> $file
+<configuration>
     <property>
         <name>yarn.nodemanager.aux-services</name>
         <value>mapreduce_shuffle</value>
