@@ -94,6 +94,7 @@ alias arm='~/.config/bin/arm.sh'
 alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias R='R --no-save'
+alias mariadb='mariadb -u ankit --password=$(pass code/mariadb/ankit)'
 
 alias firefox="boxxy firefox"
 alias floorp="boxxy floorp"
