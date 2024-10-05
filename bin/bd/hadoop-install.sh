@@ -94,7 +94,7 @@ cat <<EOF >> $file
 EOF
 
 file="$HADOOP_HOME"/etc/hadoop/yarn-site.xml
-head -n -4 "$file" > temp.xml && mv temp.xml "$file"
+head -n -5 "$file" > temp.xml && mv temp.xml "$file"
 cat <<EOF >> $file
 <configuration>
     <property>
