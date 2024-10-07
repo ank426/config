@@ -89,6 +89,7 @@ alias p='paru --color=always'
 alias pm='pacman --color=always'
 alias spm='sudo pacman --color=always'
 alias lg='lazygit'
+alias ipy='ipython'
 
 alias arm='~/.config/bin/arm.sh'
 alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
