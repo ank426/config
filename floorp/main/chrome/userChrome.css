@@ -18,24 +18,28 @@ Quote: https://userChrome.org | https://github.com/topics/userchrome
 
 @charset "UTF-8";
 @-moz-document url(chrome://browser/content/browser.xhtml) {
-    /* Please write your custom CSS under this line*/
-    toolbarbutton#back-button,
-    toolbarbutton#forward-button,
-    toolbarbutton#reload-button,
-    toolbarbutton#stop-button,
-    toolbarbutton#fxa-toolbar-menu-button,
-    /* toolbarbutton#firefox-view-button, */ /* Doesn't come nice. Need to customize toolbar */
-    toolbarbutton#tabs-newtab-button,
-    toolbarbutton#new-tab-button,
-    toolbarbutton#alltabs-button,
-    toolbarbutton#scrollbutton-up,
-    toolbarbutton#scrollbutton-down,
-    image.tab-close-button.close-icon,
-    toolbarbutton.titlebar-button.titlebar-close,
-    hbox.titlebar-spacer,
-    hbox#QRCodeGeneratePageAction.urlbar-page-action,
-    hbox#star-button-box.urlbar-page-action
-    {
-        display: none !important;
-    }
+  /* Please write your custom CSS under this line*/
+
+  toolbarbutton#back-button,
+  toolbarbutton#forward-button,
+  toolbarbutton#reload-button,
+  toolbarbutton#stop-button,
+  toolbarbutton#fxa-toolbar-menu-button,
+  /* toolbarbutton#firefox-view-button, */ /* Doesn't come nice. Need to customize toolbar */
+  toolbarbutton#tabs-newtab-button,
+  toolbarbutton#new-tab-button,
+  toolbarbutton#alltabs-button,
+  toolbarbutton#scrollbutton-up,
+  toolbarbutton#scrollbutton-down,
+  image.tab-close-button.close-icon,
+  toolbarbutton.titlebar-button.titlebar-close,
+  hbox.titlebar-spacer,
+  hbox#QRCodeGeneratePageAction.urlbar-page-action,
+  hbox#star-button-box.urlbar-page-action {
+    display: none !important;
+  }
+
+  #urlbar, #searchbar .searchbar-textbox {
+    font-family: "JetBrainsMono Nerd Font" !important;
+  }
 }

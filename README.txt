@@ -14,6 +14,7 @@ For dark theme install:
 gnome-themes-extra
 adwaita-qt5-git
 adwaita-qt6-git
+/etc/environment
 
 Edit /etc/hosts for firefox to startup faster
 

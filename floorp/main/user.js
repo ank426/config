@@ -301,6 +301,9 @@ user_pref("browser.startup.page", 3); // Resume previous browser session
 user_pref("browser.download.dir", "/home/ankit/dwn"); // had to set manually for some reason
 user_pref("browser.download.useDownloadDir", true);
 user_pref("browser.toolbars.bookmarks.visibility", "never");
+user_pref("font.name.monospace.x-western", "JetBrainsMono Nerd Font");
+user_pref("font.name.sans-serif.x-western", "JetBrainsMono Nerd Font");
+user_pref("font.name.sans.x-western", "JetBrainsMono Nerd Font");
 
 /* FLOORP SPECIFIC */
 user_pref("floorp.browser.sidebar.enable", false);
