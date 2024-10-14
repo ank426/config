@@ -39,7 +39,10 @@ Quote: https://userChrome.org | https://github.com/topics/userchrome
     display: none !important;
   }
 
-  #urlbar, #searchbar .searchbar-textbox {
+  /* #urlbar, #searchbar .searchbar-textbox, #tabbar { */
+  /*   font-family: "JetBrainsMono Nerd Font" !important; */
+  /* } */
+  * {
     font-family: "JetBrainsMono Nerd Font" !important;
   }
 }
