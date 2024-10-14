@@ -51,6 +51,7 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
+bindkey '^H' backward-kill-word
 # bindkey '^[w' kill-region
 
 # History
@@ -85,6 +86,7 @@ alias less='less -IR'
 
 alias s='sudo'
 alias c='clear'
+alias ..='cd ..'
 alias p='paru --color=always'
 alias pm='pacman --color=always'
 alias spm='sudo pacman --color=always'

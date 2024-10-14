@@ -3,18 +3,25 @@ return {
   event = "VeryLazy",
   opts = {
     formatters_by_ft = {
-      python = { "ruff_fix" },
+      python = { lsp_format = "never" },
+      -- python = { "ruff_fix" },
     },
     default_format_opts = {
-      lsp_fallback = true,
+      lsp_format = "fallback",
     },
-    format_on_save = {
-      timeout_ms = 500,
-      lsp_fallback = true,
-    },
+    format_on_save = function(bufnr)
+      if vim.api.nvim_get_option_value("filetype", { buf = bufnr }) == "python" then
+        return nil
+      else
+        return {
+          lsp_format = "fallback",
+          timeout_ms = 500,
+        }
+      end
+    end
   },
   config = function(_, opts)
     require("conform").setup(opts)
-    vim.keymap.set("", "<leader>f", require("conform").format, { desc = "[F]ormat buffer" })
+    vim.keymap.set("", "<leader>fm", require("conform").format, { desc = "[F]or[m]at buffer" })
   end,
 }

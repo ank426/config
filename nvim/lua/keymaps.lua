@@ -5,6 +5,8 @@ vim.keymap.set("n", "<leader>=", "mzgg=G`z")
 vim.keymap.set("n", "<leader>v", vim.cmd.vsp)
 vim.keymap.set("n", "<Esc>", function() vim.cmd("noh|echo") end)
 
+vim.keymap.set("i", "<C-BS>", "<C-w>")
+
 -- Works only with vim.opts.clipboard = "unnamed"
 -- Otherwise very weird
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])

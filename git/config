@@ -3,3 +3,5 @@
 	name = Ankit Avinash
 [init]
 	defaultBranch = main
+[remote]
+  pushDefault = origin

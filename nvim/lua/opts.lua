@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.python_recommended_style = 0
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -9,6 +11,7 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+-- vim.opt.indentexpr = "no"
 
 vim.opt.showmode = false
 
@@ -20,7 +23,7 @@ vim.opt.wrap = true
 vim.opt.breakindent = true
 
 -- vim.opt.undofile = true
--- vim.opt.swapfile = false
+vim.opt.swapfile = false
 -- vim.opt.backup = false
 
 vim.opt.ignorecase = true
