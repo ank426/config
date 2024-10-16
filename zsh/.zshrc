@@ -125,3 +125,9 @@ eval "$(fzf --zsh)"
 # 		}
 # 	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
 # }
+
+
+
+# KAFKA_DIR="$XDG_DATA_HOME"/kafka
+# KAFKA_HOME=$KAFKA_DIR/kafka_2.12-3.7.1
+# alias zookeeper-start="$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties"

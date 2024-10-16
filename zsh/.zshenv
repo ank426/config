@@ -40,7 +40,7 @@ export CUDA_PATH=/opt/cuda
 export PATH=/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:$PATH
 export NVCC_CCBIN='/usr/bin/g++-13'
 
-export HADOOP_HOME=/home/ankit/.local/share/hadoop/hadoop-3.4.0
+export HADOOP_HOME="$XDG_DATA_HOME/hadoop/hadoop-3.4.0"
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -48,4 +48,16 @@ export HADOOP_HDFS_HOME=$HADOOP_HOME
 export YARN_HOME=$HADOOP_HOME
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export HADOOP_OPTS=-Djava.library.path=$HADOOP_HOME/lib/native
-export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+export PATH="$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin"
+
+export SPARK_HOME="$XDG_DATA_HOME/spark/spark-3.5.3-bin-hadoop3"
+export PYSPARK_PYTHON=/usr/bin/python3
+export PATH="$PATH:$SPARK_HOME/sbin:$SPARK_HOME/bin"
+alias spark-start="$SPARK_HOME/sbin/start-all.sh"
+alias spark-stop="$SPARK_HOME/sbin/stop-all.sh"
+
+export KAFKA_HOME="$XDG_DATA_HOME/kafka/kafka_2.12-3.7.1"
+alias zookeeper-start="$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties > /dev/null &"
+alias zookeeper-stop="$KAFKA_HOME/bin/zookeeper-server-stop.sh"
+alias kafka-start="$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties > /dev/null &"
+alias kafka-stop="$KAFKA_HOME/bin/kafka-server-stop.sh"
