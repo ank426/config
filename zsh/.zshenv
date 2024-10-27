@@ -7,11 +7,13 @@ export XDG_STATE_HOME="$HOME"/.local/state
 # export XDG_DATA_HOME="$HOME"/.lcl/share
 # export XDG_STATE_HOME="$HOME"/.lcl/state
 
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export MYSQL_HISTFILE="$XDG_STATE_HOME"/mariadb/history
 export MYPY_CACHE_DIR="$XDG_CACHE_HOME"/mypy
@@ -39,6 +41,7 @@ export SUDO_EDITOR=nvim
 export CUDA_PATH=/opt/cuda
 export PATH=/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:$PATH
 export NVCC_CCBIN='/usr/bin/g++-13'
+export UV_PYTHON_PREFERENCE='system'
 
 export HADOOP_HOME="$XDG_DATA_HOME/hadoop/hadoop-3.4.0"
 export HADOOP_INSTALL=$HADOOP_HOME

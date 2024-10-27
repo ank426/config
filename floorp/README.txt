@@ -27,6 +27,7 @@ Dark Reader
 Decentraleyes
 OneTab
 Return YouTube Dislikes
+ClearURLs
 
 Not installed:
 bypass paywalls

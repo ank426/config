@@ -93,15 +93,16 @@ alias spm='sudo pacman --color=always'
 alias lg='lazygit'
 alias ipy='ipython'
 
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias arm='~/.config/bin/arm.sh'
 alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias R='R --no-save'
 alias mariadb='mariadb -u ankit --password=$(pass code/mariadb/ankit)'
 
-alias firefox="boxxy firefox"
-alias floorp="boxxy floorp"
-alias ollama="boxxy ollama"
+# alias firefox="boxxy firefox"
+# alias floorp="boxxy floorp"
+# alias ollama="boxxy ollama"
 
 # Shell integrations
 eval "$(fzf --zsh)"
