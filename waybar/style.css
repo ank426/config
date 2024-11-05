@@ -3,6 +3,7 @@
     /* for some reason font awesome isn't rendering fonts not already in nerd fonts */
     font-family: "JetBrainsMono Nerd Font";
     font-size: 15px;
+    color: #BBBBBB;
 }
 
 window#waybar {
