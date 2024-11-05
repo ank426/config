@@ -20,4 +20,8 @@ return {
       desc = "Spider-b",
     },
   },
+  opts = {
+    skipInsignificantPunctuation = true,
+    subwordMovement = false,
+  },
 }
