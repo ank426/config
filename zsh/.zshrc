@@ -91,6 +91,7 @@ alias p='paru --color=always'
 alias pm='pacman --color=always'
 alias spm='sudo pacman --color=always'
 alias lg='lazygit'
+alias slg='sudo lazygit'
 alias ipy='ipython'
 
 alias adb='HOME="$XDG_DATA_HOME"/android adb'
