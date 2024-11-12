@@ -37,6 +37,7 @@ export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
+# export MANPAGER='less -R --use-color -Dd+r -Du+b' # Not working for some reason
 
 export CUDA_PATH=/opt/cuda
 export PATH=/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:$PATH

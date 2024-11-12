@@ -51,7 +51,7 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
-bindkey '^H' backward-kill-word
+# bindkey '^H' backward-kill-word
 # bindkey '^[w' kill-region
 
 # History
@@ -92,7 +92,10 @@ alias pm='pacman --color=always'
 alias spm='sudo pacman --color=always'
 alias lg='lazygit'
 alias slg='sudo lazygit'
+alias py='python'
 alias ipy='ipython'
+
+alias fzf='fzf --preview "bat --color=always {}"'
 
 alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias arm='~/.config/bin/arm.sh'
@@ -101,35 +104,13 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias R='R --no-save'
 alias mariadb='mariadb -u ankit --password=$(pass code/mariadb/ankit)'
 
-# alias firefox="boxxy firefox"
-# alias floorp="boxxy floorp"
-# alias ollama="boxxy ollama"
-
 # Shell integrations
 eval "$(fzf --zsh)"
 # eval "$(zoxide init --cmd cd zsh)"
 
-# cp-p() {
-# 	set -e
-# 	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 |
-# 		awk '{
-# 	count += $NF
-# 	if (count % 10 == 0) {
-# 		percent = count / total_size * 100
-# 		printf "%3d%% [", percent
-# 		for (i=0;i<=percent;i++)
-# 			printf "="
-# 			printf ">"
-# 			for (i=percent;i<100;i++)
-# 				printf " "
-# 				printf "]\r"
-# 			}
-# 		}
-# 	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
-# }
-
-
-
 # KAFKA_DIR="$XDG_DATA_HOME"/kafka
 # KAFKA_HOME=$KAFKA_DIR/kafka_2.12-3.7.1
 # alias zookeeper-start="$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties"
+
+
+# export MANPAGER='less -R --use-color -Dd+r -Du+b'

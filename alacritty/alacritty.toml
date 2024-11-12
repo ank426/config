@@ -61,3 +61,8 @@ vi_mode_style = { shape = "Block" }
 
 [mouse]
 hide_when_typing = true
+
+[keyboard]
+bindings = [
+  { key = "Back", mods = "Control", chars = "\u0017"}
+]

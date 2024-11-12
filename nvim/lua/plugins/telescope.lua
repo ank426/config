@@ -64,7 +64,7 @@ return {
     },
     pickers = {
       find_files = {
-        hidden = true,
+        -- hidden = true,
         no_ignore = true,
       },
       current_buffer_fuzzy_find = {
