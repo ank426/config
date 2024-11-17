@@ -84,6 +84,7 @@ alias grep='grep --color=always'
 alias ip='ip -color=always'
 alias less='less -IR'
 alias info='info --vi-keys'
+alias tree='tree -aC'
 
 alias s='sudo'
 alias c='clear'
