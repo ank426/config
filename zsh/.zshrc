@@ -85,6 +85,7 @@ alias ip='ip -color=always'
 alias less='less -IR'
 alias info='info --vi-keys'
 alias tree='tree -aC --dirsfirst'
+alias tree-git='tree -aC --dirsfirst --gitignore -I .git'
 
 alias s='sudo'
 alias c='clear'
