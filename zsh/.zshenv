@@ -65,3 +65,6 @@ alias zookeeper-start="$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/con
 alias zookeeper-stop="$KAFKA_HOME/bin/zookeeper-server-stop.sh"
 alias kafka-start="$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties > /dev/null &"
 alias kafka-stop="$KAFKA_HOME/bin/kafka-server-stop.sh"
+
+# uv
+export PATH="/home/ankit/.local/share/../bin:$PATH"

@@ -78,11 +78,12 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls='ls -A --color'
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias ip='ip -color=auto'
+alias ls='LC_COLLATE=C ls -A --color --group-directories-first'
+alias diff='diff --color=always'
+alias grep='grep --color=always'
+alias ip='ip -color=always'
 alias less='less -IR'
+alias info='info --vi-keys'
 
 alias s='sudo'
 alias c='clear'
@@ -96,6 +97,8 @@ alias py='python'
 alias ipy='ipython'
 
 alias fzf='fzf --preview "bat --color=always {}"'
+alias wey="ip -4 -brief address && weylus --no-gui"
+alias weylus='weylus --auto-start --access-code $(head /dev/urandom | tr -cd A-Za-z0-9 | head -c 20)'
 
 alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias arm='~/.config/bin/arm.sh'
