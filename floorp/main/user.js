@@ -316,7 +316,7 @@ user_pref("floorp.tabsleep.tabTimeoutMinutes", 10);
 user_pref("browser.newtabpage.activity-stream.floorp.newtab.releasenote.hide", true);
 // prettier-ignore
 user_pref("browser.newtabpage.activity-stream.floorp.newtab.imagecredit.hide", true);
-user_pref("floorp.browser.workspaces.enabled", false);
+user_pref("floorp.browser.workspaces.enabled", true);
 user_pref("browser.tabs.firefox-view", false);
 user_pref("identity.fxaccounts.toolbar.enabled", false); // doesn't work.
 
