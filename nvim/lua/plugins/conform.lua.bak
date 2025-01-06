@@ -4,6 +4,7 @@ return {
   opts = {
     formatters_by_ft = {
       python = { lsp_format = "never" },
+      cpp = { lsp_format = "never" },
       -- python = { "ruff_fix" },
     },
     default_format_opts = {
@@ -18,7 +19,7 @@ return {
           timeout_ms = 500,
         }
       end
-    end
+    end,
   },
   config = function(_, opts)
     require("conform").setup(opts)

@@ -15,6 +15,7 @@ export GOPATH="$XDG_DATA_HOME"/go
 export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+export KERAS_HOME="$XDG_STATE_HOME"/keras
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export MYSQL_HISTFILE="$XDG_STATE_HOME"/mariadb/history
 export MYPY_CACHE_DIR="$XDG_CACHE_HOME"/mypy
