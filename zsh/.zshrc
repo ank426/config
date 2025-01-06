@@ -109,6 +109,8 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias R='R --no-save'
 alias mariadb='mariadb -u ankit --password=$(pass code/mariadb/ankit)'
 
+alias nfs='NVIM_APPNAME=nfs nvim'
+
 # Shell integrations
 eval "$(fzf --zsh)"
 # eval "$(zoxide init --cmd cd zsh)"
