@@ -5,10 +5,11 @@ return {
     auto_install = true,
     highlight = { enable = true },
     incremental_selection = { enable = false },
-    indent = { enable = true },
+    -- indent = { enable = true },
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
     vim.treesitter.language.register("bash", "zsh")
+    vim.cmd[[set nocindent]]
   end,
 }
