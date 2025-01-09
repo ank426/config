@@ -11,7 +11,8 @@ return {
       lsp_format = "fallback",
     },
     format_on_save = function(bufnr)
-      if vim.api.nvim_get_option_value("filetype", { buf = bufnr }) == "python" then
+      local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+      if ft == "python" or ft == "cpp" or ft == "c" then
         return nil
       else
         return {

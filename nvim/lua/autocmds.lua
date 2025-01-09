@@ -47,8 +47,12 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   end,
 })
 
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "help",
   callback = function() vim.opt.signcolumn = "no" end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function() vim.cmd [[set nocindent]] end,
 })
