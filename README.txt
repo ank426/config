@@ -35,7 +35,7 @@ To update firmware, check arch wiki
 you may need to set esp path in /etc/fwupd/fwupd.conf
 
 Install otf-font-awesome for waybar icons
-Install noto-font-cjk
+Install noto-fonts-cjk
 Install ttf-liberation for steam (better acc to arch wiki)
 
 Install bat for paru (aur pkg build highlighing)
