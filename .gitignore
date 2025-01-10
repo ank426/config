@@ -23,6 +23,8 @@
 !/mpv/**
 !/npm/
 !/npm/**
+!/nfs/
+!/nfs/**
 !/nvim/
 !/nvim/**
 !/ranger/
