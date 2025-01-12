@@ -7,6 +7,7 @@ vim.opt.breakindent = true
 vim.opt.clipboard:append("unnamed")
 vim.opt.expandtab = true
 vim.opt.formatoptions:remove("o")
+vim.opt.guicursor:append("c:ver25")
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.list = true
@@ -32,26 +33,28 @@ vim.opt.textwidth = 150
 
 -- Keymaps
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <c-l><cr>", { desc = "Nvim's redraw" })
-vim.keymap.set("n", "<Leader>=", "mzgg=G`z", { desc = "Reindent file" })
--- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
-vim.keymap.set({ "n", "v" }, "<Leader>y", [["+y]])
-vim.keymap.set({ "n", "v" }, "<Leader>Y", [["+y$]]) -- Y=yy in maps as per old behavior
-vim.keymap.set({ "n", "v" }, "<Leader>p", [["+p]])
-vim.keymap.set({ "n", "v" }, "<Leader>P", [["+P]])
-vim.keymap.set({ "n", "v" }, "<Leader>d", [["+d]])
-vim.keymap.set({ "n", "v" }, "<Leader>D", [["+D]])
--- Window
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
--- vim.keymap.set("n", "<C-Left>", "<C-w><")
--- vim.keymap.set("n", "<C-Down>", "<C-w>+")
--- vim.keymap.set("n", "<C-Up>", "<C-w>-")
--- vim.keymap.set("n", "<C-Right>", "<C-w>>")
+vim.keymap.set("n", "<leader>=", "mzgg=g`z", { desc = "Reindent file" })
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]]) -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
+vim.keymap.set({"n", "v"}, "<leader>Y", [["+y$]]) -- Y=yy in maps as per old behavior unless remap=true
+vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
+vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
+vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
+vim.keymap.set({"n", "v"}, "<leader>D", [["+D]])
+vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Move focus to the right window" })
 
+-- Autocommands
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight on yank",
+  callback = function() vim.highlight.on_yank() end, -- Needs function wrapping cuz callback passes arguments
+})
+vim.api.nvim_create_autocmd({"VimLeave", "VimSuspend"}, {
+  desc = "Fix cursor on quit/suspend",
+  command = "set guicursor=a:ver25",
+})
 vim.api.nvim_create_autocmd("StdinReadPost", {
-  callback = function()
-    vim.opt.modified = false
-  end
+  desc = "Mark as unmodified when reading from stdin",
+  command = "set nomodified",
 })
