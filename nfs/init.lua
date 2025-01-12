@@ -4,7 +4,7 @@ vim.g.maplocalleader = " "
 
 --Options
 vim.opt.breakindent = true
-vim.opt.clipboard:append("unnamed")
+vim.opt.clipboard:append("unnamed") -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
 vim.opt.expandtab = true
 vim.opt.formatoptions:remove("o")
 vim.opt.guicursor:append("c:ver25")
@@ -34,7 +34,7 @@ vim.opt.textwidth = 150
 -- Keymaps
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <c-l><cr>", { desc = "Nvim's redraw" })
 vim.keymap.set("n", "<leader>=", "mzgg=g`z", { desc = "Reindent file" })
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]]) -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set({"n", "v"}, "<leader>Y", [["+y$]]) -- Y=yy in maps as per old behavior unless remap=true
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
 vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
