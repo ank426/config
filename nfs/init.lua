@@ -4,7 +4,7 @@ vim.g.maplocalleader = " "
 
 --Options
 vim.opt.breakindent = true
-vim.opt.clipboard:append("unnamed") -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
+vim.opt.clipboard = "unnamed" -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
 vim.opt.expandtab = true
 vim.opt.formatoptions:remove("o")
 vim.opt.guicursor:append("c:ver25")
