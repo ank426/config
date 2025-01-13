@@ -78,6 +78,8 @@ vim.api.nvim_create_user_command("H", function(opts)
     print(error_message:match("E%d+:.*$"))
   elseif flag then
     vim.cmd(mods.."help "..subject)
+    vim.bo.buftype = "help"
+    vim.bo.filetype = "help"
   else
     vim.cmd(mods.."help "..subject)
     local path = vim.fn.expand("%:p")
