@@ -97,7 +97,7 @@ end, {
 vim.cmd.cnoreabbrev([[<expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']])
 
 
-vim.hl = vim.highlight -- Remove once nvim versions up
+vim.hl = vim.highlight -- Remove when nvim>=0.10.4
 
 -- Lazy.nvim
 require("lazy-nvim")
