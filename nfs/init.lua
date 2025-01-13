@@ -58,3 +58,29 @@ vim.api.nvim_create_autocmd("StdinReadPost", {
   desc = "Mark as unmodified when reading from stdin",
   command = "set nomodified",
 })
+
+
+-- User defined commands
+
+-- Modified from help-curwin (to not mess up jumplist)
+vim.api.nvim_create_user_command("H", function(opts)
+  local subject = opts.args
+  local mods = "silent noautocmd keepalt "
+  if #vim.fn.getcompletion(subject, "help") > 0 then
+    vim.cmd(mods.."help "..subject)
+    local path = vim.fn.expand("%:p")
+    vim.cmd(mods.."helpclose")
+    vim.cmd(mods.."edit "..path)
+    vim.bo.buftype = "help"
+    vim.bo.filetype = "help"
+  else
+    success, error_message = pcall(vim.cmd, "help "..subject)
+    print(error_message:match("E%d+:.*$"))
+  end
+end, {
+  desc = "Help in current window",
+  nargs = "?",
+  complete = "help",
+  bar = true,
+})
+vim.cmd[[cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']]
