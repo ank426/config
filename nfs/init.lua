@@ -1,6 +1,8 @@
 -- Variables
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
+
+require("lazy-nvim")
 
 --Options
 vim.opt.breakindent = true
@@ -64,18 +66,27 @@ vim.api.nvim_create_autocmd("StdinReadPost", {
 
 -- Modified from help-curwin (to not mess up jumplist)
 vim.api.nvim_create_user_command("H", function(opts)
+  local flag = false
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+    flag = flag or (filetype == 'help')
+  end
+
   local subject = opts.args
   local mods = "silent noautocmd keepalt "
-  if #vim.fn.getcompletion(subject, "help") > 0 then
+  if #vim.fn.getcompletion(subject, "help") == 0 then
+    success, error_message = pcall(vim.cmd, "help "..subject)
+    print(error_message:match("E%d+:.*$"))
+  elseif flag then
+    vim.cmd(mods.."help "..subject)
+  else
     vim.cmd(mods.."help "..subject)
     local path = vim.fn.expand("%:p")
     vim.cmd(mods.."helpclose")
     vim.cmd(mods.."edit "..path)
     vim.bo.buftype = "help"
     vim.bo.filetype = "help"
-  else
-    success, error_message = pcall(vim.cmd, "help "..subject)
-    print(error_message:match("E%d+:.*$"))
   end
 end, {
   desc = "Help in current window",
