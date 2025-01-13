@@ -2,8 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-require("lazy-nvim")
-
 --Options
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamed" -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
@@ -95,3 +93,7 @@ end, {
   bar = true,
 })
 vim.cmd[[cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']]
+
+
+-- Lazy.nvim
+require("lazy-nvim")
