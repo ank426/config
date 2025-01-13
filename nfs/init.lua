@@ -1,7 +1,3 @@
--- Variables
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 --Options
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamed" -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
@@ -97,5 +93,11 @@ end, {
 vim.cmd.cnoreabbrev([[<expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']])
 
 
+-- Variables
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- Lazy.nvim
 require("lazy-nvim")
+
+vim.cmd.colorscheme("tokyonight")
