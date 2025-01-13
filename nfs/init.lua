@@ -94,7 +94,7 @@ end, {
   complete = "help",
   bar = true,
 })
-vim.cmd[[cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']]
+vim.cmd.cnoreabbrev([[<expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']])
 
 
 -- Lazy.nvim
