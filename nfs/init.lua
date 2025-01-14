@@ -32,18 +32,18 @@ vim.opt.tabstop = 4
 vim.opt.textwidth = 150
 
 -- Keymaps
-vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <c-l><cr>", { desc = "Nvim's redraw" })
-vim.keymap.set("n", "<leader>=", "mzgg=g`z", { desc = "Reindent file" })
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { desc = "Nvim's redraw" })
+vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set({"n", "v"}, "<leader>Y", [["+y$]]) -- Y=yy in maps as per old behavior unless remap=true
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
 vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
 vim.keymap.set({"n", "v"}, "<leader>D", [["+D]])
-vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Move focus to the upper window" })
-vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
 
 -- Autocommands
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -81,7 +81,8 @@ vim.api.nvim_create_user_command("H", function(opts)
       vim.cmd.edit(path)
     end
     vim.opt.buftype = "help"
-    vim.opt.filetype = "help"
+    -- vim.opt.filetype = "help"
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false) -- Change to normal mode
   else
     local _, error_message = pcall(vim.cmd.help, subject)
     print(error_message:match("E%d+:.*$"))
