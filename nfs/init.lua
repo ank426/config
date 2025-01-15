@@ -90,7 +90,7 @@ vim.api.nvim_create_user_command("H", function(opts)
       vim.cmd.edit(path)
     end
     vim.opt.buftype = "help"
-    vim.opt.filetype = "help"
+    -- vim.opt.filetype = "help"
     -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false) -- Change to normal mode
   else
     local _, error_message = pcall(vim.cmd.help, subject)

@@ -94,12 +94,24 @@ return {
         preview_title = false,
         mappings = {
           i = {
-            ["<cr>"] = function() vim.cmd.H(require("telescope.actions.state").get_selected_entry().value) end,
-            ["<C-v>"] = function() vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value) end
+            ["<cr>"] = function()
+              vim.cmd.H(require("telescope.actions.state").get_selected_entry().value)
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+            end,
+            ["<C-v>"] = function()
+              vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value)
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+            end
           },
           n = {
-            ["<cr>"] = function() vim.cmd.H(require("telescope.actions.state").get_selected_entry().value) end,
-            ["<C-v>"] = function() vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value) end
+            ["<cr>"] = function()
+              vim.cmd.H(require("telescope.actions.state").get_selected_entry().value)
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+            end,
+            ["<C-v>"] = function()
+              vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value)
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+            end
           },
         },
       },
