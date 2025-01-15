@@ -10,6 +10,6 @@ return {
     },
     select = {
       trim_prompt = false,
-    }
+    },
   },
 }
