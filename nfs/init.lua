@@ -49,6 +49,7 @@ vim.keymap.set("n", "<leader>en", function() vim.cmd.edit(vim.fn.stdpath("config
 vim.keymap.set("n", "<leader>el", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua") end, { desc = "Edit Lua" })
 vim.keymap.set("n", "<leader>ep", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/plugins") end, { desc = "Edit Plugins" })
 vim.keymap.set("n", "<leader>ef", function() vim.cmd.edit(vim.fn.stdpath("config").."/ftplugin") end, { desc = "Edit Ftplugin" })
+vim.keymap.set("n", "<leader>ea", function() vim.cmd.edit(vim.fn.stdpath("config").."/after") end, { desc = "Edit After/Ftplugin" })
 vim.keymap.set("n", "<leader>eaf", function() vim.cmd.edit(vim.fn.stdpath("config").."/after/ftplugin") end, { desc = "Edit After/Ftplugin" })
 
 -- Autocommands
