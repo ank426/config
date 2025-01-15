@@ -18,5 +18,6 @@ require("lazy").setup({
   defaults = { version = "*" },
   spec = { { import = "plugins" } },
   install = { colorscheme = { "tokyonight" } },
+  ui = { border = "rounded" },
   change_detection = { notify = false },
 })

@@ -46,6 +46,8 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window"
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
+vim.keymap.set("n", "<leader>lz", "<cmd>Lazy<cr>")
+vim.keymap.set("n", "<leader>st", "<cmd>TermSelect<cr>")
 vim.keymap.set("n", "<leader>en", function() vim.cmd.edit(vim.fn.stdpath("config")) end, { desc = "Edit Neovim" })
 vim.keymap.set("n", "<leader>el", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua") end, { desc = "Edit Lua" })
 vim.keymap.set("n", "<leader>ep", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/plugins") end, { desc = "Edit Plugins" })
