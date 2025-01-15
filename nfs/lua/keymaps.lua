@@ -21,6 +21,7 @@ vim.keymap.set("n", "<leader>ep", function() vim.cmd.edit(vim.fn.stdpath("config
 vim.keymap.set("n", "<leader>eg", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/globals.lua") end,       { desc = "Edit Globals" })
 vim.keymap.set("n", "<leader>eo", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/options.lua") end,       { desc = "Edit Options" })
 vim.keymap.set("n", "<leader>ek", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/keymaps.lua") end,       { desc = "Edit Keymaps" })
+vim.keymap.set("n", "<leader>ez", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/lazy-nvim.lua") end,     { desc = "Edit Lazy-nvim" })
 vim.keymap.set("n", "<leader>ea", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/autocommands.lua") end,  { desc = "Edit Autocommands" })
 vim.keymap.set("n", "<leader>eu", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/user-commands.lua") end, { desc = "Edit User-commands" })
 vim.keymap.set("n", "<leader>ef", function() vim.cmd.edit(vim.fn.stdpath("config").."/ftplugin") end,              { desc = "Edit Ftplugin" })
