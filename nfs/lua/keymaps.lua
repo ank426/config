@@ -1,0 +1,27 @@
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { desc = "Nvim's redraw" })
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
+vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
+
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({"n", "v"}, "<leader>Y", [["+y$]]) -- Y=yy in maps as per old behavior unless remap=true
+vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
+vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
+-- vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
+-- vim.keymap.set({"n", "v"}, "<leader>D", [["+D]])
+
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
+
+vim.keymap.set("n", "<leader>en", function() vim.cmd.edit(vim.fn.stdpath("config")) end,                           { desc = "Edit Neovim" })
+vim.keymap.set("n", "<leader>ei", function() vim.cmd.edit(vim.fn.stdpath("config").."/init.lua") end,              { desc = "Edit Init" })
+vim.keymap.set("n", "<leader>el", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua") end,                   { desc = "Edit Lua" })
+vim.keymap.set("n", "<leader>ep", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/plugins") end,           { desc = "Edit Plugins" })
+vim.keymap.set("n", "<leader>eg", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/globals.lua") end,       { desc = "Edit Globals" })
+vim.keymap.set("n", "<leader>eo", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/options.lua") end,       { desc = "Edit Options" })
+vim.keymap.set("n", "<leader>ek", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/keymaps.lua") end,       { desc = "Edit Keymaps" })
+vim.keymap.set("n", "<leader>ea", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/autocommands.lua") end,  { desc = "Edit Autocommands" })
+vim.keymap.set("n", "<leader>eu", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/user-commands.lua") end, { desc = "Edit User-commands" })
+vim.keymap.set("n", "<leader>ef", function() vim.cmd.edit(vim.fn.stdpath("config").."/ftplugin") end,              { desc = "Edit Ftplugin" })
+vim.keymap.set("n", "<leader>Ef", function() vim.cmd.edit(vim.fn.stdpath("config").."/after/ftplugin") end,        { desc = "Edit After/Ftplugin" })
