@@ -95,6 +95,11 @@ return {
         mappings = {
           i = {
             ["<cr>"] = function() vim.cmd.H(require("telescope.actions.state").get_selected_entry().value) end,
+            ["<C-v>"] = function() vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value) end
+          },
+          n = {
+            ["<cr>"] = function() vim.cmd.H(require("telescope.actions.state").get_selected_entry().value) end,
+            ["<C-v>"] = function() vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value) end
           },
         },
       },

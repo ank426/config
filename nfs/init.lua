@@ -44,6 +44,7 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" 
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<leader>ep", function() vim.cmd.edit(vim.fn.stdpath("config").."/lua/plugins") end, { desc = "Edit Plugins" })
 
 -- Autocommands
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -57,6 +58,14 @@ vim.api.nvim_create_autocmd({"VimLeave", "VimSuspend"}, {
 vim.api.nvim_create_autocmd("StdinReadPost", {
   desc = "Mark as unmodified when reading from stdin",
   command = "set nomodified",
+})
+vim.api.nvim_create_autocmd("InsertEnter", {
+  desc = "Turn off opt.list in insert mode",
+  command = "set nolist",
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  desc = "Turn on opt.list when out of insert mode",
+  command = "if &filetype != 'help' | set list | endif" -- Not working in ftplugin/help.lua for some reason
 })
 
 
@@ -81,8 +90,8 @@ vim.api.nvim_create_user_command("H", function(opts)
       vim.cmd.edit(path)
     end
     vim.opt.buftype = "help"
-    -- vim.opt.filetype = "help"
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false) -- Change to normal mode
+    vim.opt.filetype = "help"
+    -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false) -- Change to normal mode
   else
     local _, error_message = pcall(vim.cmd.help, subject)
     print(error_message:match("E%d+:.*$"))
