@@ -17,6 +17,7 @@ vim.opt.mouse = ""
 vim.opt.nrformats:append("unsigned")
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "auto:1-9"
 vim.opt.scrolloff = 999
 vim.opt.shiftwidth = 2
 vim.opt.showbreak = "+++ "
@@ -38,8 +39,8 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set({"n", "v"}, "<leader>Y", [["+y$]]) -- Y=yy in maps as per old behavior unless remap=true
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
 vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
-vim.keymap.set({"n", "v"}, "<leader>D", [["+D]])
+-- vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
+-- vim.keymap.set({"n", "v"}, "<leader>D", [["+D]])
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
