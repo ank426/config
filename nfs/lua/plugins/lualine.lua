@@ -4,13 +4,12 @@ return {
   event = "BufEnter",
   opts = {},
   config = function(_, opts)
-    -- check official plugin
-    local oil = {
-      filetypes = {"oil"},
+    local alpha = {
+      filetypes = {"alpha"},
       sections = {
         lualine_a = {"mode"},
         lualine_b = {"branch", "diff"},
-        lualine_c = { function() return vim.fn.fnamemodify(require("oil").get_current_dir(), ":~") end },
+        lualine_c = { function() return vim.fn.fnamemodify(vim.fn.getcwd(), ":~") end },
         lualine_x = {"filetype"},
         lualine_y = {"progress"},
         lualine_z = {"location"},
@@ -25,12 +24,13 @@ return {
       },
     }
 
-    local alpha = {
-      filetypes = {"alpha"},
+    -- check official plugin
+    local oil = {
+      filetypes = {"oil"},
       sections = {
         lualine_a = {"mode"},
         lualine_b = {"branch", "diff"},
-        lualine_c = { function() return vim.fn.fnamemodify(vim.fn.getcwd(), ":~") end },
+        lualine_c = { function() return vim.fn.fnamemodify(require("oil").get_current_dir(), ":~") end },
         lualine_x = {"filetype"},
         lualine_y = {"progress"},
         lualine_z = {"location"},
