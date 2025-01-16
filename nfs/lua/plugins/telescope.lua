@@ -28,7 +28,12 @@ return {
     {
       "<leader>sn",
       function() require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config"), prompt_title = "Find File in Config" }) end,
-      desc = "[S]earch [N]eovim files",
+      desc = "[S]earch [N]eovim Files",
+    },
+    {
+      "<leader>sp",
+      function() require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config").."/lua/plugins", prompt_title = "Find Plugin File" }) end,
+      desc = "[S]earch [P]lugin Files",
     },
     { "gd",         function() require("telescope.builtin").lsp_definitions() end,               desc = "LSP: [G]oto [D]efinition" },
     { "gr",         function() require("telescope.builtin").lsp_references() end,                desc = "LSP: [G]oto [R]eferences" },
