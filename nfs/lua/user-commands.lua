@@ -13,8 +13,10 @@ vim.api.nvim_create_user_command("H", function(opts)
     vim.cmd("help "..subject)
     if no_helps_open then
       local path = vim.fn.expand("%:p")
+      local cur_pos = vim.api.nvim_win_get_cursor(0) -- Needed to fix bug where help file is already open to a diff pos
       vim.cmd.helpclose()
       vim.cmd.edit(path)
+      vim.api.nvim_win_set_cursor(0, cur_pos)
     end
     vim.opt.buftype = "help"
     -- vim.opt.filetype = "help"
