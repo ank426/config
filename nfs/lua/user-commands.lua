@@ -10,7 +10,7 @@ vim.api.nvim_create_user_command("H", function(opts)
   local subject = opts.args
   if #vim.fn.getcompletion(subject, "help") > 0 then
     -- local mods = "silent noautocmd keepalt "
-    vim.cmd("help "..subject)
+    vim.cmd("silent help "..subject)
     if no_helps_open then
       local path = vim.fn.expand("%:p")
       local cur_pos = vim.api.nvim_win_get_cursor(0) -- Needed to fix bug where help file is already open to a diff pos
