@@ -50,6 +50,7 @@ return {
       mappings = {
         i = {
           ["<C-u>"] = false,
+          ["<C-d>"] = false,
           ["<C-k>"] = "preview_scrolling_up",
           ["<C-j>"] = "preview_scrolling_down",
         },
@@ -106,7 +107,7 @@ return {
             ["<C-v>"] = function()
               vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value)
               vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-            end
+            end,
           },
           n = {
             ["<cr>"] = function()
@@ -116,7 +117,7 @@ return {
             ["<C-v>"] = function()
               vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value)
               vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-            end
+            end,
           },
         },
       },

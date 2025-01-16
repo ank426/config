@@ -1,4 +1,5 @@
 vim.opt.breakindent = true
+vim.opt.cinkeys:remove(":")
 vim.opt.clipboard = "unnamed" -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
 vim.opt.expandtab = true
 vim.opt.formatoptions:remove("o")
