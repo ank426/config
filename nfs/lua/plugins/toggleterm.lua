@@ -1,13 +1,12 @@
 return {
   "akinsho/toggleterm.nvim",
-  keys = { "<C-/>" },
+  keys = {
+    "<C-/>",
+    { "<leader>st", vim.cmd.TermSelect, desc = "[S]earch [T]erminals" },
+  },
   opts = {
     open_mapping = "<C-/>",
     direction = "float",
     float_opts = { border = "rounded" },
   },
-  config = function(_, opts)
-    require("toggleterm").setup(opts)
-    vim.keymap.set("n", "<leader>st", "<cmd>TermSelect<cr>", { desc = "[S]earch [T]erminals" })
-  end,
 }

@@ -1,13 +1,12 @@
 return {
   "goolord/alpha-nvim",
-  config = function()
+  opts = function()
     local dashboard = require("alpha.themes.dashboard")
 
     dashboard.config.opts.notautocmd = true
 
-    -- vim.cmd works but para is string, so better not to
     dashboard.section.buttons.val = {
-      dashboard.button("n", "  New file", "<cmd>ene<cr>"),
+      dashboard.button("n", "  New file", "<cmd>ene<cr>"),  -- keybind parameter is string
       dashboard.button("f", "  Find file", "<cmd>Telescope find_files<cr>"),
       dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles<cr>"),
       dashboard.button("g", "󰊄  Find text", "<cmd>Telescope live_grep<cr>"),
@@ -20,7 +19,6 @@ return {
       -- dashboard.button("SPC f m", "  Jump to bookmarks"),
     }
 
-    require("alpha").setup(dashboard.config)
+    return dashboard.opts
   end,
 }
-

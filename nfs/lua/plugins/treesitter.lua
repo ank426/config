@@ -5,9 +5,16 @@ return {
     event = "BufEnter",
     opts = {
       auto_install = true,
-      highlight = { enable = true },
-      incremental_selection = { enable = true },
-      -- indent = { enable = true }, -- Can't find a use for it and double indents `from ... import (\n`
+      highlight = {
+        enable = true,
+      },
+      incremental_selection = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+        -- disable = { "c", "cpp" },
+      },
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
