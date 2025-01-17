@@ -1,0 +1,18 @@
+return {
+  "folke/lazydev.nvim",
+  ft = "lua",
+  opts = {
+    enabled = function(root_dir)
+      if vim.g.lazydev_enabled == false then
+        return false
+      end
+
+      for _, rtp_dir in ipairs(vim.opt.runtimepath:get()) do
+        if root_dir:sub(1, #rtp_dir) == rtp_dir then
+          return true
+        end
+      end
+      return false
+    end
+  },
+}

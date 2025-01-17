@@ -13,7 +13,7 @@ vim.opt.mouse = ""
 vim.opt.nrformats:append("unsigned")
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "auto:1-9"
+vim.opt.signcolumn = "auto:2-9" -- One for gitsigns and one for diagnostics
 vim.opt.scrolloff = 999
 vim.opt.shiftwidth = 2
 vim.opt.showbreak = "+++ "

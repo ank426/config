@@ -22,10 +22,9 @@ vim.diagnostic.handlers.signs = {
 vim.diagnostic.config({
   float = {
     header = "",
-    severity_sort = true,
   },
   virtual_text = {
-    severity = vim.diagnostic.severity.WARN,
+    severity = { min = vim.diagnostic.severity.WARN },
   },
   severity_sort = true,
 })
