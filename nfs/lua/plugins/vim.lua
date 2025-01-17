@@ -3,10 +3,10 @@ return {
   --   "tommcdo/vim-lion",
   --   event = "VeryLazy",
   -- },
-  {
-    "tpope/vim-sleuth",
-    event = "BufEnter",
-  },
+  -- {
+  --   "tpope/vim-sleuth",
+  --   event = "BufEnter",
+  -- },
   -- {
   --   "tpope/vim-repeat",
   --   keys = {"."},
