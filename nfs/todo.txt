@@ -1,5 +1,5 @@
 number in help don't come with telescope c-v
+disable signcolumn in help
 python indent (<cr>)
 telescope not loaded yet on alpha page
 function for opts instead of config
-space x or something to execute lua

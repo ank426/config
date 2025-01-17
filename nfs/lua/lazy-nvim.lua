@@ -15,11 +15,21 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  defaults = { version = "*" },
-  spec = { { import = "plugins" } },
-  install = { colorscheme = { "tokyonight" } },
-  ui = { border = "rounded" },
-  change_detection = { notify = false },
+  defaults = {
+    version = "*",
+  },
+  spec = {
+    import = "plugins",
+  },
+  install = {
+    colorscheme = {"tokyonight"},
+  },
+  ui = {
+    border = "rounded",
+  },
+  change_detection = {
+    notify = false,
+  },
 })
 
 vim.keymap.set("n", "<leader>lz", "<cmd>Lazy<cr>", { desc = "Open Lazy" })

@@ -2,6 +2,9 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { d
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
 vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
 
+vim.keymap.set("n", "<leader>x", "<cmd>.lua<cr>")
+vim.keymap.set("v", "<leader>x", ":lua<cr>")
+
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set({"n", "v"}, "<leader>Y", [["+y$]]) -- Y=yy in maps as per old behavior unless remap=true
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
