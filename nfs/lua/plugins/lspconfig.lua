@@ -1,6 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
   event = "BufReadPre",
+  dependencies = {
+    { "williamboman/mason.nvim",           opts = {} },
+    { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Give it some time to install
+  },
   config = function()
     local lspconfig = require("lspconfig")
 
@@ -20,7 +24,6 @@ return {
               max_line_length = "150",
               trailing_table_separator = "smart",
               space_around_concat_operator = "false",
-              align_call_args = "true",
             },
           },
         },

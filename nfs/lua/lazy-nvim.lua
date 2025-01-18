@@ -24,9 +24,6 @@ require("lazy").setup({
   install = {
     colorscheme = { "tokyonight" },
   },
-  ui = {
-    border = "rounded",
-  },
   change_detection = {
     notify = false,
   },
