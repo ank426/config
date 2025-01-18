@@ -4,6 +4,7 @@ return {
   dependencies = {
     { "williamboman/mason.nvim",           opts = {} },
     { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Give it time to install
+    "folke/lazydev.nvim", -- If you don't do this, sometimes lsp starts screaming and never stops
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -28,6 +29,8 @@ return {
               max_line_length = "150",
               trailing_table_separator = "smart",
               space_around_concat_operator = "false",
+              space_before_inline_comment = "keep",
+              align_continuous_inline_comment = "false",
             },
           },
         },
@@ -50,7 +53,7 @@ return {
           lineLength = 150,
           configurationPreference = "filesystemFirst",
           lint = {
-            select = {   -- https://docs.astral.sh/ruff/rules/
+            select = { -- https://docs.astral.sh/ruff/rules/
               "F",       -- Pyflakes
               "E112",    -- no-indented-block
               "E113",    -- unexpected-indentation
