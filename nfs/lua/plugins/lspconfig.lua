@@ -1,9 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
-  -- event = "VeryLazy", -- Any form of lazy loading seems to give random problems
+  -- event = "VeryLazy", -- Any form of lazy loading seems to give random problems (ex complaints, client not starting, etc)
   dependencies = {
     { "williamboman/mason.nvim",           opts = {} },
-    { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } },
+    { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Give it time to install
   },
   config = function()
     local lspconfig = require("lspconfig")
