@@ -1,12 +1,16 @@
 return {
   "neovim/nvim-lspconfig",
-  event = "BufReadPre",
+  event = "VeryLazy", -- Gives problems with BufReadPre and automatic_installation
   dependencies = {
     { "williamboman/mason.nvim",           opts = {} },
-    { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Give it some time to install
+    { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } },
   },
   config = function()
     local lspconfig = require("lspconfig")
+
+    lspconfig.bashls.setup({})
+
+    lspconfig.clangd.setup({})
 
     lspconfig.lua_ls.setup({
       settings = {
