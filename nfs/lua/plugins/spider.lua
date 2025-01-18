@@ -10,4 +10,3 @@ return {
     subwordMovement = false,
   },
 }
-

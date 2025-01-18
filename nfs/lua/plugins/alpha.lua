@@ -6,7 +6,7 @@ return {
     dashboard.config.opts.notautocmd = true
 
     dashboard.section.buttons.val = {
-      dashboard.button("n", "  New file", "<cmd>ene<cr>"),  -- keybind parameter is string
+      dashboard.button("n", "  New file", "<cmd>ene<cr>"), -- keybind parameter is string
       dashboard.button("f", "  Find file", "<cmd>Telescope find_files<cr>"),
       dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles<cr>"),
       dashboard.button("g", "󰊄  Find text", "<cmd>Telescope live_grep<cr>"),

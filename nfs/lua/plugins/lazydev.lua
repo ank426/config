@@ -15,6 +15,6 @@ return {
         end
       end
       return false
-    end
+    end,
   },
 }
