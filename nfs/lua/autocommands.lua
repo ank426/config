@@ -24,6 +24,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 
 vim.api.nvim_create_autocmd("LspAttach", {
+  desc = "Autoformat on save",
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if not client then return end
