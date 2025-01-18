@@ -51,12 +51,13 @@ return {
       end,
       desc = "[S]earch [P]lugin Files",
     },
-    { "gd",         "<cmd>Telescope lsp_definitions<cr>",               desc = "LSP: [G]oto [D]efinition" },
-    { "grr",        "<cmd>Telescope lsp_references<cr>",                desc = "LSP: [G]oto [R]eferences" },
-    { "gI",         "<cmd>Telescope lsp_implementations<cr>",           desc = "LSP: [G]oto [I]mplementation" },
-    { "<leader>D",  "<cmd>Telescope lsp_type_definitions<cr>",          desc = "LSP: Type [D]efinition" },
-    { "<leader>ds", "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP: [D]ocument [S]ymbols" },
-    { "<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP: [W]orkspace [S]ymbols" },
+    { "gd",  "<cmd>Telescope lsp_definitions<cr>",               desc = "LSP: [G]oto [D]efinition (Telescope)" },
+    { "grr", "<cmd>Telescope lsp_references<cr>",                desc = "LSP: [G]oto [R]eferences (Telescope)" },
+    { "gri", "<cmd>Telescope lsp_implementations<cr>",           desc = "LSP: [G]oto [I]mplementation (Telescope)" },
+    { "gO",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP: Document Symbols (Telescope)" },
+    { "grt", "<cmd>Telescope lsp_type_definitions<cr>",          desc = "LSP: [G]oto [T]ype Definition (Telescope)" },
+    { "grw", "<cmd>Telescope lsp_workspace_symbols<cr>",         desc = "LSP: [W]orkspace Symbols (Telescope)" },
+    { "grW", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP: Dynamic [W]orkspace Symbols (Telescope)" },
   },
   opts = {
     defaults = {
@@ -175,5 +176,7 @@ return {
   config = function(_, opts)
     require("telescope").setup(opts)
     require("telescope").load_extension("fzf")
+
+    vim.lsp.buf.references = require("telescope.builtin").lsp_references
   end,
 }
