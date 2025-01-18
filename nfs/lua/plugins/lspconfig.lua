@@ -20,6 +20,7 @@ return {
               max_line_length = "150",
               trailing_table_separator = "smart",
               space_around_concat_operator = "false",
+              align_call_args = "true",
             },
           },
         },
