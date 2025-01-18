@@ -4,48 +4,60 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   cmd = "Telescope",
-  keys = function()
-    local builtin = require("telescope.builtin")
-    return {
-      { "<leader>sg", builtin.live_grep,                 desc = "[S]earch by [G]rep" },
-      { "<leader>sw", builtin.grep_string,               desc = "[S]earch current [W]ord" },
-      { "<leader>sf", builtin.find_files,                desc = "[S]earch [F]iles" },
-      { "<leader>ss", builtin.builtin,                   desc = "[S]earch [S]elect Telescope" },
-      { "<leader>sr", builtin.resume,                    desc = "[S]earch [R]esume" },
-      { "<leader>sc", builtin.commands,                  desc = "[S]earch [C]ommands" },
-      { "<leader>s.", builtin.oldfiles,                  desc = "[S]earch Recent Files ('.' for repeat)" },
-      { "<leader>so", builtin.vim_options,               desc = "[S]earch Vim [O]ptions" },
-      { "<leader>sh", builtin.help_tags,                 desc = "[S]earch [H]elp" },
-      { "<leader>sb", builtin.buffers,                   desc = "[S]earch Existing [B]uffers" },
-      { "<leader>sk", builtin.keymaps,                   desc = "[S]earch [K]eymaps" },
-      { "<leader>sd", builtin.diagnostics,               desc = "[S]earch [D]iagnostics" },
-      { "<leader>/",  builtin.current_buffer_fuzzy_find, desc = "[/] Fuzzily search in current buffer" },
-      {
-        "<leader>s/",
-        function() builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" }) end,
-        desc = "[S]earch [/] in Open Files",
-      },
-      {
-        "<leader>sn",
-        function() builtin.find_files({ cwd = vim.fn.stdpath("config"), prompt_title = "Find File in Config" }) end,
-        desc = "[S]earch [N]eovim Files",
-      },
-      {
-        "<leader>sp",
-        function() builtin.find_files({ cwd = vim.fn.stdpath("config").."/lua/plugins", prompt_title = "Find Plugin File" }) end,
-        desc = "[S]earch [P]lugin Files",
-      },
-      { "gd",         builtin.lsp_definitions,               desc = "LSP: [G]oto [D]efinition" },
-      { "gr",         builtin.lsp_references,                desc = "LSP: [G]oto [R]eferences" },
-      { "gI",         builtin.lsp_implementations,           desc = "LSP: [G]oto [I]mplementation" },
-      { "<leader>D",  builtin.lsp_type_definitions,          desc = "LSP: Type [D]efinition" },
-      { "<leader>ds", builtin.lsp_document_symbols,          desc = "LSP: [D]ocument [S]ymbols" },
-      { "<leader>ws", builtin.lsp_dynamic_workspace_symbols, desc = "LSP: [W]orkspace [S]ymbols" },
-    }
-  end,
+  keys = {
+    { "<leader>sg", "<cmd>Telescope live_grep<cr>",                 desc = "[S]earch by [G]rep" },
+    { "<leader>sw", "<cmd>Telescope grep_string<cr>",               desc = "[S]earch current [W]ord" },
+    { "<leader>sf", "<cmd>Telescope find_files<cr>",                desc = "[S]earch [F]iles" },
+    { "<leader>ss", "<cmd>Telescope builtin<cr>",                   desc = "[S]earch [S]elect Telescope" },
+    { "<leader>sr", "<cmd>Telescope resume<cr>",                    desc = "[S]earch [R]esume" },
+    { "<leader>sc", "<cmd>Telescope commands<cr>",                  desc = "[S]earch [C]ommands" },
+    { "<leader>s.", "<cmd>Telescope oldfiles<cr>",                  desc = "[S]earch Recent Files ('.' for repeat)" },
+    { "<leader>so", "<cmd>Telescope vim_options<cr>",               desc = "[S]earch Vim [O]ptions" },
+    { "<leader>sh", "<cmd>Telescope help_tags<cr>",                 desc = "[S]earch [H]elp" },
+    { "<leader>sb", "<cmd>Telescope buffers<cr>",                   desc = "[S]earch Existing [B]uffers" },
+    { "<leader>sk", "<cmd>Telescope keymaps<cr>",                   desc = "[S]earch [K]eymaps" },
+    { "<leader>sd", "<cmd>Telescope diagnostics<cr>",               desc = "[S]earch [D]iagnostics" },
+    { "<leader>/",  "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "[/] Fuzzily search in current buffer" },
+    {
+      "<leader>s/",
+      function()
+        require("telescope.builtin").live_grep({
+          grep_open_files = true,
+          prompt_title = "Live Grep in Open Files",
+        })
+      end,
+      desc = "[S]earch [/] in Open Files",
+    },
+    {
+      "<leader>sn",
+      function()
+        require("telescope.builtin").find_files({
+          cwd = vim.fn.stdpath("config"),
+          prompt_title = "Find File in Config",
+        })
+      end,
+      desc = "[S]earch [N]eovim Files",
+    },
+    {
+      "<leader>sp",
+      function()
+        require("telescope.builtin").find_files({
+          cwd = vim.fn.stdpath("config").."/lua/plugins",
+          prompt_title = "Find Plugin File",
+        })
+      end,
+      desc = "[S]earch [P]lugin Files",
+    },
+    { "gd",         "<cmd>Telescope lsp_definitions<cr>",               desc = "LSP: [G]oto [D]efinition" },
+    { "grr",        "<cmd>Telescope lsp_references<cr>",                desc = "LSP: [G]oto [R]eferences" },
+    { "gI",         "<cmd>Telescope lsp_implementations<cr>",           desc = "LSP: [G]oto [I]mplementation" },
+    { "<leader>D",  "<cmd>Telescope lsp_type_definitions<cr>",          desc = "LSP: Type [D]efinition" },
+    { "<leader>ds", "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP: [D]ocument [S]ymbols" },
+    { "<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP: [W]orkspace [S]ymbols" },
+  },
   opts = {
     defaults = {
       results_title = false,

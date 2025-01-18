@@ -19,6 +19,7 @@ return {
               call_arg_parenthesis = "keep",
               max_line_length = "150",
               trailing_table_separator = "smart",
+              space_around_concat_operator = "false",
             },
           },
         },

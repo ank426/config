@@ -51,6 +51,7 @@ return {
         "man",
         oil,
         "toggleterm",
+        -- "trouble", -- I cannot get trouble to work. Extension is outdated see statusline component in trouble help
       }
     }
   end,
