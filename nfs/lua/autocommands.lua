@@ -18,8 +18,17 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   command = "set nolist",
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
-  desc = "Turn on opt.list when out of insert mode",
+  desc = "Turn on opt.list on leaving insert mode",
   command = "if &filetype != 'help' | set list | endif", -- Not working in ftplugin/help.lua for some reason
+})
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  desc = "Hide diagnostics in insert mode",
+  callback = function() vim.diagnostic.hide() end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  desc = "Show diagnostics on leaving insert mode",
+  callback = function() vim.diagnostic.show() end,
 })
 
 
