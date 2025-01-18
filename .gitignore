@@ -2,6 +2,8 @@
 !/.gitignore
 !/README.*
 
+!/wgetrc
+
 !/bin/
 !/bin/**
 
