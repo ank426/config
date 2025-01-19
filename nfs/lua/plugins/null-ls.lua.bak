@@ -39,8 +39,6 @@ return {
 
 -- mypy is way to slow (4 seconds on tensor.py)
 -- dmypy caches everything so it is much faster
--- but for some reason, it is restarting every time the file is changed
--- this could be related to a known bug
--- try again if the bug is fixed
+-- but for some reason, it is restarting the daemon every time the file is changed
 -- for reference: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/831#issuecomment-1647481289
 -- I removed the fugitive check cuz I don't use it
