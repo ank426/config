@@ -1,2 +1,0 @@
-number in help don't come with telescope c-v
-disable signcolumn in help
