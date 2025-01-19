@@ -1,0 +1,46 @@
+return {
+  "nvimtools/none-ls.nvim",
+  opts = {},
+  config = function()
+    local null_ls = require("null-ls")
+
+    local mypy = null_ls.builtins.diagnostics.mypy.with({
+      command = "dmypy",
+      args = function(params)
+        return {
+          "run",
+          "--timeout", "500",
+          "--",
+          "--hide-error-context",
+          "--no-color-output",
+          "--show-absolute-path",
+          "--show-column-numbers",
+          "--show-error-codes",
+          "--no-error-summary",
+          "--no-pretty",
+          "--shadow-file",
+          params.bufname,
+          params.temp_path,
+          params.bufname,
+        }
+      end,
+      prefer_local = ".venv/bin",
+      timeout = 50000,
+      runtime_condition = function(params) return not params.bufname:find(".venv") end,
+    })
+
+    null_ls.setup({
+      sources = {
+        mypy,
+      },
+    })
+  end,
+}
+
+-- mypy is way to slow (4 seconds on tensor.py)
+-- dmypy caches everything so it is much faster
+-- but for some reason, it is restarting every time the file is changed
+-- this could be related to a known bug
+-- try again if the bug is fixed
+-- for reference: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/831#issuecomment-1647481289
+-- I removed the fugitive check cuz I don't use it
