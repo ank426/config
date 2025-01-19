@@ -40,12 +40,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if not vim.tbl_contains({ "lua" }, vim.bo[args.buf].filetype) then return end
     if not client:supports_method("textDocument/formatting") then return end
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
+    local id = vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = args.buf,
       callback = function()
         vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
         vim.diagnostic.show() -- There is a bug that makes format hide diagnostics, so just show it for now
       end,
+    })
+    vim.api.nvim_create_autocmd("LspDetach", {
+      buffer = args.buf,
+      once = true,
+      callback = function() vim.api.nvim_del_autocmd(id) end,
     })
   end,
 })
