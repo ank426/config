@@ -4,7 +4,7 @@ return {
   dependencies = {
     { "williamboman/mason.nvim",           opts = {} },
     { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Give it time to install
-    "folke/lazydev.nvim", -- If you don't do this, sometimes lsp starts screaming and never stops
+    -- "folke/lazydev.nvim", -- If you don't do this, sometimes lsp starts screaming and never stops
   },
   config = function()
     local lspconfig = require("lspconfig")

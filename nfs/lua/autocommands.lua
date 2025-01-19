@@ -43,6 +43,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+          vim.diagnostic.show() -- There is a bug that makes format hide diagnostics, so just show it for now
         end,
       })
     end
