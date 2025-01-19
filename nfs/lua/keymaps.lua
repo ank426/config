@@ -32,13 +32,13 @@ vim.keymap.set("n", "<leader>ez", "<cmd>edit "..confpath.."/lua/lazy-nvim.lua<cr
 vim.keymap.set("n", "<leader>ef", "<cmd>edit "..confpath.."/ftplugin<cr>", { desc = "[E]dit [F]tplugin" })
 vim.keymap.set("n", "<leader>Ef", "<cmd>edit "..confpath.."/after/ftplugin<cr>", { desc = "[E]dit After/[F]tplugin" })
 
--- Will soon be added to neovim
-vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP: Rename" })
-vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "LSP: Code Actions" })
-vim.keymap.set("n", "grr", vim.lsp.buf.references, { desc = "LSP: References" })
-vim.keymap.set("n", "gri", vim.lsp.buf.implementation, { desc = "LSP: Implementation" })
-vim.keymap.set("n", "gO", vim.lsp.buf.document_symbol, { desc = "LSP: Document Symbols" })
-vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP: Signature Help" })
+-- -- Will soon be added to neovim
+-- vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP: Rename" })
+-- vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "LSP: Code Actions" })
+-- vim.keymap.set("n", "grr", vim.lsp.buf.references, { desc = "LSP: References" })
+-- vim.keymap.set("n", "gri", vim.lsp.buf.implementation, { desc = "LSP: Implementation" })
+-- vim.keymap.set("n", "gO", vim.lsp.buf.document_symbol, { desc = "LSP: Document Symbols" })
+-- vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP: Signature Help" })
 
 -- Mine
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP: [G]oto [D]eclaration" })
