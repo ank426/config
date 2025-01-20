@@ -1,10 +1,11 @@
+-- If you want VeryLazy then you need lazydev as dependency
 return {
   "neovim/nvim-lspconfig",
-  -- event = "VeryLazy", -- Any form of lazy loading seems to give random problems (ex complaints, client not starting, etc)
+  event = "VeryLazy", -- Any form of lazy loading seems to give random problems (ex complaints, client not starting, etc)
   dependencies = {
     { "williamboman/mason.nvim",           opts = {} },
     { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Give it time to install
-    -- "folke/lazydev.nvim", -- If you don't do this, sometimes lsp starts screaming and never stops
+    "folke/lazydev.nvim", -- If you don't do this, sometimes lsp starts screaming and never stops
   },
   config = function()
     local lspconfig = require("lspconfig")
