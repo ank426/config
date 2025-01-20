@@ -34,6 +34,7 @@ return {
     },
     sources = {
       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      -- cmdline = {}, -- Disable for cmdline. Noice doesn't yet work with blink
       providers = {
         lazydev = {
           name = "LazyDev",
