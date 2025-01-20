@@ -18,7 +18,6 @@ return {
     { "<leader>fl",  function() require("harpoon"):list():select(3) end },
     { "<leader>f;",  function() require("harpoon"):list():select(4) end },
     { "<leader>f'",  function() require("harpoon"):list():select(5) end },
-
     { "<leader>fdj", function() require("harpoon"):list():remove_at(1) end },
     { "<leader>fdk", function() require("harpoon"):list():remove_at(2) end },
     { "<leader>fdl", function() require("harpoon"):list():remove_at(3) end },
