@@ -1,6 +1,7 @@
 return {
   "saghen/blink.cmp",
   version = "*",
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     "rafamadriz/friendly-snippets",
     -- !Important! Make sure you're using the latest release of LuaSnip
