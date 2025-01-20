@@ -2,6 +2,13 @@ return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
+  init = function()
+    -- Can lead to weird errors if harpoon dir missing
+    for _, file in ipairs(vim.fn.glob(vim.fn.stdpath("data").."/harpoon/*", false, true)) do
+      vim.fn.delete(file)
+      -- vim.notify(file)
+    end
+  end,
   keys = {
     { "<leader>fo",  function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end },
     { "<leader>fa",  function() require("harpoon"):list():add() end },
