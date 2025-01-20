@@ -1,59 +1,18 @@
 return {
   "neovim/nvim-lspconfig",
-  lazy = false,
+  -- event = "VeryLazy", -- Any form of lazy loading seems to give random problems (ex complaints, client not starting, etc)
   dependencies = {
-    { "williamboman/mason.nvim", opts = {} },
-    {
-      "williamboman/mason-lspconfig.nvim",
-      opts = {
-        ensure_installed = {
-          -- Bash
-          "bashls",
-          -- C
-          "clangd",
-          -- Lua
-          "lua_ls",
-          -- Python
-          "basedpyright",
-          "ruff",
-        },
-      },
-    },
-    -- Putting lazydev here makes it not yell at me when I open a config file.
-    -- But it loads even without lua file
-    {
-      "folke/lazydev.nvim",
-      ft = "lua",
-      opts = {
-        library = {
-          { path = "luvit-meta/library", words = { "vim%.uv" } },
-        },
-      },
-    },
-    { "Bilal2453/luvit-meta",    lazy = true },
-    -- { "j-hui/fidget.nvim",       opts = {} }, -- kickstart has this here
-  },
-  keys = {
-    { "<leader>rn", vim.lsp.buf.rename,      desc = "[R]e[n]ame" },
-    { "<leader>ca", vim.lsp.buf.code_action, desc = "[C]ode [A]ction" },
-    { "gD",         vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration" },
+    { "williamboman/mason.nvim",           opts = {} },
+    { "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Give it time to install
+    -- "folke/lazydev.nvim", -- If you don't do this, sometimes lsp starts screaming and never stops
   },
   config = function()
     local lspconfig = require("lspconfig")
 
-    lspconfig.util.default_config = vim.tbl_extend(
-      "force",
-      lspconfig.util.default_config,
-      { capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), require("cmp_nvim_lsp").default_capabilities()) }
-    )
-
-    -- Bash
     lspconfig.bashls.setup({})
 
-    -- C
     lspconfig.clangd.setup({})
 
-    -- Lua
     lspconfig.lua_ls.setup({
       settings = {
         Lua = {
@@ -69,29 +28,33 @@ return {
               call_arg_parenthesis = "keep",
               max_line_length = "150",
               trailing_table_separator = "smart",
+              space_around_concat_operator = "false",
+              space_before_inline_comment = "keep",
+              align_continuous_inline_comment = "false",
             },
           },
         },
       },
     })
 
-    -- Python
     lspconfig.basedpyright.setup({
       on_init = function(client)
-        client.handlers["textDocument/publishDiagnostics"] = function() end
+        client.server_capabilities.inlayHintProvider = false
+        client.server_capabilities.textDocumentSync = nil
       end,
     })
     lspconfig.ruff.setup({
+      on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
       init_options = {
         settings = {
           lineLength = 150,
           configurationPreference = "filesystemFirst",
           lint = {
-            select = {
-              "F", -- Pyflakes
-              "W6",
-              "E71",
-              "E72",
+            select = { -- https://docs.astral.sh/ruff/rules/
+              "F",       -- Pyflakes
               "E112",    -- no-indented-block
               "E113",    -- unexpected-indentation
               "E203",    -- whitespace-before-punctuation
@@ -121,3 +84,8 @@ return {
     })
   end,
 }
+
+-- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/
+-- search ServerCapabilites 2nd match
+-- I didn't read, just tried out random stuff + common sense
+-- Also, no idea why it is server capabilities and not client

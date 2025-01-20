@@ -1,41 +1,40 @@
--- vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
--- vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>=", "mzgg=G`z")
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>v", vim.cmd.vsp)
-vim.keymap.set("n", "<Esc>", function() vim.cmd("noh|echo") end)
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { desc = "Nvim's redraw" })
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
+vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
 
--- vim.keymap.set("i", "<C-BS>", "<C-w>")
+vim.keymap.set("n", "<leader><leader>x", "<cmd>.lua<cr>", { desc = "E[x]ecute line (lua)" })
+vim.keymap.set("v", "<leader><leader>x", ":lua<cr>", { desc = "E[x]ecute (lua)" })
 
--- Works only with vim.opts.clipboard = "unnamed"
--- Otherwise very weird
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
-vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
-
--- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
--- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "System Yank" })
+vim.keymap.set({ "n", "v" }, "<leader>Y", [["+y$]], { desc = "System Yank" }) -- Y=yy in maps as per old behavior unless remap=true
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "System Paste" })
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]], { desc = "System Paste" })
+-- vim.keymap.set({ "n", "v" }, "<leader>d", [["+d]], { desc = "System Delete" })
+-- vim.keymap.set({ "n", "v" }, "<leader>D", [["+D]], { desc = "System Delete" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
 
-vim.keymap.set("n", "<C-Left>", "<C-w><")
-vim.keymap.set("n", "<C-Down>", "<C-w>+")
-vim.keymap.set("n", "<C-Up>", "<C-w>-")
-vim.keymap.set("n", "<C-Right>", "<C-w>>")
+local confpath = vim.fn.stdpath("config")
+vim.keymap.set("n", "<leader>en", "<cmd>edit "..confpath.."<cr>", { desc = "[E]dit [N]eovim" })
+vim.keymap.set("n", "<leader>ei", "<cmd>edit "..confpath.."/init.lua<cr>", { desc = "[E]dit [I]nit" })
+vim.keymap.set("n", "<leader>ep", "<cmd>edit "..confpath.."/lua/plugins<cr>", { desc = "[E]dit [P]lugins" })
+vim.keymap.set("n", "<leader>eg", "<cmd>edit "..confpath.."/lua/globals.lua<cr>", { desc = "[E]dit [G]lobals" })
+vim.keymap.set("n", "<leader>eo", "<cmd>edit "..confpath.."/lua/options.lua<cr>", { desc = "[E]dit [O]ptions" })
+vim.keymap.set("n", "<leader>ek", "<cmd>edit "..confpath.."/lua/keymaps.lua<cr>", { desc = "[E]dit [K]eymaps" })
+vim.keymap.set("n", "<leader>ea", "<cmd>edit "..confpath.."/lua/autocommands.lua<cr>", { desc = "[E]dit [A]utocommands" })
+vim.keymap.set("n", "<leader>eu", "<cmd>edit "..confpath.."/lua/user-commands.lua<cr>", { desc = "[E]dit [U]ser-commands" })
+vim.keymap.set("n", "<leader>ed", "<cmd>edit "..confpath.."/lua/diagnostics.lua<cr>", { desc = "[E]dit [D]iagnostics" })
+vim.keymap.set("n", "<leader>ez", "<cmd>edit "..confpath.."/lua/lazy-nvim.lua<cr>", { desc = "[E]dit La[z]y-nvim" })
+vim.keymap.set("n", "<leader>e.", "<cmd>edit "..confpath.."/lua<cr>", { desc = "[E]dit [L]ua" })
+vim.keymap.set("n", "<leader>eq", "<cmd>edit "..confpath.."/queries<cr>", { desc = "[E]dit [Q]ueries" })
+vim.keymap.set("n", "<leader>ef", "<cmd>edit "..confpath.."/ftplugin<cr>", { desc = "[E]dit [F]tplugin" })
+vim.keymap.set("n", "<leader>Ef", "<cmd>edit "..confpath.."/after/ftplugin<cr>", { desc = "[E]dit After/[F]tplugin" })
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
-vim.keymap.set("n", "Q", "<nop>")
-
--- vim.keymap.set("x", "<leader>p", "\"_dP")
---
--- vim.keymap.set("n", "<leader>d", "\"_d")
--- vim.keymap.set("v", "<leader>d", "\"_d")
---
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
--- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP: [G]oto [D]eclaration" })
+vim.keymap.set("n", "grf", vim.lsp.buf.format, { desc = "LSP: [F]ormat" })
+vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, { desc = "LSP: Goto [T]ype Definition" })
+vim.keymap.set("n", "grT", vim.lsp.buf.typehierarchy, { desc = "LSP: [T]ype Hierarchy" })
+vim.keymap.set("n", "grw", vim.lsp.buf.workspace_symbol, { desc = "LSP: [W]orkspace Symbols" })

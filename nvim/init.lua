@@ -1,9 +1,9 @@
-require("opts")
+require("globals")
+require("options")
 require("keymaps")
-require("")
-require("autocmds")
+require("autocommands")
+require("user-commands")
+require("diagnostics")
+require("lazy-nvim")
 
--- Get all highlight groups and set guibg to none for each
--- for _, group in pairs(vim.fn.getcompletion("", "highlight")) do
--- 	vim.cmd("highlight " .. group .. " guibg=None")
--- end
+vim.cmd.colorscheme("tokyonight")
