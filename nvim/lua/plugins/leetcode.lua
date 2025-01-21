@@ -7,7 +7,7 @@ return {
     "MunifTanjim/nui.nvim",
   },
   opts = {
-    lang = "python",
+    lang = "python3",
     injector = {
       python3 = {
         before = true, -- Default imports which only work for python and java
@@ -16,7 +16,7 @@ return {
         before = {
           "#include <stdio.h>",
           "#include <stdlib.h>",
-          "#include <bool.h>",
+          "#include <stdbool.h>",
           "#include <math.h>",
           "#include <string.h>",
         },
@@ -48,6 +48,9 @@ return {
     vim.keymap.set("n", "<leader><leader>su", "<cmd>Leet session update<r>")
     vim.keymap.set("n", "<leader><leader>t", "<cmd>Leet tabs<cr>")
     vim.keymap.set("n", "<leader><leader>y", "<cmd>Leet yank<cr>")
+
+    vim.diagnostic.enable(false)
+    require("lualine").setup({ sections = { lualine_b = {} } })
   end,
 }
 
