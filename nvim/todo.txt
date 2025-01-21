@@ -1,0 +1,6 @@
+custom operator for gc in oil.nvim
+(long) fix lsp in leetcode
+(given up) images in leetcode
+
+number in help don't come with telescope c-v
+disable signcolumn in help

@@ -32,7 +32,3 @@ end, {
   bar = true,
 })
 vim.cmd.cnoreabbrev([[<expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']])
-
--- TODO:
--- number in help don't come with telescope c-v
--- disable signcolumn in help
