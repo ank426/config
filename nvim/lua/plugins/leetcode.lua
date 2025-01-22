@@ -10,15 +10,39 @@ return {
     lang = "python3",
     injector = {
       python3 = {
-        before = true, -- Default imports which only work for python and java
+        -- before = true, -- Default imports which only work for python and java
+        before = {
+          -- * imports throw warning in ruff
+          "# ruff: noqa: F401",
+          "import string",
+          "import re",
+          "import datetime",
+          "import collections",
+          "import heapq",
+          "import bisect",
+          "import copy",
+          "import math",
+          "import random",
+          "import statistics",
+          "import itertools",
+          "import functools",
+          "import operator",
+          "import io",
+          "import sys",
+          "import json",
+          -- typing.__dir__() except things that start with '_' and things that conflict with above imports
+          "from typing import ABCMeta, AbstractSet, Annotated, Any, AnyStr, AsyncGenerator, AsyncIterable, AsyncIterator, Awaitable, BinaryIO, ByteString, CT_co, Callable, ChainMap, ClassVar, Collection, Concatenate, Container, Coroutine, Counter, DefaultDict, Deque, Dict, EXCLUDED_ATTRIBUTES, Final, ForwardRef, FrozenSet, Generator, Generic, GenericAlias, Hashable, IO, ItemsView, Iterable, Iterator, KT, KeysView, List, Literal, LiteralString, Mapping, MappingView, MethodDescriptorType, MethodWrapperType, MutableMapping, MutableSequence, MutableSet, NamedTuple, NamedTupleMeta, Never, NewType, NoDefault, NoReturn, NotRequired, Optional, OrderedDict, ParamSpec, ParamSpecArgs, ParamSpecKwargs, Protocol, ReadOnly, Required, Reversible, Self, Sequence, Set, Sized, SupportsAbs, SupportsBytes, SupportsComplex, SupportsFloat, SupportsIndex, SupportsInt, SupportsRound, T, TYPE_CHECKING, T_co, T_contra, Text, TextIO, Tuple, Type, TypeAlias, TypeAliasType, TypeGuard, TypeIs, TypeVar, TypeVarTuple, TypedDict, Union, Unpack, VT, VT_co, V_co, ValuesView, WrapperDescriptorType, abstractmethod, assert_never, assert_type, cast, clear_overloads, copyreg, dataclass_transform, defaultdict, final, get_args, get_origin, get_overloads, get_protocol_members, get_type_hints, is_protocol, is_typeddict, no_type_check, no_type_check_decorator, overload, override, reveal_type, runtime_checkable, types # noqa: E501",
+        },
       },
       c = {
         before = {
+          "// IWYU pragma: begin_keep",
+          "#include <stdbool.h>",
           "#include <stdio.h>",
           "#include <stdlib.h>",
-          "#include <stdbool.h>",
           "#include <math.h>",
           "#include <string.h>",
+          "// IWYU pragma: end_keep",
         },
       },
     },
@@ -49,8 +73,13 @@ return {
     vim.keymap.set("n", "<leader><leader>t", "<cmd>Leet tabs<cr>")
     vim.keymap.set("n", "<leader><leader>y", "<cmd>Leet yank<cr>")
 
-    vim.diagnostic.enable(false)
-    require("lualine").setup({ sections = { lualine_b = {} } })
+    -- vim.diagnostic.enable(false)
+    -- require("lualine").setup({
+    --   sections = {
+    --     lualine_b = {},
+    --     lualine_x = { "filetype" },
+    --   },
+    -- })
   end,
 }
 

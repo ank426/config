@@ -79,7 +79,7 @@ return {
       find_files = {
         preview_title = false,
         -- hidden = true,
-        no_ignore = true,
+        -- no_ignore = true,
         no_ignore_parent = true,
       },
       treesitter = { preview_title = false },
