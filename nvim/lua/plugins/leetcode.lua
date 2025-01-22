@@ -92,11 +92,11 @@ return {
     vim.keymap.set("n", "<leader><leader>d", "<cmd>Leet daily<cr>")
     vim.keymap.set("n", "<leader><leader>l", "<cmd>Leet list<cr>") -- optional args: status, difficulty (i think)
     vim.keymap.set("n", "<leader><leader>r", "<cmd>Leet random<cr>") -- optional args: status, difficulty, tags (i think)
+    vim.keymap.set("n", "<leader><leader>t", "<cmd>Leet tabs<cr>")
+    vim.keymap.set("n", "<leader><leader>y", "<cmd>Leet yank<cr>")
     vim.keymap.set("n", "<leader><leader>sn", "<cmd>Leet session create<cr>")
     vim.keymap.set("n", "<leader><leader>sc", "<cmd>Leet session change<cr>")
     vim.keymap.set("n", "<leader><leader>su", "<cmd>Leet session update<r>")
-    vim.keymap.set("n", "<leader><leader>t", "<cmd>Leet tabs<cr>")
-    vim.keymap.set("n", "<leader><leader>y", "<cmd>Leet yank<cr>")
   end,
 }
 

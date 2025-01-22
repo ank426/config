@@ -1,7 +1,7 @@
 return {
   "saghen/blink.cmp",
   version = "*",
-  event = { "InsertEnter", "CmdlineEnter" },
+  event = {"InsertEnter", "CmdlineEnter"},
   dependencies = {
     "rafamadriz/friendly-snippets",
     -- !Important! Make sure you're using the latest release of LuaSnip
@@ -10,8 +10,8 @@ return {
   },
   opts = {
     keymap = {
-      ["<C-.>"] = { function(cmp) return cmp.snippet_active() and cmp.accept() or cmp.select_and_accept() end, "snippet_forward", "fallback" },
-      ["<C-,>"] = { "snippet_backward", "fallback" },
+      ["<C-.>"] = {function(cmp) return cmp.snippet_active() and cmp.accept() or cmp.select_and_accept() end, "snippet_forward", "fallback"},
+      ["<C-,>"] = {"snippet_backward", "fallback"},
     },
     snippets = { preset = "luasnip" },
     completion = {
@@ -22,7 +22,7 @@ return {
       },
       menu = {
         draw = {
-          treesitter = { "lsp" },
+          treesitter = {"lsp"},
         },
       },
       documentation = {
@@ -33,7 +33,7 @@ return {
       enabled = true,
     },
     sources = {
-      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      default = {"lazydev", "lsp", "path", "snippets", "buffer"},
       -- cmdline = {}, -- Disable for cmdline. Noice doesn't yet work with blink
       providers = {
         lazydev = {
@@ -44,5 +44,5 @@ return {
       },
     },
   },
-  opts_extend = { "sources.default" }, -- No idea what this is
+  opts_extend = {"sources.default"}, -- No idea what this is
 }

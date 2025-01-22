@@ -1,7 +1,7 @@
 -- Tough (but possible) to lazy-load
 return {
   "stevearc/oil.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {"nvim-tree/nvim-web-devicons"},
   lazy = false,
   keys = {
     { "-", vim.cmd.Oil, desc = "Open parent directory" },

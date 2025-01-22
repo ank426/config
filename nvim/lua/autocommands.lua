@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function() vim.highlight.on_yank() end, -- Needs function wrapping cuz callback passes arguments
 })
 
-vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
+vim.api.nvim_create_autocmd({"VimLeave", "VimSuspend"}, {
   desc = "Fix cursor on quit/suspend",
   command = "set guicursor=a:ver25",
 })
@@ -37,25 +37,47 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = [[%s/\s\+$//e]],
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  desc = "Autoformat on save",
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if not client then return end
-    if not vim.tbl_contains({ "lua" }, vim.bo[args.buf].filetype) then return end
-    if not client:supports_method("textDocument/formatting") then return end
+vim.api.nvim_create_autocmd("BufWritePre", {
+  desc = "Remove trailing blank lines on save",
+  command = [[%s/\($\n\)\+\%$//e]],
+})
 
-    local id = vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = args.buf,
-      callback = function()
-        vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-        vim.diagnostic.show() -- There is a bug that makes format hide diagnostics, so just show it for now
-      end,
-    })
-    vim.api.nvim_create_autocmd("LspDetach", {
-      buffer = args.buf,
-      once = true,
-      callback = function() vim.api.nvim_del_autocmd(id) end,
-    })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  desc = "Autoindent on save",
+  callback = function(args)
+    if vim.tbl_contains({"python"}, vim.bo[args.buf].filetype) then return end
+
+    local orig_win = vim.api.nvim_get_current_win()
+    local orig_cursor = vim.api.nvim_win_get_cursor(orig_win)
+
+    vim.api.nvim_set_current_buf(args.buf)
+
+    vim.cmd("keepjumps normal! gg=G")
+
+    vim.api.nvim_set_current_win(orig_win)
+    vim.api.nvim_win_set_cursor(orig_win, orig_cursor)
   end,
 })
+
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   desc = "Autoformat on save",
+--   callback = function(args)
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--     if not client then return end
+--     if not vim.tbl_contains({ "lua" }, vim.bo[args.buf].filetype) then return end
+--     if not client:supports_method("textDocument/formatting") then return end
+--
+--     local id = vim.api.nvim_create_autocmd("BufWritePre", {
+--       buffer = args.buf,
+--       callback = function()
+--         vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+--         vim.diagnostic.show() -- There is a bug that makes format hide diagnostics, so just show it for now
+--       end,
+--     })
+--     vim.api.nvim_create_autocmd("LspDetach", {
+--       buffer = args.buf,
+--       once = true,
+--       callback = function() vim.api.nvim_del_autocmd(id) end,
+--     })
+--   end,
+-- })
