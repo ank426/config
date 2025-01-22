@@ -9,40 +9,62 @@ return {
   opts = {
     lang = "python3",
     injector = {
+      -- for python, I have the defaults without * imports (throw warning in ruff) and without conflicts
+      -- rest I have just a few common ones
       python3 = {
         -- before = true, -- Default imports which only work for python and java
         before = {
-          -- * imports throw warning in ruff
-          "# ruff: noqa: F401",
-          "import string",
-          "import re",
-          "import datetime",
-          "import collections",
-          "import heapq",
-          "import bisect",
-          "import copy",
-          "import math",
-          "import random",
-          "import statistics",
-          "import itertools",
-          "import functools",
-          "import operator",
-          "import io",
-          "import sys",
-          "import json",
+          "import string # noqa: F401",
+          "import re #noqa: F401",
+          "import datetime #noqa: F401",
+          "import collections #noqa: F401",
+          "import heapq #noqa: F401",
+          "import bisect #noqa: F401",
+          "import copy #noqa: F401",
+          "import math #noqa: F401",
+          "import random #noqa: F401",
+          "import statistics #noqa: F401",
+          "import itertools #noqa: F401",
+          "import functools #noqa: F401",
+          "import operator #noqa: F401",
+          "import io #noqa: F401",
+          "import sys #noqa: F401",
+          "import json #noqa: F401",
           -- typing.__dir__() except things that start with '_' and things that conflict with above imports
-          "from typing import ABCMeta, AbstractSet, Annotated, Any, AnyStr, AsyncGenerator, AsyncIterable, AsyncIterator, Awaitable, BinaryIO, ByteString, CT_co, Callable, ChainMap, ClassVar, Collection, Concatenate, Container, Coroutine, Counter, DefaultDict, Deque, Dict, EXCLUDED_ATTRIBUTES, Final, ForwardRef, FrozenSet, Generator, Generic, GenericAlias, Hashable, IO, ItemsView, Iterable, Iterator, KT, KeysView, List, Literal, LiteralString, Mapping, MappingView, MethodDescriptorType, MethodWrapperType, MutableMapping, MutableSequence, MutableSet, NamedTuple, NamedTupleMeta, Never, NewType, NoDefault, NoReturn, NotRequired, Optional, OrderedDict, ParamSpec, ParamSpecArgs, ParamSpecKwargs, Protocol, ReadOnly, Required, Reversible, Self, Sequence, Set, Sized, SupportsAbs, SupportsBytes, SupportsComplex, SupportsFloat, SupportsIndex, SupportsInt, SupportsRound, T, TYPE_CHECKING, T_co, T_contra, Text, TextIO, Tuple, Type, TypeAlias, TypeAliasType, TypeGuard, TypeIs, TypeVar, TypeVarTuple, TypedDict, Union, Unpack, VT, VT_co, V_co, ValuesView, WrapperDescriptorType, abstractmethod, assert_never, assert_type, cast, clear_overloads, copyreg, dataclass_transform, defaultdict, final, get_args, get_origin, get_overloads, get_protocol_members, get_type_hints, is_protocol, is_typeddict, no_type_check, no_type_check_decorator, overload, override, reveal_type, runtime_checkable, types # noqa: E501",
+          "from typing import ABCMeta, AbstractSet, Annotated, Any, AnyStr, AsyncGenerator, AsyncIterable, AsyncIterator, Awaitable, BinaryIO, ByteString, CT_co, Callable, ChainMap, ClassVar, Collection, Concatenate, Container, Coroutine, Counter, DefaultDict, Deque, Dict, EXCLUDED_ATTRIBUTES, Final, ForwardRef, FrozenSet, Generator, Generic, GenericAlias, Hashable, IO, ItemsView, Iterable, Iterator, KT, KeysView, List, Literal, LiteralString, Mapping, MappingView, MethodDescriptorType, MethodWrapperType, MutableMapping, MutableSequence, MutableSet, NamedTuple, NamedTupleMeta, Never, NewType, NoDefault, NoReturn, NotRequired, Optional, OrderedDict, ParamSpec, ParamSpecArgs, ParamSpecKwargs, Protocol, ReadOnly, Required, Reversible, Self, Sequence, Set, Sized, SupportsAbs, SupportsBytes, SupportsComplex, SupportsFloat, SupportsIndex, SupportsInt, SupportsRound, T, TYPE_CHECKING, T_co, T_contra, Text, TextIO, Tuple, Type, TypeAlias, TypeAliasType, TypeGuard, TypeIs, TypeVar, TypeVarTuple, TypedDict, Union, Unpack, VT, VT_co, V_co, ValuesView, WrapperDescriptorType, abstractmethod, assert_never, assert_type, cast, clear_overloads, copyreg, dataclass_transform, defaultdict, final, get_args, get_origin, get_overloads, get_protocol_members, get_type_hints, is_protocol, is_typeddict, no_type_check, no_type_check_decorator, overload, override, reveal_type, runtime_checkable, types # noqa: F401, E501",
         },
       },
-      c = {
+      c = { -- There's also address sanitizer
         before = {
           "// IWYU pragma: begin_keep",
           "#include <stdbool.h>",
           "#include <stdio.h>",
           "#include <stdlib.h>",
+          "#include <ctype.h>",
+          "#include <limits.h>",
           "#include <math.h>",
           "#include <string.h>",
+          "#include <time.h>",
+          -- "#include <uthash.h>", -- haven't installed
           "// IWYU pragma: end_keep",
+        },
+      },
+      cpp = {
+        before = {
+          "// IWYU pragma: begin_keep",
+          "#include <iostream>",
+          "#include <string>",
+          "#include <vector>",
+          "#include <algorithm>",
+          "#include <map>",
+          "#include <cmath>",
+          "#include <memory>",
+          "#include <fstream>",
+          "#include <chrono>",
+          "#include <thread>",
+          "#include <stdexcept>",
+          "// IWYU pragma: end_keep",
+          "using namespace std;",
         },
       },
     },
@@ -72,14 +94,6 @@ return {
     vim.keymap.set("n", "<leader><leader>su", "<cmd>Leet session update<r>")
     vim.keymap.set("n", "<leader><leader>t", "<cmd>Leet tabs<cr>")
     vim.keymap.set("n", "<leader><leader>y", "<cmd>Leet yank<cr>")
-
-    -- vim.diagnostic.enable(false)
-    -- require("lualine").setup({
-    --   sections = {
-    --     lualine_b = {},
-    --     lualine_x = { "filetype" },
-    --   },
-    -- })
   end,
 }
 
