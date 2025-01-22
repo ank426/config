@@ -32,6 +32,11 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  desc = "Remove trailing whitespace on save",
+  command = [[%s/\s\+$//e]],
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "Autoformat on save",
   callback = function(args)
