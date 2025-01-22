@@ -29,6 +29,8 @@
 !/nfs/**
 !/nvim/
 !/nvim/**
+!/python/
+!/python/**
 !/ranger/
 !/ranger/**
 !/waybar/
