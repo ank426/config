@@ -14,6 +14,7 @@ return {
       python3 = {
         -- before = true, -- Default imports which only work for python and java
         before = {
+          "# Imports:",
           "import string # noqa: F401",
           "import re #noqa: F401",
           "import datetime #noqa: F401",
@@ -36,6 +37,7 @@ return {
       },
       c = { -- There's also address sanitizer
         before = {
+          "// Includes:",
           "// IWYU pragma: begin_keep",
           "#include <stdbool.h>",
           "#include <stdio.h>",
@@ -51,6 +53,7 @@ return {
       },
       cpp = {
         before = {
+          "// Includes:",
           "// IWYU pragma: begin_keep",
           "#include <iostream>",
           "#include <string>",
