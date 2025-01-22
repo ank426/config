@@ -10,8 +10,6 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
 
-    lspconfig.bashls.setup({})
-
     lspconfig.clangd.setup({})
 
     lspconfig.lua_ls.setup({
