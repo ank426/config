@@ -15,8 +15,8 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]],  { desc = "System Yank" })
 vim.keymap.set({"n", "v"}, "<leader>Y", [["+y$]], { desc = "System Yank" }) -- Y=yy in maps as per old behavior unless remap=true
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]],  { desc = "System Paste" })
 vim.keymap.set({"n", "v"}, "<leader>P", [["+P]],  { desc = "System Paste" })
-vim.keymap.set({"n", "v"}, "<leader>d", [["+d]],  { desc = "System Delete" })
-vim.keymap.set({"n", "v"}, "<leader>D", [["+D]],  { desc = "System Delete" })
+-- vim.keymap.set({"n", "v"}, "<leader>d", [["+d]],  { desc = "System Delete" })
+-- vim.keymap.set({"n", "v"}, "<leader>D", [["+D]],  { desc = "System Delete" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })

@@ -26,9 +26,9 @@ vim.api.nvim_create_user_command("H", function(opts)
     print(error_message:match("E%d+:.*$"))
   end
 end, {
-  desc = "Help in current window",
-  nargs = "?",
-  complete = "help",
-  bar = true,
-})
+    desc = "Help in current window",
+    nargs = "?",
+    complete = "help",
+    bar = true,
+  })
 vim.cmd.cnoreabbrev([[<expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']])
