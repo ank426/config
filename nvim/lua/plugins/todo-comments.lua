@@ -5,6 +5,7 @@ return {
   opts = {
     highlight = {
       keyword = "wide_fg",
+      after = "",
     },
   },
 }
