@@ -1,5 +1,4 @@
 custom operator for gc in oil.nvim
-(long) fix lsp in leetcode
 (given up) images in leetcode
 (long) wait till noice supports blink.cmp (i think it doesnt, not sure) and set it up
 (mid-long) neoconf

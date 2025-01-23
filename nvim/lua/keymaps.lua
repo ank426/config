@@ -23,6 +23,11 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window"
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
 
+vim.keymap.set("o", "ir", "i[")
+vim.keymap.set("o", "ar", "a[")
+vim.keymap.set("o", "ia", "i<")
+vim.keymap.set("o", "aa", "a<")
+
 local confpath = vim.fn.stdpath("config")
 vim.keymap.set("n", "<leader>en", "<cmd>edit "..confpath.."<cr>",                       { desc = "[E]dit [N]eovim" })
 vim.keymap.set("n", "<leader>ei", "<cmd>edit "..confpath.."/init.lua<cr>",              { desc = "[E]dit [I]nit" })
