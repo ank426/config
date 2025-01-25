@@ -3,14 +3,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function() vim.highlight.on_yank() end, -- Needs function wrapping cuz callback passes arguments
 })
 
-vim.api.nvim_create_autocmd({"VimLeave", "VimSuspend"}, {
-  desc = "Fix cursor on quit/suspend",
-  command = "set guicursor=a:ver25",
-})
-
 vim.api.nvim_create_autocmd("StdinReadPost", {
   desc = "Mark as unmodified when reading from stdin",
   command = "set nomodified",
+})
+
+vim.api.nvim_create_autocmd({"VimEnter", "VimResume"}, {
+  desc = "Fix cursor on enter/resume",
+  callback = function()
+    vim.cmd.set("guicursor&")
+    vim.opt.guicursor:append("c:ver25")
+  end,
+})
+vim.api.nvim_create_autocmd({"VimLeave", "VimSuspend"}, {
+  desc = "Fix cursor on quit/suspend",
+  command = "set guicursor=a:ver25", -- Not working on suspend for some reason
 })
 
 vim.api.nvim_create_autocmd("InsertEnter", {

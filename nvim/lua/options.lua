@@ -6,7 +6,7 @@ vim.opt.completeopt:append("noselect")
 vim.opt.completeopt:append("fuzzy")
 vim.opt.expandtab = true
 vim.opt.formatoptions:remove("o")
-vim.opt.guicursor:append("c:ver25")
+-- vim.opt.guicursor:append("c:ver25") -- Done in autocommands
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.list = true
@@ -29,6 +29,7 @@ vim.opt.smoothscroll = true
 vim.opt.softtabstop = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.switchbuf = {"useopen", "usetab", "uselast"}
 vim.opt.tabstop = 4
 vim.opt.textwidth = 150
 
