@@ -1,6 +1,7 @@
 vim.opt.breakindent = true
 vim.opt.cinkeys:remove(":")
 vim.opt.clipboard = "unnamed" -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
+vim.opt.confirm = true
 vim.opt.completeopt:append("noselect")
 vim.opt.completeopt:append("fuzzy")
 vim.opt.expandtab = true
