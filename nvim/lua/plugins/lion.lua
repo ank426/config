@@ -1,8 +1,8 @@
 return {
   "tommcdo/vim-lion",
   keys = {
-    { "gl", mode = {"n", "v"} },
-    { "gL", mode = {"n", "v"} },
+    { "gl", mode = {"n", "x"} },
+    { "gL", mode = {"n", "x"} },
   },
   init = function()
     vim.g.lion_squeeze_spaces = 1
