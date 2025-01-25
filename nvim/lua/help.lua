@@ -31,4 +31,5 @@ end, {
     complete = "help",
     bar = true,
   })
+
 vim.cmd.cnoreabbrev([[<expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']])

@@ -30,3 +30,9 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.textwidth = 150
+
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+vim.g.python_recommended_style = false -- Disables nvim setting 4 space. Otherwise random unpredictable things get fucked

@@ -49,11 +49,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
     local orig_win = vim.api.nvim_get_current_win()
     local orig_cursor = vim.api.nvim_win_get_cursor(orig_win)
-
     vim.api.nvim_set_current_buf(args.buf)
-
     vim.cmd("keepjumps normal! gg=G")
-
     vim.api.nvim_set_current_win(orig_win)
     vim.api.nvim_win_set_cursor(orig_win, orig_cursor)
   end,
