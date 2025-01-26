@@ -8,7 +8,7 @@ return {
         pattern = "dap-repl",
         callback = function(args)
           require("dap.ext.autocompl").attach(args.buf)
-          vim.cmd("normal i") -- Behaves as if something sent it back to normal after this
+          vim.cmd("startinsert!")
         end,
       })
     end,

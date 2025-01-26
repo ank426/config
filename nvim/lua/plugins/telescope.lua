@@ -119,21 +119,21 @@ return {
           i = {
             ["<cr>"] = function()
               vim.cmd.H(require("telescope.actions.state").get_selected_entry().value)
-              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+              vim.cmd.stopinsert()
             end,
             ["<C-v>"] = function()
               vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value)
-              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+              vim.cmd.stopinsert()
             end,
           },
           n = {
             ["<cr>"] = function()
               vim.cmd.H(require("telescope.actions.state").get_selected_entry().value)
-              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+              vim.cmd.stopinsert()
             end,
             ["<C-v>"] = function()
               vim.cmd("topleft vert help "..require("telescope.actions.state").get_selected_entry().value)
-              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+              vim.cmd.stopinsert()
             end,
           },
         },

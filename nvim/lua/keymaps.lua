@@ -1,5 +1,5 @@
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { desc = "Nvim's redraw" })
-vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
+-- vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
 -- vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
 
 vim.keymap.set("n", "<leader>=", function()
@@ -42,7 +42,6 @@ vim.keymap.set("n", "<leader>ez", "<cmd>edit "..confpath.."/lua/lazy-nvim.lua<cr
 vim.keymap.set("n", "<leader>e.", "<cmd>edit "..confpath.."/lua<cr>",                  { desc = "Edit lua" })
 vim.keymap.set("n", "<leader>eL", "<cmd>edit "..confpath.."/lsp<cr>",                  { desc = "Edit lsp" })
 vim.keymap.set("n", "<leader>eQ", "<cmd>edit "..confpath.."/queries<cr>",              { desc = "Edit queries" })
-vim.keymap.set("n", "<leader>eF", "<cmd>edit "..confpath.."/ftplugin<cr>",             { desc = "Edit ftplugin" })
 vim.keymap.set("n", "<leader>En", "<cmd>edit "..confpath.."/after<cr>",                { desc = "Edit after" })
 vim.keymap.set("n", "<leader>EF", "<cmd>edit "..confpath.."/after/ftplugin<cr>",       { desc = "Edit after/ftplugin" })
 
