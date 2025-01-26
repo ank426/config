@@ -20,7 +20,7 @@ return {
       {"<leader>db", function() require("dap").toggle_breakpoint() end,         desc = "Dap Toggle Breakpoint"},
       {"<leader>dq", function() require("dap").list_breakpoints() end,          desc = "Dap List Breakpoints"},
       {"<leader>dX", function() require("dap").clear_breakpoints() end,         desc = "Dap Clear Breakpoints"},
-      {"<leader>de", function() require("dap").set_exception_breakpoints() end, desc = "Dap Set Expception Breakpoints"},
+      {"<leader>de", function() require("dap").set_exception_breakpoints() end, desc = "Dap Set Exception Breakpoints"},
       {"<leader>do", function() require("dap").step_over() end,                 desc = "Dap Step Over"},
       {"<leader>di", function() require("dap").step_into() end,                 desc = "Dap Step Into"},
       {"<leader>dO", function() require("dap").step_out() end,                  desc = "Dap Step Out"},
