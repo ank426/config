@@ -38,7 +38,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function() vim.diagnostic.show() end,
 })
 
-
 vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "Remove trailing whitespace on save",
   command = [[%s/\s\+$//e]],

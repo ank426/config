@@ -6,6 +6,12 @@ return {
   keys = {
     { "-", vim.cmd.Oil, desc = "Open parent directory" },
   },
+  init = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "oil",
+      command = "set commentstring=%s.bak",
+    })
+  end,
   opts = {
     skip_confirm_for_simple_edits = true,
     keymaps = {
@@ -29,9 +35,7 @@ return {
     use_default_keymaps = false,
     view_options = {
       show_hidden = true,
-      is_always_hidden = function(name, _)
-        return name == ".."
-      end,
+      is_always_hidden = function(name, _) return name == ".." end,
     },
   },
 }
