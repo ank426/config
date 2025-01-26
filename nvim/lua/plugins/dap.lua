@@ -59,3 +59,6 @@ return {
     end,
   },
 }
+
+-- Also need to see nvim-dap-virtual-text and nvim-dap-ui
+-- nvim-dap-repl-highlights probably not worth it
