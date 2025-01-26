@@ -8,6 +8,7 @@ return {
         pattern = "dap-repl",
         callback = function(args)
           require("dap.ext.autocompl").attach(args.buf)
+          vim.cmd("normal i") -- Behaves as if something sent it back to normal after this
         end,
       })
     end,
@@ -34,37 +35,13 @@ return {
       {"<leader>df", function() require("dap").focus_frame() end},
       {"<leader>dF", function() require("dap").restart_frame() end},
       {"<leader>dC", function() require("dap").run_to_cursor() end},
-      {"<leader>dr", function() require("dap.repl").open({}, "edit") vim.cmd("normal i") end},
+      {"<leader>dr", function() require("dap.repl").open({}, "edit") end},
       {"<leader>dw", function() require("dap.ui.widgets").hover() end},
     },
     config = function()
       local dap = require("dap")
-
       dap.defaults.fallback.terminal_win_cmd = function() return vim.api.nvim_create_buf(true, false) end
-      -- dap.defaults.fallback.terminal_win_cmd = "ene"
-
       require("dap-python")
-
-      -- dap.adapters.debugpy = {
-      --   type = "executable", -- See docs and language specific installation for servers and stuff
-      --   command = "python",
-      --   args = {"-m", "debugpy.adapter"},
-      --   options = {
-      --     source_filetype = "python",
-      --   },
-      -- }
-      -- dap.configurations.python = {
-      --   {
-      --     type = "debugpy", -- adapter index
-      --     request = "launch",
-      --     name = "Launch Debugpy",
-      --     -- For debugpy:
-      --     -- args = function() vim.fn.input("Enter Arguments: ") end,
-      --     program = "${file}",
-      --     pythonPath = function() return (os.getenv("VIRTUAL_ENV") or "/usr").."/bin/python" end,
-      --     stopOnEntry = true,
-      --   },
-      -- }
     end,
   },
   {
