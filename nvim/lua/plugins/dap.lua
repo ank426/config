@@ -33,7 +33,7 @@ return {
       {"<leader>df", function() require("dap").focus_frame() end,               desc = "Dap Focus Frame"},
       {"<leader>dF", function() require("dap").restart_frame() end,             desc = "Dap Restart Frame"},
       {"<leader>dC", function() require("dap").run_to_cursor() end,             desc = "Dap Run to Cursor"},
-      {"<leader>dr", function() require("dap.repl").open({},"edit") end,        desc = "Dap Repl Open"},
+      {"<leader>dr", function() require("dap.repl").open({}, "edit") end,        desc = "Dap Repl Open"},
       {"<leader>dw", function() require("dap.ui.widgets").hover() end,          desc = "Dap Widgets Hover"},
       {
         "<leader>dB",
