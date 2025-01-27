@@ -1,0 +1,57 @@
+-- vim: syntax=lua
+
+local mypy = null_ls.builtins.diagnostics.mypy.with({
+  command = "dmypy",
+  args = function(params)
+    return {
+      "--status-file", "/tmp/dmypy.json", -- Changing status file doesn't allow dmypy status or dmypy stop
+      "run",
+      "--timeout", "3600",
+      "--",
+      "--hide-error-codes",
+      "--hide-error-context",
+      "--no-color-output",
+      "--show-absolute-path",
+      "--show-column-numbers",
+      "--show-error-codes",
+      "--no-error-summary",
+      "--no-pretty",
+      -- "--shadow-file",
+      -- params.bufname,
+      params.temp_path,
+      -- params.bufname,
+    }
+  end,
+  -- Some of these slow it down. I can't figure out what
+  -- prefer_local = ".venv/bin",
+  -- timeout = 50000,
+  -- runtime_condition = function(params) return not params.bufname:find(".venv") end, -- Don't run inside venv
+})
+
+local mypy = null_ls.builtins.diagnostics.mypy.with({
+  method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+  args = function(params)
+    return {
+      "--hide-error-codes",
+      "--hide-error-context",
+      "--no-color-output",
+      "--show-absolute-path",
+      "--show-column-numbers",
+      "--show-error-codes",
+      "--no-error-summary",
+      "--no-pretty",
+      -- "--shadow-file", -- There's a mypy bug with whatever this is that throws warning on an unsaved file
+      -- params.bufname,
+      params.temp_path,
+      -- params.bufname,
+    }
+  end
+})
+
+-- mypy is way to slow (4 seconds on tensor.py)
+-- dmypy caches everything so it is supposed to be much faster
+-- But it isn't
+-- for reference: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/831#issuecomment-1647481289
+-- I removed the fugitive check cuz I don't use it
+
+-- new random issue, mypy stopped showing diagnostics
