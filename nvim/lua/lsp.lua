@@ -4,7 +4,8 @@
 vim.lsp.enable("clangd")
 
 -- Python
-vim.lsp.enable("basedpyright")
+-- vim.lsp.enable("basedpyright")
+vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 
 -- Lua
