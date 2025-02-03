@@ -9,7 +9,7 @@ return {
   init = function()
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "oil",
-      command = "set commentstring=%s.bak",
+      command = "setlocal commentstring=%s.bak",
     })
   end,
   opts = {

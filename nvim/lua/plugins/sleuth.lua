@@ -1,4 +1,4 @@
 return {
   "tpope/vim-sleuth",
-  event = "VeryLazy",
+  -- event = "VeryLazy", -- doesn't work. need to find diff event
 }
