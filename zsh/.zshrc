@@ -40,7 +40,10 @@ zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 zinit ice depth=1; zinit light zsh-users/zsh-completions
 zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
 # zinit ice depth=1; zinit light marlonrichert/zsh-autocomplete
+zinit ice depth=1; zinit light zsh-users/zsh-history-substring-search
 zinit ice depth=1; zinit light Aloxaf/fzf-tab
+
+zinit ice depth=1; zinit snippet OMZP::sudo
 
 [ -f "$ZDOTDIR/.p10k.zsh" ] && . "$ZDOTDIR/.p10k.zsh" || true
 
@@ -56,9 +59,14 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # zinit cdreplay -q
 
 # Keybindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 bindkey '^[f' forward-word
 bindkey '^[b' backward-word
 bindkey '^[^?' backward-kill-word
+bindkey -r '^[^['
+bindkey -M viins '^[s' sudo-command-line
 
 eval "$(fzf --zsh)"
 
