@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "Autoindent on save",
   callback = function(args)
-    if vim.tbl_contains({"python", "text", "lex", "yacc", "tex", "toml"}, vim.bo[args.buf].filetype) then return end
+    if vim.tbl_contains({"python", "text", "lex", "yacc", "tex", "toml", "zsh"}, vim.bo[args.buf].filetype) then return end
 
     local orig_win = vim.api.nvim_get_current_win()
     local orig_cursor = vim.api.nvim_win_get_cursor(orig_win)

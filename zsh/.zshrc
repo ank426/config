@@ -26,6 +26,9 @@ HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 
+autoload -Uz select-word-style
+select-word-style bash
+
 # Zinit - best before compinit
 ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git" # This is a directory
 [ -d $ZINIT_HOME ] || mkdir -p "$(dirname $ZINIT_HOME)"
@@ -47,6 +50,8 @@ zinit ice depth=1; zinit snippet OMZP::sudo
 
 [ -f "$ZDOTDIR/.p10k.zsh" ] && . "$ZDOTDIR/.p10k.zsh" || true
 
+eval "$(fzf --zsh)"
+
 # Completions
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
@@ -67,8 +72,6 @@ bindkey '^[b' backward-word
 bindkey '^[^?' backward-kill-word
 bindkey -r '^[^['
 bindkey -M viins '^[s' sudo-command-line
-
-eval "$(fzf --zsh)"
 
 # Aliases
 alias s='sudo'

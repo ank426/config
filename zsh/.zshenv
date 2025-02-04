@@ -6,10 +6,10 @@ export LS_COLORS='di=01;34:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;33:cd=01;33
 # export MANPAGER='less -R --use-color -Dd+r -Du+b' # Not working for some reason
 export UV_PYTHON_PREFERENCE=system
 
-# # Can't figure out what is using these so comment out for now
-# export CUDA_PATH=/opt/cuda
-# export PATH="/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:$PATH"
-# export NVCC_CCBIN='/usr/bin/g++-13'
+# Can't figure out what is using these so keep for now
+export CUDA_PATH=/opt/cuda
+export PATH="/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:$PATH"
+export NVCC_CCBIN='/usr/bin/g++-13'
 
 export PATH="$XDG_DATA_HOME/../bin:$PATH"
 
