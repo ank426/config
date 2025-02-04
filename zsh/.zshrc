@@ -1,7 +1,14 @@
-[ -d $XDG_CONFIG_HOME/zsh ] || mkdir -p $XDG_CONFIG_HOME/zsh
-[ -d $XDG_CACHE_HOME/zsh ] || mkdir -p $XDG_CACHE_HOME/zsh
-[ -d $XDG_DATA_HOME/zsh ] || mkdir -p $XDG_DATA_HOME/zsh
-[ -d $XDG_STATE_HOME/zsh ] || mkdir -p $XDG_STATE_HOME/zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+p10k_cache="$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" # ${(%):-%n} is zsh specific syntax
+[[ -r $p10k_cache ]] && . $p10k_cache # double for speed
+
+# Make directories
+[ -d "$XDG_CONFIG_HOME/zsh/" ] || mkdir -p "$XDG_CONFIG_HOME/zsh/"
+[ -d "$XDG_CACHE_HOME/zsh/" ] || mkdir -p "$XDG_CACHE_HOME/zsh/"
+[ -d "$XDG_DATA_HOME/zsh/" ] || mkdir -p "$XDG_DATA_HOME/zsh/"
+[ -d "$XDG_STATE_HOME/zsh/" ] || mkdir -p "$XDG_STATE_HOME/zsh/"
 
 # Options
 setopt auto_cd
@@ -19,12 +26,41 @@ HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 
+# Zinit - best before compinit
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git/"
+[ -d $ZINIT_HOME ] || mkdir -p "$(dirname $ZINIT_HOME)"
+[ -d $ZINIT_HOME/.git ] || git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+. "$ZINIT_HOME/zinit.zsh"
+
+ZVM_INIT_MODE=sourcing # make zsh-vi-mode not overwrite fzf stuff
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode # abbreviations for text objects don't work
+# zinit ice depth=1; zinit light zdharma-continuum/fast-syntax-highlighting # breaks fzf tab somehow
+zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
+zinit ice depth=1; zinit light zsh-users/zsh-completions
+zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
+# zinit ice depth=1; zinit light marlonrichert/zsh-autocomplete
+zinit ice depth=1; zinit light Aloxaf/fzf-tab
+
+[ -f "$ZDOTDIR/.p10k.zsh" ] && . "$ZDOTDIR/.p10k.zsh" || true
+
 # Completions
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "$LS_COLORS"
+zstyle ':completion:*' menu no # for fzf tab
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# zinit cdreplay -q
+
+# Keybindings
+bindkey '^[f' forward-word
+bindkey '^[b' backward-word
+bindkey '^[^?' backward-kill-word
+
+eval "$(fzf --zsh)"
 
 # Aliases
 alias s='sudo'

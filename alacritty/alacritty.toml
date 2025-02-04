@@ -65,5 +65,5 @@ hide_when_typing = true
 
 [keyboard]
 bindings = [
-  { key = "Back", mods = "Control", chars = "\u0017"}
+  { key = "Back", mods = "Control", chars = "\u0017" }
 ]
