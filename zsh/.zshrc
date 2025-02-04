@@ -5,10 +5,10 @@ p10k_cache="$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" # ${(%):-%n} is 
 [[ -r $p10k_cache ]] && . $p10k_cache # double for speed
 
 # Make directories
-[ -d "$XDG_CONFIG_HOME/zsh/" ] || mkdir -p "$XDG_CONFIG_HOME/zsh/"
-[ -d "$XDG_CACHE_HOME/zsh/" ] || mkdir -p "$XDG_CACHE_HOME/zsh/"
-[ -d "$XDG_DATA_HOME/zsh/" ] || mkdir -p "$XDG_DATA_HOME/zsh/"
-[ -d "$XDG_STATE_HOME/zsh/" ] || mkdir -p "$XDG_STATE_HOME/zsh/"
+[ -d "$XDG_CONFIG_HOME/zsh" ] || mkdir -p "$XDG_CONFIG_HOME/zsh"
+[ -d "$XDG_CACHE_HOME/zsh" ] || mkdir -p "$XDG_CACHE_HOME/zsh"
+[ -d "$XDG_DATA_HOME/zsh" ] || mkdir -p "$XDG_DATA_HOME/zsh"
+[ -d "$XDG_STATE_HOME/zsh" ] || mkdir -p "$XDG_STATE_HOME/zsh"
 
 # Options
 setopt auto_cd
@@ -27,7 +27,7 @@ HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 
 # Zinit - best before compinit
-ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git/"
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git" # This is a directory
 [ -d $ZINIT_HOME ] || mkdir -p "$(dirname $ZINIT_HOME)"
 [ -d $ZINIT_HOME/.git ] || git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 . "$ZINIT_HOME/zinit.zsh"
