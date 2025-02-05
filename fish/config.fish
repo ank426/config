@@ -1,4 +1,7 @@
 if status is-interactive
+    set -gx fish_greeting
+    set -gx fzf_fd_opts '--hidden'
+
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
     bind \ec me_fzf_cd
