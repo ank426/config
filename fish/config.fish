@@ -1,21 +1,19 @@
 if status is-interactive
-    # tide prompt prints blank line on startup / clear screen
-    # set tide layout to compact and this to do manual sparse
+    # tide prompt prints blank line on startup / clear screen (bug)
+    # set tide layout to compact and do this to do manual sparse
     set first_line true
-    function sparse_prompt --on-event fish_prompt
-        if $first_line
-            set first_line false
-        else
-            echo
-        end
+    function manual_sparse --on-event fish_prompt
+        $first_line
+        and set first_line false
+        or echo
     end
     function clear
         set first_line true
         command clear
     end
 
-    set -gx fish_greeting
-    set -gx fzf_fd_opts '--hidden'
+    set --global --export fish_greeting
+    set --global --export fzf_fd_opts --hidden
 
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
