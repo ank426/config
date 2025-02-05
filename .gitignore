@@ -6,13 +6,14 @@
 
 !/bin/
 !/bin/**
-
 !/alacritty/
 !/alacritty/**
 !/discord/
 !/discord/**
 !/fastfetch/
 !/fastfetch/**
+!/fish/
+!/fish/**
 !/git/
 !/git/**
 !/gtk-3.0/

@@ -5,6 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    -- "nvim-telescope/telescope-fzy-native.nvim",
   },
   cmd = "Telescope",
   keys = {
@@ -176,6 +177,7 @@ return {
   config = function(_, opts)
     require("telescope").setup(opts)
     require("telescope").load_extension("fzf")
+    -- require("telescope").load_extension("fzy_native")
 
     vim.lsp.buf.references = require("telescope.builtin").lsp_references
   end,

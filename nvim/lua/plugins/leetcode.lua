@@ -19,6 +19,7 @@ return {
           "import re #noqa: F401",
           "import datetime #noqa: F401",
           "import collections #noqa: F401",
+          "from collections import deque, defaultdict, namedtuple #noqa: F401",
           "import heapq #noqa: F401",
           "import bisect #noqa: F401",
           "import copy #noqa: F401",
