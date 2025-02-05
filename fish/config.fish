@@ -13,7 +13,7 @@ if status is-interactive
     end
 
     set --global --export fish_greeting
-    set --global --export fzf_fd_opts --hidden
+    set --global --export fzf_fd_opts --hidden --no-ignore
 
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
