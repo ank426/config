@@ -34,7 +34,7 @@ if status is-interactive
     alias grep='grep --color=always'
     alias ip='ip -color=always'
     alias info='info --vi-keys'
-    alias less='less -IR --incsearch'
+    alias less='less -IR --incsearch --use-color'
     alias ls='LC_COLLATE=C command ls -A --color --group-directories-first'
     alias pacman='pacman --color=always'
     alias paru='paru --color=always'
