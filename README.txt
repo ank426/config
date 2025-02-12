@@ -130,3 +130,5 @@ edit /etc/makepkg.conf and set makeflag (idk if this makes a diff)
 install iio-sensor-proxy for screen rotation
 
 edit sudoers (using visudo) to add insults
+
+for weylus check wiki to make it work

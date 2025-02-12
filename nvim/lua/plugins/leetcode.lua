@@ -6,6 +6,15 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
+  init = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "leetcode.nvim",
+      callback = function()
+        vim.opt_local.showbreak = "NONE"
+        vim.b.undo_ftplugin = "setlocal sbr<"
+      end,
+    })
+  end,
   opts = {
     lang = "python3",
     injector = {
@@ -81,6 +90,7 @@ return {
     vim.keymap.set("n", "<leader>D", "<cmd>Leet desc stats<cr>")
     vim.keymap.set("n", "<leader>h", "<cmd>Leet hints<cr>")
     vim.keymap.set("n", "<leader>i", "<cmd>Leet info<cr>")
+    vim.keymap.set("n", "<leader>I", "<cmd>Leet inject<cr>")
     vim.keymap.set("n", "<leader>l", "<cmd>Leet lang<cr>")
     vim.keymap.set("n", "<leader>L", "<cmd>Leet last_submit<cr>")
     vim.keymap.set("n", "<leader>m", "<cmd>Leet menu<cr>")

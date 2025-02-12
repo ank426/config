@@ -7,7 +7,7 @@ return {
     client.server_capabilities.textDocumentSync = nil
   end,
   settings = {
-    pyright = {
+    python = {
       analysis = {
         autoSearchPaths = true,
         diagnosticMode = "openFilesOnly",
