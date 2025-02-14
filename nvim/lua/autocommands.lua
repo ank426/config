@@ -48,19 +48,19 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = [[%s/\($\n\)\+\%$//e]],
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  desc = "Autoindent on save",
-  callback = function(args)
-    if vim.tbl_contains({"python", "text", "lex", "yacc", "tex", "toml", "zsh", "gitignore", "dockerfile"}, vim.bo[args.buf].filetype) then return end
-
-    local orig_win = vim.api.nvim_get_current_win()
-    local orig_cursor = vim.api.nvim_win_get_cursor(orig_win)
-    vim.api.nvim_set_current_buf(args.buf)
-    vim.cmd("keepjumps normal! gg=G")
-    vim.api.nvim_set_current_win(orig_win)
-    vim.api.nvim_win_set_cursor(orig_win, orig_cursor)
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   desc = "Autoindent on save",
+--   callback = function(args)
+--     if vim.tbl_contains({"python", "text", "lex", "yacc", "tex", "toml", "zsh", "gitignore", "dockerfile"}, vim.bo[args.buf].filetype) then return end
+--
+--     local orig_win = vim.api.nvim_get_current_win()
+--     local orig_cursor = vim.api.nvim_win_get_cursor(orig_win)
+--     vim.api.nvim_set_current_buf(args.buf)
+--     vim.cmd("keepjumps normal! gg=G")
+--     vim.api.nvim_set_current_win(orig_win)
+--     vim.api.nvim_win_set_cursor(orig_win, orig_cursor)
+--   end,
+-- })
 
 -- vim.api.nvim_create_autocmd("LspAttach", {
 --   desc = "Autoformat on save",

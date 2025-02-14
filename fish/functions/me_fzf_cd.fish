@@ -4,7 +4,7 @@ function me_fzf_cd
     set path ($fd_cmd | $fzf_cmd)
     commandline --function repaint # fzf bug so needed when height specified in fzf in script
     if test -n "$path"
-        commandline "cd $path"
+        commandline "cd '$path'"
         commandline --function execute
     end
 end

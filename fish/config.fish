@@ -36,6 +36,7 @@ if status is-interactive
     alias info='info --vi-keys'
     alias less='less -IR --incsearch --use-color'
     alias ls='LC_COLLATE=C command ls -A --color --group-directories-first'
+    alias ncdu='ncdu --color dark'
     alias pacman='pacman --color=always'
     alias paru='paru --color=always'
     alias tree='tree -aC --dirsfirst'

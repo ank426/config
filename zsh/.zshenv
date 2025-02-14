@@ -24,6 +24,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # export XDG_DATA_HOME="$HOME/.lcl/share"
 # export XDG_STATE_HOME="$HOME/.lcl/state"
 
+export XDG_VIDEOS_DIR="$HOME/vid"
+
 export ANDROID_USER_HOME="$XDG_DATA_HOME/android"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
