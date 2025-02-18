@@ -31,6 +31,7 @@ if status is-interactive
     abbr --add ipy ipython
 
     alias diff='diff --color=always'
+    alias fd='fd --color=always -g'
     alias grep='grep --color=always'
     alias ip='ip -color=always'
     alias info='info --vi-keys'
