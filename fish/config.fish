@@ -17,6 +17,8 @@ if status is-interactive
 
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
+    bind \e, 'prevd && commandline --function repaint'
+    bind \e. 'nextd && commandline --function repaint'
     bind \ec me_fzf_cd
     bind \ev me_fzf_nvim
 
@@ -31,13 +33,13 @@ if status is-interactive
     abbr --add ipy ipython
 
     alias diff='diff --color=always'
-    alias fd='fd --color=always -g'
+    alias fd='fd --glob --color=always'
     alias grep='grep --color=always'
     alias ip='ip -color=always'
     alias info='info --vi-keys'
-    alias less='less -IR --incsearch --use-color'
-    alias ls='LC_COLLATE=C command ls -A --color --group-directories-first'
-    alias ncdu='ncdu --color dark'
+    alias less='less --IGNORE-CASE --RAW-CONTROL-CHARS --incsearch --use-color'
+    alias ls='LC_COLLATE=C command ls --almost-all --color --group-directories-first'
+    alias ncdu='ncdu --color=dark'
     alias pacman='pacman --color=always'
     alias paru='paru --color=always'
     alias tree='tree -aC --dirsfirst'
@@ -45,7 +47,7 @@ if status is-interactive
 
     alias arm="$XDG_CONFIG_HOME/bin/arm.sh"
     alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
-    alias mariadb='mariadb -u ankit --password=$(pass code/mariadb/ankit)'
+    alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
     alias wey='ip -4 -brief address && weylus --no-gui'
     alias weylus='weylus --auto-start --access-code $(head /dev/urandom | tr -cd A-Za-z0-9 | head -c 20)'
 
