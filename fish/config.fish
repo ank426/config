@@ -33,7 +33,7 @@ if status is-interactive
     abbr --add ipy ipython
 
     alias diff='diff --color=always'
-    alias fd='fd --glob --color=always'
+    alias fd='fd --color=always'
     alias grep='grep --color=always'
     alias ip='ip -color=always'
     alias info='info --vi-keys'
@@ -42,6 +42,7 @@ if status is-interactive
     alias ncdu='ncdu --color=dark'
     alias pacman='pacman --color=always'
     alias paru='paru --color=always'
+    alias tldr='tldr --color always'
     alias tree='tree -aC --dirsfirst'
     alias tree-git='tree -aC --dirsfirst --gitignore -I .git'
 
