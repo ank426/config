@@ -20,8 +20,8 @@ if status is-interactive
     bind \es 'me_commandline_prepend sudo'
     bind \e, 'prevd && commandline --function repaint'
     bind \e. 'nextd && commandline --function repaint'
-    bind \ec me_fzf_cd
-    bind \ev me_fzf_nvim
+    bind \ec 'me_fzf cd'
+    bind \ev 'me_fzf nvim'
 
     # fish doesn't realize abbr after sudo when using position command
     abbr --add c clear
