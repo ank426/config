@@ -12,6 +12,7 @@ if status is-interactive
         command clear
     end
 
+    set --global --export SHELL /usr/bin/fish
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
 
@@ -37,7 +38,6 @@ if status is-interactive
     alias grep='grep --color=always'
     alias ip='ip -color=always'
     alias info='info --vi-keys'
-    alias lazygit='SHELL=/usr/bin/fish command lazygit'
     alias less='less --IGNORE-CASE --RAW-CONTROL-CHARS --incsearch --use-color'
     alias ls='LC_COLLATE=C command ls --almost-all --color --group-directories-first'
     alias ncdu='ncdu --color=dark'
