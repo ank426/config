@@ -1,5 +1,5 @@
 function me_fzf --description "Run command using fzf"
-    set fd_cmd (command -v fd) --color=always $fzf_fd_opts
+    set fd_cmd (command --search fd) --color=always $fzf_fd_opts
     set fzf_cmd _fzf_wrapper --ansi --scheme=path --preview='_fzf_preview_file {}'
 
     switch "$argv[1]"
