@@ -33,6 +33,9 @@ if status is-interactive
     abbr --add py python
     abbr --add ipy ipython
 
+    # abbr --add --set-cursor gca git commit -a
+    # abbr --add --set-cursor gcam git commit -am \'%\'
+
     alias diff='diff --color=always'
     alias fd='fd --color=always'
     alias grep='grep --color=always'

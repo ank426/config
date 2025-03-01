@@ -10,7 +10,7 @@ vim.opt.formatoptions:remove("o")
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.list = true
-vim.opt.listchars = { trail = "~" }
+vim.opt.listchars = { tab = "-->", trail = "~" }
 vim.opt.matchpairs:append("<:>")
 vim.opt.mouse = ""
 vim.opt.nrformats:append("unsigned")

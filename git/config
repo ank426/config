@@ -7,3 +7,5 @@
   pushDefault = origin
 [pull]
   rebase = false
+[credential]
+	helper = cache
