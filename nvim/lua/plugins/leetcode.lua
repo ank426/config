@@ -67,24 +67,28 @@ return {
           "// Includes:",
           "// IWYU pragma: begin_keep",
           "#include <iostream>",
-          "#include <string>",
-          "#include <vector>",
           "#include <algorithm>",
-          "#include <map>",
           "#include <cmath>",
-          "#include <memory>",
-          "#include <fstream>",
-          "#include <chrono>",
-          "#include <thread>",
-          "#include <stdexcept>",
+          "#include <deque>",
+          "#include <list>",
+          "#include <map>",
+          "#include <queue>",
+          "#include <set>",
+          "#include <span>",
+          "#include <stack>",
+          "#include <string>",
+          "#include <tuple>",
+          "#include <vector>",
           "// IWYU pragma: end_keep",
-          "using namespace std;",
+          -- "using namespace std;",
         },
       },
     },
   },
   config = function(_, opts)
     require("leetcode").setup(opts)
+
+    vim.opt.signcolumn = "auto:1-9"
 
     vim.keymap.set("n", "<leader>c", "<cmd>Leet console<cr>")
     vim.keymap.set("n", "<leader>d", "<cmd>Leet desc<cr>")

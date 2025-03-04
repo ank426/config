@@ -304,6 +304,7 @@ user_pref("browser.toolbars.bookmarks.visibility", "never");
 user_pref("font.name.monospace.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans-serif.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans.x-western", "JetBrainsMono Nerd Font");
+user_pref("accessibility.monoaudio.enable", true);
 
 /* FLOORP SPECIFIC */
 user_pref("floorp.browser.sidebar.enable", false);
