@@ -40,13 +40,9 @@
 !/python/**
 !/ranger/
 !/ranger/**
+!/systemd/
+!/systemd/**
 !/waybar/
 !/waybar/**
 !/zsh/
 !/zsh/**
-
-!/systemd/
-!/systemd/user/
-!/systemd/user/gpg-agent.service.d/
-!/systemd/user/gpg-agent.service.d/**
-!/systemd/user/gpg-agent.socket

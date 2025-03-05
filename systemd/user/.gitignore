@@ -1,0 +1,5 @@
+*
+!.gitignore
+!gpg-agent.socket
+!gpg-agent.service.d/
+!gpg-agent.service.d/**
