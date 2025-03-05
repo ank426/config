@@ -4,7 +4,7 @@
     "DictionaryClient": "auto",
     "ShowProgressIndicator": true,
     "PageScrollAnimation": false,
-    "MouseSupport": false,
+    "MouseSupport": true,
     "StartWithDoubleSpread": false,
     "DefaultColorFG": -1,
     "DefaultColorBG": -1,
