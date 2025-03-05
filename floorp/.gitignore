@@ -1,6 +1,6 @@
-default/
+/default/
 
-main/*
-!main/user.js
-!main/chrome/
-!main/chrome/**
+/main/*
+!/main/user.js
+!/main/chrome/
+!/main/chrome/**

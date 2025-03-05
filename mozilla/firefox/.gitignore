@@ -1,7 +1,7 @@
-Crash\ Reports
-Pending\ Pings
+/Crash\ Reports
+/Pending\ Pings
 
-main/*
-!main/user.js
-!main/chrome/
-!main/chrome/**
+/main/*
+!/main/user.js
+!/main/chrome/
+!/main/chrome/**
