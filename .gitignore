@@ -1,11 +1,11 @@
 *
 !/.gitignore
 !/README.*
+!/bin/
+!/bin/**
 
 !/wgetrc
 
-!/bin/
-!/bin/**
 !/alacritty/
 !/alacritty/**
 !/discord/
