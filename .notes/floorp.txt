@@ -1,2 +1,0 @@
-paru -S floorp-bin
-ln -s .config/floorp .floorp

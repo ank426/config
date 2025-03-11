@@ -1,4 +1,8 @@
+paru -S floorp-bin
+ln -s .config/floorp .floorp
+
 fix toolbar
+change download dir in about:preferences#downloads
 
 uBO:
     don't show num of blocked requests on icon
