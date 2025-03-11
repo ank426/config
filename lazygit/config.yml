@@ -1,0 +1,27 @@
+gui:
+  scrollHeight: 10
+  scrollPastBottom: false
+  scrollOffMargin: 3
+  mouseEvents: false
+  showCommandLog: false
+  showBottomLine: false
+  showPanelJumps: false
+  nerdFontsVersion: 3
+  filterMode: fuzzy
+  spinner:
+    frames:
+      - ⠋
+      - ⠙
+      - ⠹
+      - ⠸
+      - ⠼
+      - ⠴
+      - ⠦
+      - ⠧
+      - ⠇
+      - ⠏
+git:
+  autoFetch: false
+  parseEmoji: true
+notARepository: skip
+promptToReturnFromSubprocess: false
