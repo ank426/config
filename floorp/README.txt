@@ -8,7 +8,10 @@ Video Speed:
     opacity = 0.5
     remove blocklist
     save
-SponsorBlock: lots of changes
+SponsorBlock:
+    unpaid/self promotion: show in seek bar
+    exclusive access: disable
+    highlight: show in seek bar
 
 Browserpass
 Buster
