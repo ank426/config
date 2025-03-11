@@ -3,6 +3,8 @@
 !/README.*
 !/bin/
 !/bin/**
+!/.notes/
+!/.notes/**
 
 !/wgetrc
 

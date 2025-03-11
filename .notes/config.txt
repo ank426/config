@@ -1,0 +1,21 @@
+rm .bash*
+mv .config{,.bak}
+git clone https://gitlab.com/Void426/config.git .config
+
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
+install fd, fzf
+
+cp -r /etc{,.bak}
+git init
+git remote add https://gitlab.com/Void426/etc.git
+rm environment hosts pacman.conf
+git pull --set-upstream origin master
+
+I've not yet done these:
+edit /etc/makepkg.conf and set makeflag (idk if this makes a diff)
+In /etc/pulse/client.conf add cookie file
+edit sudoers (using visudo) to add insults
+
+install keyd
+sudo systemctl start keyd
+sudo keyd reload

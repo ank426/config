@@ -1,0 +1,117 @@
+My Setup:
+Efi (use the same one that is already there)
+/boot - 4G - BIOS boot partition
+LVM on LUKS - 800G - Linux LUKS
+
+
+Keys (only when you're already in bios):
+F1 - General Help
+F7 - Easy/Advanced Mode
+F8 - Boot Menu
+F9 - Default
+F10 - Save and Exit
+
+
+partition disk using windows disk management
+disable disk encryption / bit locker
+disable fast startup and hibernation
+    powercfg /H off (as admin)
+
+go to bios
+disable secure boot and fast boot
+reorder boot options to put usb first
+save and exit
+
+if you're short on space in esp check https://wiki.archlinux.org/title/Mkinitcpio#COMPRESSION
+not done this
+
+
+ip link # to see stuff
+iwctl
+
+timedatectl # make sure its synced
+
+fdisk -l # to see stuff
+gdisk # fdisk doesn't have specific type for luks
+gdisk -l /dev/...
+
+# to make sure loaded
+modprobe dm-crypt
+modprobe dm-mod
+
+cryptsetup luksFormat --verbose --key-size=512 --hash=sha512 /dev/nvme0n1p8
+cryptsetup open /dev/nvme0n1p8 luks_lvm # luks_lvm can be any other name
+
+pvcreate /dev/mapper/luks_lvm
+vgcreate arch /dev/mapper/luks_lvm # arch can be any other name
+lvcreate -L 20G -n swap arch
+lvcreate -L 100G -n root arch
+lvcreate -l 100%FREE -n home arch
+lsblk
+
+lsblk -f
+mkfs.ext4 -L boot /dev/nvme0n1p7
+mkfs.btrfs -L root /dev/mapper/arch-root
+mkfs.btrfs -L home /dev/mapper/arch-home
+mkswap -L swap /dev/mapper/arch-swap
+
+mount /dev/mapper/arch-root /mnt
+mount --mkdir /dev/nvme0n1p1 /mnt/efi
+mount --mkdir /dev/nvme0n1p7 /mnt/boot
+mount --mkdir /dev/mapper/arch-home /mnt/home
+swapon /dev/mapper/arch-swap
+swapon -a
+
+pacstrap -K /mnt base linux linux-firmware
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+
+# must be before grub-mkconfig (or just do again)
+pacman -S intel-ucode # for speed
+
+pacman -S base-devel neovim lvm2
+edit /etc/mkinitcpio.conf
+go to HOOKS
+add encrypt lvm2 in between block and filesystems
+mkinitcpio -P
+
+pacman -S grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+
+edit /etc/default/grub
+go to GRUB_CMDLINE_LINUX_DEFAULT and add following kernel parameters (after existing ones)
+cryptdevice=UUID=<uuid>:luks_lvm # blkid /dev/nvme0n1p8
+root=/dev/mapper/arch-root
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+hwclock --systohc
+# I skipped the ntp part in the vid # not sure if its good
+
+edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8
+locale-gen
+create /etc/locale.conf and add LANG=en_US.UTF-8
+
+create /etc/hostname and add hostname (ankit)
+
+pacman -S networkmanager
+systemctl enable NetworkManager
+
+passwd
+
+umount -R /mnt
+reboot
+
+
+After booting in:
+pacman -S os-prober
+grub-mkconfig -o /boot/grub/grub.cfg
+
+useradd -m -G wheel -s /usr/bin/zsh ankit
+passwd ankit
+
+EDITOR=nvim visudo
+uncomment wheel with password
+
+sudo pacman -S man-db man-pages (not sure what mandoc is)

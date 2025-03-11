@@ -1,0 +1,10 @@
+Install:
+gtk3
+hyprland
+alacritty
+waybar (with pipewire-jack)
+swaylock
+nvidia-dkms (supposed to be hassle-free)
+nvidia-utils
+lib32-nvidia-utils
+egl-wayland
