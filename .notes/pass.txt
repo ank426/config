@@ -1,0 +1,19 @@
+sudo pacman -S pass
+git clone https://gitlab.com/Void426/pass.git .local/share/pass
+
+mkdir -m 700 .local/share/gnupg
+gpg --import public.pgp
+gpg --import private.pgp
+
+sudo pacman -S openssh
+(pass import -m .ssh/known_hosts < .ssh/known_hosts)
+pass .ssh/id_rsa.pub > .ssh/id_rsa.pub
+pass .ssh/id_rsa > .ssh/id_rsa
+pass .ssh/known_hosts > .ssh/known_hosts
+chmod 600 .ssh/id_rsa
+chmod 600 .ssh/known_hosts
+
+git clone git@gitlab.com:Void426/doc.git
+git clone git@gitlab.com:Void426/pic.git
+git remote set-url origin git@gitlab.com:Void426/config.git
+pass git remote set-url origin git@gitlab.com:Void426/pass.git
