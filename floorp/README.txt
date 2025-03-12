@@ -4,6 +4,10 @@ ln -s .config/floorp .floorp
 fix toolbar
 change download dir in about:preferences#downloads
 
+remove random profiles
+create default directory
+create new user, name default, choose folder default
+
 uBO:
     don't show num of blocked requests on icon
     betterfox filter list
