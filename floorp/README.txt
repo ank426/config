@@ -7,6 +7,7 @@ change download dir in about:preferences#downloads
 remove random profiles
 create default directory
 create new user, name default, choose folder default
+make old user default again
 
 uBO:
     don't show num of blocked requests on icon

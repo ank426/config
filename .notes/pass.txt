@@ -18,4 +18,4 @@ git clone git@gitlab.com:Void426/pic.git
 git remote set-url origin git@gitlab.com:Void426/config.git
 pass git remote set-url origin git@gitlab.com:Void426/pass.git
 
-sudo pacman -S browserpass
+sudo pacman -S browserpass browserpass-firefox (and the browser extension for some reason)

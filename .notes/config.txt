@@ -11,10 +11,12 @@ git remote add https://gitlab.com/Void426/etc.git
 rm environment hosts pacman.conf
 git pull --set-upstream origin master
 
+visudo
+add 'Defaults insults' somewhere
+
 I've not yet done these:
 edit /etc/makepkg.conf and set makeflag (idk if this makes a diff)
 In /etc/pulse/client.conf add cookie file
-edit sudoers (using visudo) to add insults
 
 install keyd
 sudo systemctl start keyd
