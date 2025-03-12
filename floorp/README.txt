@@ -3,6 +3,7 @@ ln -s .config/floorp .floorp
 
 fix toolbar
 change download dir in about:preferences#downloads
+change fonts to make all jetbrains mono nerd font
 
 remove random profiles
 create default directory

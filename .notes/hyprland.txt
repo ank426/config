@@ -14,3 +14,11 @@ brightnessctl
 
 ttf-jetbrains-mono-nerd
 otf-font-awesome
+gnu-free-fonts
+ttf-arphic-uming
+ttf-indic-otf
+
+ethernet:
+install ifplugd
+nmcli d
+sudo systemctl enable --now ifplugd@... (name of device) (might need .service idk)
