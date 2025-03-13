@@ -6,6 +6,7 @@
 !/.notes/
 !/.notes/**
 
+!/batsignal
 !/wgetrc
 
 !/alacritty/
