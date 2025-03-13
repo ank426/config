@@ -66,6 +66,9 @@ pacstrap -K /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
+pacman -S linux-headers (needed for nvidia)
+(if done later, do sudo modprobe nvidia)
+
 # must be before grub-mkconfig (or just do again)
 pacman -S intel-ucode # for speed
 

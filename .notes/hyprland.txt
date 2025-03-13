@@ -11,6 +11,7 @@ waybar (with pipewire-jack)
 hyprpaper
 swaylock
 brightnessctl
+mako
 
 ttf-jetbrains-mono-nerd
 otf-font-awesome

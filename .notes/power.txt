@@ -1,0 +1,13 @@
+paru -S asusctl
+sudo pacman -S power-profiles-daemon
+sudo systemctl enable --now power-profiles-daemon
+
+asusctl profile -P quiet
+preferred hertz in hyprland.conf
+
+paru -S supergfxctl
+sudo pacman -S switcheroo-control
+sudo systemctl enable --now supergfxd
+sudo systemctl enable --now switcheroo-control
+
+sudo pacman -S batsignal
