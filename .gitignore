@@ -49,6 +49,8 @@
 !/python/**
 !/ranger/
 !/ranger/**
+!/swaylock/
+!/swaylock/**
 !/systemd/
 !/systemd/**
 !/waybar/
