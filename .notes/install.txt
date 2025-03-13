@@ -54,6 +54,8 @@ lvcreate -L 100G -n arch linux
 lvcreate -l 100%FREE -n home linux
 lsblk
 
+# To change the order: https://blog.stigok.com/2020/11/28/change-lvm-partition-lv-order-lvchange.html
+
 lsblk -f
 mkfs.ext4 -L boot /dev/nvme0n1p7
 mkfs.btrfs -L root /dev/linux/arch
