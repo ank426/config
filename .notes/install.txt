@@ -2,6 +2,9 @@ My Setup:
 Efi (use the same one that is already there)
 /boot - 4G - BIOS boot partition
 LVM on LUKS - 800G - Linux LUKS
+- arch - 100G - btrfs
+- home - rest - btrfs
+- swap - 20G
 
 
 Keys (only when you're already in bios):
