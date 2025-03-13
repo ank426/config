@@ -53,9 +53,13 @@ lvcreate -L 20G -n swap linux
 lvcreate -L 100G -n arch linux
 lvcreate -l 100%FREE -n home linux
 lsblk
+# use --minor when creating to choose correct order
+# from 0 - 255 (old); now should accept much larger, but just stick to old range
 
-# To change the order: https://blog.stigok.com/2020/11/28/change-lvm-partition-lv-order-lvchange.html
-# Or just use --minor when creating
+To change the order: https://blog.stigok.com/2020/11/28/change-lvm-partition-lv-order-lvchange.html
+lvchange --persistent y --minor <num> /dev/linux/arch
+lvchange --activate y /dev/linux
+# This is probably not the cleanest way. Read man lvchange for a better way
 
 lsblk -f
 mkfs.ext4 -L boot /dev/nvme0n1p7
