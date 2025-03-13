@@ -1,0 +1,9 @@
+font= JetBrainsMono Nerd Font 12
+background-color=#000000BB
+width=200
+border-size=1
+border-color=#FFFFFFBB
+border-radius=2
+text-alignment=center
+default-timeout=1000
+layer=overlay

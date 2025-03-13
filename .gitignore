@@ -32,6 +32,8 @@
 !/lazygit/**
 !/lf/
 !/lf/**
+!/mako/
+!/mako/**
 !/mozilla/
 !/mozilla/**
 !/mpv/
