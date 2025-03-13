@@ -1,0 +1,3 @@
+sudo btrfs filesystem resize -50G /home
+sudo lvresize -L -50G linux/home
+sudo lvcreate -L 50G linux -n gentoo
