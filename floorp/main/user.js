@@ -305,6 +305,7 @@ user_pref("font.name.monospace.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans-serif.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans.x-western", "JetBrainsMono Nerd Font");
 user_pref("accessibility.monoaudio.enable", true);
+user_pref("media.hardwaremediakeys.enabled", false); // prevents temp thumbnail from coming into firefox-mpris directory
 
 /* FLOORP SPECIFIC */
 user_pref("floorp.browser.sidebar.enable", false);
