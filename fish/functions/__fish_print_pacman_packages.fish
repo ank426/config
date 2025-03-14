@@ -23,7 +23,7 @@ function __fish_print_pacman_packages
         pacman -Ssq | sed -e 's/$/\t'Package'/' >$cache_file &
         return 0
     else
-        command pacman -Q | string replace ' ' \t # I changed pacman to command pacman
+        pacman -Qq | string replace ' ' \t # I added -q
         return 0
     end
 end
