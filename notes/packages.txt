@@ -1,0 +1,3 @@
+pyenv:
+    tk
+    ncurses5-compat-libs

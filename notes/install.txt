@@ -129,14 +129,6 @@ passwd ankit
 EDITOR=nvim visudo
 uncomment wheel with password
 
-sudo pacman -S man-db man-pages (not sure what mandoc is)
-
-sudo pacman -S rustup
-rustup default stable
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-
 
 After messing with lvm:
 make sure to regenerate fstab if needed

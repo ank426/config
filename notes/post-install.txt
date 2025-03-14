@@ -1,3 +1,11 @@
+sudo pacman -S man-db man-pages (not sure what mandoc is)
+
+sudo pacman -S rustup
+rustup default stable
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
 Install:
 
 gtk3
