@@ -4,3 +4,4 @@
 !/fish_plugins
 !/functions/
 !/functions/me*
+!/functions/__fish_print_pacman_packages.fish

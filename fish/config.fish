@@ -17,11 +17,6 @@ if status is-interactive
     set --global --export fzf_fd_opts --hidden --no-ignore
     set --global --export fish_color_command blue
 
-    if test -d $PYENV_ROOT/bin
-        set -x PATH $PYENV_ROOT/bin $PATH
-    end
-    eval "$(pyenv init - fish)"
-
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
     bind \e, 'prevd && commandline --function repaint'

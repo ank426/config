@@ -20,6 +20,7 @@ hyprpaper
 swaylock
 brightnessctl
 mako
+hyprshot
 
 ttf-jetbrains-mono-nerd
 otf-font-awesome
