@@ -19,8 +19,8 @@ if status is-interactive
 
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
-    bind \e, 'prevd && commandline --function repaint'
-    bind \e. 'nextd && commandline --function repaint'
+    bind \e, 'commandline prevd && commandline --function execute'
+    bind \e. 'commandline nextd && commandline --function execute'
     bind \ec 'me_fzf cd'
     bind \ev 'me_fzf nvim'
 
