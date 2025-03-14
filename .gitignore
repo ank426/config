@@ -3,8 +3,8 @@
 !/README.*
 !/bin/
 !/bin/**
-!/.notes/
-!/.notes/**
+!/notes/
+!/notes/**
 
 !/batsignal
 !/wgetrc
