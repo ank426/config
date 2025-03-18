@@ -10,6 +10,7 @@ git init
 git remote add https://gitlab.com/Void426/etc.git
 rm environment hosts pacman.conf
 git pull --set-upstream origin master
+first time you do push, do -u (with specifying branch)
 
 visudo
 add 'Defaults insults' somewhere

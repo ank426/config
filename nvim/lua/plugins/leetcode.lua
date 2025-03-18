@@ -63,24 +63,29 @@ return {
         },
       },
       cpp = {
+        -- before = {
+        --   "// Includes:",
+        --   "// IWYU pragma: begin_keep",
+        --   "#include <iostream>",
+        --   "#include <algorithm>",
+        --   "#include <cmath>",
+        --   "#include <deque>",
+        --   "#include <list>",
+        --   "#include <map>",
+        --   "#include <queue>",
+        --   "#include <set>",
+        --   "#include <span>",
+        --   "#include <stack>",
+        --   "#include <string>",
+        --   "#include <tuple>",
+        --   "#include <vector>",
+        --   "// IWYU pragma: end_keep",
+        --   -- "using namespace std;",
+        -- },
         before = {
           "// Includes:",
-          "// IWYU pragma: begin_keep",
-          "#include <iostream>",
-          "#include <algorithm>",
-          "#include <cmath>",
-          "#include <deque>",
-          "#include <list>",
-          "#include <map>",
-          "#include <queue>",
-          "#include <set>",
-          "#include <span>",
-          "#include <stack>",
-          "#include <string>",
-          "#include <tuple>",
-          "#include <vector>",
-          "// IWYU pragma: end_keep",
-          -- "using namespace std;",
+          "#include <bits/stdc++.h>",
+          "using namespace std;",
         },
       },
     },
@@ -106,13 +111,19 @@ return {
     vim.keymap.set("n", "<leader>t", "<cmd>Leet test<cr>")
     vim.keymap.set("n", "<leader><cr>", "<cmd>Leet submit<cr>")
     vim.keymap.set("n", "<leader><leader>d", "<cmd>Leet daily<cr>")
-    vim.keymap.set("n", "<leader><leader>l", "<cmd>Leet list<cr>") -- optional args: status, difficulty (i think)
     vim.keymap.set("n", "<leader><leader>r", "<cmd>Leet random<cr>") -- optional args: status, difficulty, tags (i think)
     vim.keymap.set("n", "<leader><leader>t", "<cmd>Leet tabs<cr>")
     vim.keymap.set("n", "<leader><leader>y", "<cmd>Leet yank<cr>")
     vim.keymap.set("n", "<leader><leader>sn", "<cmd>Leet session create<cr>")
     vim.keymap.set("n", "<leader><leader>sc", "<cmd>Leet session change<cr>")
-    vim.keymap.set("n", "<leader><leader>su", "<cmd>Leet session update<r>")
+    vim.keymap.set("n", "<leader><leader>su", "<cmd>Leet session update<cr>")
+    vim.keymap.set("n", "<leader><leader>la", "<cmd>Leet list<cr>") -- optional args: status, difficulty (i think)
+    vim.keymap.set("n", "<leader><leader>le", "<cmd>Leet list difficulty=easy<cr>")
+    vim.keymap.set("n", "<leader><leader>lm", "<cmd>Leet list difficulty=medium<cr>")
+    vim.keymap.set("n", "<leader><leader>lh", "<cmd>Leet list difficulty=hard<cr>")
+    vim.keymap.set("n", "<leader><leader>e", "<cmd>Leet list difficulty=easy status=notac,todo<cr>")
+    vim.keymap.set("n", "<leader><leader>m", "<cmd>Leet list difficulty=medium status=notac,todo<cr>")
+    vim.keymap.set("n", "<leader><leader>h", "<cmd>Leet list difficulty=hard status=notac,todo<cr>")
   end,
 }
 

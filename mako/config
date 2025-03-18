@@ -5,5 +5,5 @@ border-size=1
 border-color=#FFFFFFBB
 border-radius=2
 text-alignment=center
-default-timeout=1000
+default-timeout=2000
 layer=overlay
