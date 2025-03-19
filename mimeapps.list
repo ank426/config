@@ -7,3 +7,5 @@ x-scheme-handler/about=floorp.desktop
 x-scheme-handler/unknown=floorp.desktop
 image/png=imv.desktop
 image/jpeg=imv.desktop
+image/jpg=imv.desktop
+text/plain=nvim.desktop
