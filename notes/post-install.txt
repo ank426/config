@@ -21,11 +21,14 @@ swaylock
 brightnessctl
 mako
 hyprshot
+
 xdg-desktop-portal-hyprland (for screen capture and other stuff https://wiki.archlinux.org/title/XDG_Desktop_Portal)
-install xdg-desktop-portal-termfilechooser
-systemctl --user start xdg-desktop-portal
-systemctl --user start xdg-desktop-portal-termfilechooser
-install xdg-utils and xdg-terminal-exec for default applications
+install xdg-desktop-portal-termfilechooser # see /usr/share/xdg-desktop-portal-termfilechooser/
+systemctl --user restart xdg-desktop-portal
+systemctl --user restart xdg-desktop-portal-termfilechooser
+both enabled by default i think
+
+install xdg-utils and xdg-terminal-exec for default applications # see /usr/share/applications/
 
 ttf-jetbrains-mono-nerd
 otf-font-awesome
