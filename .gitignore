@@ -11,6 +11,8 @@
 
 !/alacritty/
 !/alacritty/**
+!/bpython/
+!/bpython/**
 !/discord/
 !/discord/**
 !/epy/

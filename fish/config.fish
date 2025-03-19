@@ -1,3 +1,5 @@
+source $XDG_CONFIG_HOME/zsh/.zshenv
+
 if status is-interactive
     # tide prompt prints blank line on startup / clear screen (bug)
     # set tide layout to compact and do this to do manual sparse
