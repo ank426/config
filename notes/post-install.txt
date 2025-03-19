@@ -21,6 +21,11 @@ swaylock
 brightnessctl
 mako
 hyprshot
+xdg-desktop-portal-hyprland (for screen capture and other stuff https://wiki.archlinux.org/title/XDG_Desktop_Portal)
+install xdg-desktop-portal-termfilechooser
+systemctl --user start xdg-desktop-portal
+systemctl --user start xdg-desktop-portal-termfilechooser
+install xdg-utils and xdg-terminal-exec for default applications
 
 ttf-jetbrains-mono-nerd
 otf-font-awesome
@@ -37,5 +42,3 @@ weylus:
 sudo groupadd -r uinput
 sudo usermod -aG uinput $USER
 (check wiki if /etc/udev/rules.d/60-weylus.rules didn't work)
-
-install xdg-utils and xdg-terminal-exec for default applications

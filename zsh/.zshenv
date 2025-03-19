@@ -24,6 +24,10 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # export XDG_DATA_HOME="$HOME/.lcl/share"
 # export XDG_STATE_HOME="$HOME/.lcl/state"
 
+# https://wiki.archlinux.org/title/XDG_user_directories#Creating_custom_directories
+export XDG_DOCUMENTS_DIR="$HOME/doc"
+export XDG_DOWNLOAD_DIR="$HOME/dwn"
+export XDG_PICTURES_DIR="$HOME/pic"
 export XDG_VIDEOS_DIR="$HOME/vid"
 
 export ANDROID_USER_HOME="$XDG_DATA_HOME/android"

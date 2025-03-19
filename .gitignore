@@ -59,5 +59,9 @@
 !/systemd/**
 !/waybar/
 !/waybar/**
+!/xdg-desktop-portal/
+!/xdg-desktop-portal/**
+!/xdg-desktop-portal-termfilechooser/
+!/xdg-desktop-portal-termfilechooser/**
 !/zsh/
 !/zsh/**
