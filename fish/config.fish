@@ -53,7 +53,7 @@ if status is-interactive
     alias tldr='tldr --color always'
     alias tree='tree -aC --dirsfirst'
     # alias tree-git='tree -aC --dirsfirst --gitignore -I .git' # Doesn't seem to work
-    alias git-tree='git ls-tree -r --name-only HEAD | sort | tree --fromfile'
+    alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 
     alias arm="$XDG_CONFIG_HOME/bin/arm.sh"
     alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
