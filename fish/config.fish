@@ -52,7 +52,7 @@ if status is-interactive
     alias paru='paru --color=always'
     alias tldr='tldr --color always'
     alias tree='tree -aC --dirsfirst'
-    # alias tree-git='tree -aC --dirsfirst --gitignore -I .git'
+    # alias tree-git='tree -aC --dirsfirst --gitignore -I .git' # Doesn't seem to work
     alias git-tree='git ls-tree -r --name-only HEAD | sort | tree --fromfile'
 
     alias arm="$XDG_CONFIG_HOME/bin/arm.sh"
