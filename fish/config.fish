@@ -64,6 +64,3 @@ if status is-interactive
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
     alias R='R --no-save'
 end
-
-# uv
-fish_add_path "/home/ankit/.local/share/../bin"
