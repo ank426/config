@@ -37,3 +37,5 @@ weylus:
 sudo groupadd -r uinput
 sudo usermod -aG uinput $USER
 (check wiki if /etc/udev/rules.d/60-weylus.rules didn't work)
+
+install xdg-utils and xdg-terminal-exec for default applications
