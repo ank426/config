@@ -54,6 +54,9 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
 
+export TERMCMD='alacritty -e'
+export GDK_DEBUG=portals
+
 export LS_COLORS='di=01;34:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;33:cd=01;33:su=37;41:sg=30;43:tw=30;42:ow=34;42'
 export MANPAGER='less -IR --incsearch --use-color --color=d+g --color=uc'
 export MANROFFOPT='-P -c' # This sets grotty opts to disable in built color and use bold/underline instead. Noone knows why but it's necessary

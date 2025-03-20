@@ -1,4 +1,3 @@
 [filechooser]
 cmd=yazi-wrapper.sh
 default_dir=$XDG_DOWNLOAD_DIR
-env=TERMCMD=alacritty -e
