@@ -51,6 +51,10 @@
 !/nvim/**
 !/python/
 !/python/**
+!/qBittorrent/
+!/qBittorrent/**
+!/qbt/
+!/qbt/**
 !/ranger/
 !/ranger/**
 !/swaylock/

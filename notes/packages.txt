@@ -1,1 +1,5 @@
 dotnet-sdk-8.0 for csharp-ls
+
+glow for xdg-ninja
+
+ripgrep for telescope

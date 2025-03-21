@@ -1,0 +1,4 @@
+[qbittorrent]
+addr = "http://127.0.0.1:6776"
+login = "admin"
+password = "blahblah"
