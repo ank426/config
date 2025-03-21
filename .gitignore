@@ -52,7 +52,7 @@
 !/python/
 !/python/**
 !/qBittorrent/
-!/qBittorrent/**
+!/qBittorrent/qBittorrent.conf
 !/qbt/
 !/qbt/**
 !/ranger/
