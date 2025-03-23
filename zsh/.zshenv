@@ -62,7 +62,7 @@ export MANPAGER='less -IR --incsearch --use-color --color=d+g --color=uc'
 export MANROFFOPT='-P -c' # This sets grotty opts to disable in built color and use bold/underline instead. Noone knows why but it's necessary
 export UV_PYTHON_PREFERENCE=system
 
-export PATH="$XDG_DATA_HOME/../bin:$PATH"
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True # Fixes a weird pytorch error when lots of memory is reserved for pytorch but not available
 
 # Can't figure out what is using these so keep for now
 export CUDA_PATH=/opt/cuda
@@ -71,3 +71,5 @@ export NVCC_CCBIN='/usr/bin/g++-13'
 
 # Add .NET Core SDK tools
 export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
+
+export PATH="$XDG_DATA_HOME/../bin:$PATH"
