@@ -6,7 +6,7 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 install fd, fzf
 
 cp -r /etc{,.bak}
-git init
+git init -b main
 git remote add https://gitlab.com/Void426/etc.git
 rm environment hosts pacman.conf
 git pull --set-upstream origin master
