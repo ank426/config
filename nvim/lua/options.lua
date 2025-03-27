@@ -5,6 +5,7 @@ vim.opt.confirm = true
 vim.opt.completeopt:append("noselect")
 vim.opt.completeopt:append("fuzzy")
 vim.opt.expandtab = true
+vim.opt.exrc = true
 vim.opt.formatoptions:remove("o")
 -- vim.opt.guicursor:append("c:ver25") -- Done in autocommands
 vim.opt.ignorecase = true
