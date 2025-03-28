@@ -1,9 +1,0 @@
-(long) custom operator for gc in oil.nvim
-paste
-
-(mid-long) neoconf
-(given up) images in leetcode
-(long) wait till noice supports blink.cmp (i think it doesnt, not sure) and set it up
-
-number in help don't come with telescope c-v
-disable signcolumn in help
