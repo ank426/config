@@ -35,6 +35,7 @@ otf-font-awesome
 gnu-free-fonts
 ttf-arphic-uming
 ttf-indic-otf
+noto-font-cjk
 
 ethernet:
 install ifplugd
