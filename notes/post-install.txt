@@ -42,7 +42,9 @@ install ifplugd
 nmcli d
 sudo systemctl enable --now ifplugd@... (name of device) (might need .service idk)
 
-sudo systemctl enable systemd-resolved (for next-dns)
+sudo systemctl enable systemd-resolved (for dns)
+# it is using router dns first and only if not available then systemd-resolved
+# absolutely no idea how to make it use systemd-resolved only
 
 weylus:
 sudo groupadd -r uinput
