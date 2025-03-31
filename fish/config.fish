@@ -35,6 +35,8 @@ if status is-interactive
     abbr --add p paru
     abbr --add py python
     abbr --add ipy ipython
+    abbr --add s systemctl
+    abbr --add ss sudo systemctl
     abbr --add v nvim
 
     # abbr --add --set-cursor gca git commit -a
@@ -45,6 +47,7 @@ if status is-interactive
     alias grep='grep --color=always'
     alias ip='ip -color=always'
     alias info='info --vi-keys'
+    alias jq='jq -C'
     alias less='less --IGNORE-CASE --RAW-CONTROL-CHARS --incsearch --use-color'
     alias ls='LC_COLLATE=C command ls --almost-all --color --group-directories-first'
     alias ncdu='ncdu --color=dark'
