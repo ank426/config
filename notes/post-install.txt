@@ -42,7 +42,13 @@ install ifplugd
 nmcli d
 sudo systemctl enable --now ifplugd@... (name of device) (might need .service idk)
 
+sudo systemctl enable systemd-resolved (for next-dns)
+
 weylus:
 sudo groupadd -r uinput
 sudo usermod -aG uinput $USER
 (check wiki if /etc/udev/rules.d/60-weylus.rules didn't work)
+
+for tinygrad and other things that need it (pytorch might not)
+opencl-nvidia
+cuda

@@ -49,6 +49,7 @@ if status is-interactive
     alias ls='LC_COLLATE=C command ls --almost-all --color --group-directories-first'
     alias ncdu='ncdu --color=dark'
     alias pacman='pacman --color=always'
+    alias pactree='pactree --color'
     alias paru='paru --color=always'
     alias tldr='tldr --color always'
     alias tree='tree -aC --dirsfirst'

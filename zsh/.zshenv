@@ -72,4 +72,6 @@ export NVCC_CCBIN='/usr/bin/g++-13'
 # Add .NET Core SDK tools
 export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
 
+export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
+
 export PATH="$XDG_DATA_HOME/../bin:$PATH"
