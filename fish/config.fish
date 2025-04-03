@@ -83,6 +83,7 @@ if status is-interactive
     abbr --add gcnr git clone --recursive
     abbr --add gf git fetch
     abbr --add gfa git fetch --all
+    abbr --add gw git worktree
 
     alias diff='diff --color=always'
     alias fd='fd --color=always'
