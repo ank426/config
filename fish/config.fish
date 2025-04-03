@@ -84,6 +84,10 @@ if status is-interactive
     abbr --add gf git fetch
     abbr --add gfa git fetch --all
     abbr --add gw git worktree
+    abbr --add gcf git config
+    abbr --add gcfg git config --global
+    abbr --add gcfe git config edit
+    abbr --add gcfge git config --global edit
 
     alias diff='diff --color=always'
     alias fd='fd --color=always'
