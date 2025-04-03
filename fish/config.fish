@@ -49,8 +49,8 @@ if status is-interactive
     abbr --add gca. git commit -am .
     abbr --add --set-cursor gcm git commit -m \'%\'
     abbr --add --set-cursor gcam git commit -am \'%\'
-    abbr --add gg 'git add -A && git commit --allow-empty-message'
-    abbr --add ggp 'git add -A && git commit --allow-empty-message && git push'
+    abbr --add gg 'git add -A && git commit --allow-empty-message -m \'\''
+    abbr --add ggp 'git add -A && git commit --allow-empty-message -m \'\' && git push'
     abbr --add gp git pull
     abbr --add gP git push
     abbr --add gs git switch
@@ -77,6 +77,12 @@ if status is-interactive
     abbr --add grbi git rebase -i
     abbr --add gR git reset
     abbr --add gRh git reset HEAD~
+    abbr --add gcl git clean
+    abbr --add gcn git clone
+    abbr --add gcn1 git clone --depth 1
+    abbr --add gcnr git clone --recursive
+    abbr --add gf git fetch
+    abbr --add gfa git fetch --all
 
     alias diff='diff --color=always'
     alias fd='fd --color=always'
