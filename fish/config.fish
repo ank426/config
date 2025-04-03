@@ -88,6 +88,8 @@ if status is-interactive
     abbr --add gcfg git config --global
     abbr --add gcfe git config edit
     abbr --add gcfge git config --global edit
+    abbr --add gm git merge
+    abbr --add gsb git submodule
 
     alias diff='diff --color=always'
     alias fd='fd --color=always'
