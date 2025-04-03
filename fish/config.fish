@@ -39,8 +39,44 @@ if status is-interactive
     abbr --add ss sudo systemctl
     abbr --add v nvim
 
-    # abbr --add --set-cursor gca git commit -a
-    # abbr --add --set-cursor gcam git commit -am \'%\'
+    abbr --add g git
+    abbr --add gst git status
+    abbr --add ga git add
+    abbr --add gaa git add -A
+    abbr --add gc git commit
+    abbr --add gca git commit -a
+    abbr --add gc. git commit -m .
+    abbr --add gca. git commit -am .
+    abbr --add --set-cursor gcm git commit -m \'%\'
+    abbr --add --set-cursor gcam git commit -am \'%\'
+    abbr --add gg 'git add -A && git commit --allow-empty-message'
+    abbr --add ggp 'git add -A && git commit --allow-empty-message && git push'
+    abbr --add gp git pull
+    abbr --add gP git push
+    abbr --add gs git switch
+    abbr --add gsc git switch -c
+    abbr --add gd git diff
+    abbr --add gdh git diff HEAD
+    abbr --add gds git diff --staged
+    abbr --add gl git log
+    abbr --add glo git log --oneline
+    abbr --add gb git branch
+    abbr --add grm git rm
+    abbr --add grmc git rm --cached
+    abbr --add gr git restore
+    abbr --add gra git restore :/
+    abbr --add grw git restore --worktree
+    abbr --add grwa git restore --worktree :/
+    abbr --add grs git restore --staged
+    abbr --add grsa git restore --staged :/
+    abbr --add grws git restore --worktree --staged
+    abbr --add grwsa git restore --worktree --staged :/
+    abbr --add grv git revert
+    abbr --add grvh git revert HEAD
+    abbr --add grb git rebase
+    abbr --add grbi git rebase -i
+    abbr --add gR git reset
+    abbr --add gRh git reset HEAD~
 
     alias diff='diff --color=always'
     alias fd='fd --color=always'
