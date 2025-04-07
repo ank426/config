@@ -49,6 +49,8 @@ if status is-interactive
     abbr --add gca. git commit -am .
     abbr --add --set-cursor gcm git commit -m \'%\'
     abbr --add --set-cursor gcam git commit -am \'%\'
+    abbr --add gac 'git add -A && git commit'
+    abbr --add --set-cursor gacm 'git add -A && git commit -m \'%\''
     abbr --add gg 'git add -A && git commit --allow-empty-message -m \'\''
     abbr --add ggp 'git add -A && git commit --allow-empty-message -m \'\' && git push'
     abbr --add gp git pull
@@ -113,7 +115,7 @@ if status is-interactive
     alias wey='ip -4 -brief address && weylus --no-gui'
     alias weylus='weylus --auto-start --access-code $(head /dev/urandom | tr -cd A-Za-z0-9 | head -c 20)'
 
-    alias adb="HOME=$XDG_DATA_HOME/android adb"
+    alias adb="HOME=$XDG_DATA_HOME/android command adb"
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
     alias R='R --no-save'
 end

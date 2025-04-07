@@ -1,0 +1,5 @@
+# Prints to pdf
+loffice --convert-to 'pdf:writer_pdf_Export:{"ExportFormFields":false,"UseTaggedPDF":true,"ExportBookmarks":true,"SinglePageSheets":false}' *.pptx
+
+# Can't figure out how to repair automatically
+https://ask.libreoffice.org/t/repair-corrupted-file-from-command-line/110109
