@@ -12,7 +12,7 @@
     "DarkColorBG": 235,
     "LightColorFG": 238,
     "LightColorBG": 253,
-    "SeamlessBetweenChapters": true,
+    "SeamlessBetweenChapters": false,
     "PreferredTTSEngine": null,
     "TTSEngineArgs": []
   },
