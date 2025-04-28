@@ -2,7 +2,7 @@
   "Setting": {
     "DefaultViewer": "auto",
     "DictionaryClient": "auto",
-    "ShowProgressIndicator": true,
+    "ShowProgressIndicator": false,
     "PageScrollAnimation": false,
     "MouseSupport": true,
     "StartWithDoubleSpread": false,
