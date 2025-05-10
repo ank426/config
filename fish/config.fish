@@ -93,6 +93,9 @@ if status is-interactive
     abbr --add gm git merge
     abbr --add gsb git submodule
 
+    alias cp=advcp
+    alias mv=advmv
+
     alias diff='diff --color=always'
     alias fd='fd --color=always'
     alias grep='grep --color=always'

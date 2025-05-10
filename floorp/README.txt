@@ -13,6 +13,7 @@ make old user default again
 uBO:
     don't show num of blocked requests on icon
     betterfox filter list
+    https://github.com/gijsdev/ublock-hide-yt-shorts
 Video Speed:
     hide controller by default
     opacity = 0.5
