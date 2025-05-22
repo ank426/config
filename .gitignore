@@ -39,6 +39,8 @@
 !/mozilla/**
 !/mpv/
 !/mpv/**
+!/niri/
+!/niri/**
 !/npm/
 !/npm/**
 !/nfs/
