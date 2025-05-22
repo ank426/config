@@ -21,6 +21,7 @@ swaylock
 brightnessctl
 mako
 hyprshot
+iio-sensor-proxy
 
 xdg-desktop-portal-hyprland (for screen capture and other stuff https://wiki.archlinux.org/title/XDG_Desktop_Portal)
 install xdg-desktop-portal-termfilechooser # see /usr/share/xdg-desktop-portal-termfilechooser/

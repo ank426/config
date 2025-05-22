@@ -57,6 +57,8 @@ layout {
 
 spawn-at-startup "sh" "-c" "swaybg -i $XDG_CONFIG_HOME/hypr/wallpapers/calm-space-being/fill/999999.png"
 spawn-at-startup "waybar"
+spawn-at-startup "mako"
+spawn-at-startup "batsignal" "-b"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
@@ -133,8 +135,8 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/brightness-down.sh"; }
     XF86MonBrightnessUp   allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/brightness-up.sh"; }
 
-    XF86KbdBrightnessDown allow-when-locked=true { spawn "asusctl -p"; }
-    XF86KbdBrightnessUp   allow-when-locked=true { spawn "asusctl -n"; }
+    XF86KbdBrightnessDown allow-when-locked=true { spawn "asusctl" "-p"; }
+    XF86KbdBrightnessUp   allow-when-locked=true { spawn "asusctl" "-n"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-"; }
