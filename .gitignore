@@ -23,6 +23,8 @@
 !/fish/**
 !/floorp/
 !/floorp/**
+!/gammastep/
+!/gammastep/**
 !/git/
 !/git/**
 !/gtk-3.0/

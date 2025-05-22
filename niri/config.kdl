@@ -62,7 +62,7 @@ prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
 
 cursor {
-    hide-after-inactive-ms 1000
+    hide-after-inactive-ms 500
 }
 
 hotkey-overlay {
