@@ -105,7 +105,7 @@
     },
 
     "custom/backlight": {
-        "exec": "echo \"{\\\"percentage\\\": \"$($XDG_CONFIG_HOME/bin/get-exp-brightness-round-5.sh) \"}\"",
+        "exec": "echo \"{\\\"percentage\\\": \"$($XDG_CONFIG_HOME/bin/backlight.sh get) \"}\"",
         "return-type": "json",
         "interval": 1,
         "format": "{percentage}% {icon}",
@@ -113,7 +113,7 @@
     },
 
     "custom/gammastep": {
-        "exec": "cat $XDG_STATE_HOME/gammastep/brightness | awk '{print substr($0, 3, 1)}'",
+        "exec": "$XDG_CONFIG_HOME/bin/fake-backlight.sh g",
         "interval": 1,
         "format": "{}",
     },

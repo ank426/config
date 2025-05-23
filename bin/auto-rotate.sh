@@ -1,18 +1,18 @@
 #!/bin/sh
 
 monitor-sensor | while read line; do
-    case $line in
-        *orientation\ changed:\ normal)
-            hyprctl dispatch exec "hyprctl keyword monitor eDP-2,preferred,auto,auto,transform,0"
-            ;;
-        # *orientation\ changed:\ left-up)
-        #     hyprctl dispatch exec "hyprctl keyword monitor eDP-2,preferred,auto,auto,transform,1"
-        #     ;;
-        *orientation\ changed:\ bottom-up)
-            hyprctl dispatch exec "hyprctl keyword monitor eDP-2,preferred,auto,auto,transform,2"
-            ;;
-        # *orientation\ changed:\ right-up)
-        #     hyprctl dispatch exec "hyprctl keyword monitor eDP-2,preferred,auto,auto,transform,3"
-        #     ;;
-    esac
+	case $line in
+		'Accelerometer orientation changed: normal')
+			wlr-randr --output eDP-1 --transform normal
+			;;
+		'Accelerometer orientation changed: left-up')
+			wlr-randr --output eDP-1 --transform 90
+			;;
+		'Accelerometer orientation changed: bottom-up')
+			wlr-randr --output eDP-1 --transform 180
+			;;
+		'Accelerometer orientation changed: right-up')
+			wlr-randr --output eDP-1 --transform 270
+			;;
+	esac
 done

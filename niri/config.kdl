@@ -57,6 +57,7 @@ spawn-at-startup "sh" "-c" "swaybg -i $XDG_CONFIG_HOME/hypr/wallpapers/calm-spac
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "batsignal" "-b"
+spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
@@ -130,8 +131,10 @@ binds {
     Mod+Shift+8 { move-window-to-workspace 8; }
     Mod+Shift+9 { move-window-to-workspace 9; }
 
-    XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/brightness-down.sh"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/brightness-up.sh"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/backlight.sh down"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/backlight.sh up"; }
+    Alt+XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/fake-backlight.sh set -10"; }
+    Alt+XF86MonBrightnessUp   allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/fake-backlight.sh set +10"; }
 
     XF86KbdBrightnessDown allow-when-locked=true { spawn "asusctl" "-p"; }
     XF86KbdBrightnessUp   allow-when-locked=true { spawn "asusctl" "-n"; }
