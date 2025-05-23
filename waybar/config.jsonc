@@ -3,12 +3,13 @@
     // "margin": "0 0",
 
     "modules-left": [
+        "niri/workspaces",
         "hyprland/workspaces",
         "hyprland/submap",
         "privacy",
     ],
 
-    "modules-center": ["hyprland/window"],
+    "modules-center": ["niri/window", "hyprland/window"],
 
     "modules-right": [
         "pulseaudio",
