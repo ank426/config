@@ -53,7 +53,7 @@ layout {
     }
 }
 
-spawn-at-startup "sh" "-c" "swaybg -i $XDG_CONFIG_HOME/hypr/wallpapers/calm-space-being/fill/999999.png"
+spawn-at-startup "sh" "-c" "swaybg -i $XDG_PICTURES_DIR/wallpapers/calm-space-being/fill/999999.png"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "batsignal" "-b"
