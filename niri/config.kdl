@@ -56,7 +56,7 @@ layout {
 spawn-at-startup "sh" "-c" "swaybg -i $XDG_PICTURES_DIR/wallpapers/calm-space-being/fill/999999.png"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "batsignal" "-b"
+spawn-at-startup "batsignal"
 spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
 
 prefer-no-csd
