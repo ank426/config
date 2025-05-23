@@ -1,6 +1,7 @@
 #!/bin/sh
 
-[ -f /tmp/fbl ] && fbl=$(cat /tmp/fbl) || fbl=100
+state_path=/tmp/fake-backlight
+[ -f $state_path ] && fbl=$(cat $state_path) || fbl=100
 
 case $1 in
 	get)
@@ -13,13 +14,13 @@ case $1 in
 		pgrep -x gammastep > /dev/null && killall gammastep
 		fbl=$(($fbl + $2))
 		if [ $fbl -ge 100 ]; then
-			[ ! -f /tmp/fbl ] || rm /tmp/fbl
+			[ ! -f $state_path ] || rm $state_path
 		else
 			[ $fbl -lt 10 ] && fbl=10
 			# idk why both -o and & are needed but they are
 			# also -P doesn't seem to work
 			gammastep -o -b "0.$fbl" &
-			echo $fbl > /tmp/fbl
+			echo $fbl > $state_path
 		fi
 		;;
 	*)
