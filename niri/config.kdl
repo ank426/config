@@ -20,7 +20,6 @@ output "eDP-1" {
     mode "2560x1600@60.000"
     scale 1.6
     // variable-refresh-rate // on-demand=true
-    background-color "#000000"
 }
 
 layout {
@@ -51,6 +50,8 @@ layout {
     insert-hint {
         off
     }
+
+    background-color "#000000"
 }
 
 spawn-at-startup "sh" "-c" "swaybg -i $XDG_PICTURES_DIR/wallpapers/calm-space-being/fill/999999.png"
@@ -72,12 +73,22 @@ cursor {
     hide-after-inactive-ms 500
 }
 
+overview {
+    backdrop-color "#000000"
+}
+
 hotkey-overlay {
     skip-at-startup
 }
 
 animations {
     off
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }
 
 debug {
@@ -96,6 +107,8 @@ binds {
 
     Mod+X { spawn "swaylock"; }
     Mod+Z allow-when-locked=true { spawn "systemctl" "suspend"; }
+
+    Mod+O repeat=false { toggle-overview; }
 
     Mod+P { screenshot-screen; }
     Mod+Alt+P { screenshot-window; }

@@ -71,6 +71,23 @@
       },
     },
 
+    "niri/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "rewrite": {
+        "(.*) — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - ArchWiki — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - Searx.* — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - PrivAU — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) - Youtube — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "(.*) (\\| Proton Mail|- Gmail) — (Ablaze Floorp|Mozilla Firefox)": "  $1",
+        "• Discord \\| (.*)": "  $1",
+        "(.*)(Ablaze Floorp|Mozilla Firefox) Private Browsing": "󰗹 ",
+        "(.*) - Brave": "  $1", // 🌎
+        "(.*) - mpv": "  $1",
+      },
+    },
+
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon}  {format_source}",
