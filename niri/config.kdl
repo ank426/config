@@ -74,6 +74,7 @@ cursor {
 }
 
 overview {
+    zoom 0.25
     backdrop-color "#000000"
 }
 
