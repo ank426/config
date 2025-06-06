@@ -109,6 +109,7 @@ binds {
     Mod+X { spawn "swaylock"; }
     Mod+Z allow-when-locked=true { spawn "systemctl" "suspend"; }
 
+    Mod+S repeat=false { spawn "eww" "open" "--toggle" "status"; }
     Mod+O repeat=false { toggle-overview; }
 
     Mod+P { screenshot-screen; }
