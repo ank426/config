@@ -60,6 +60,7 @@ spawn-at-startup "mako"
 spawn-at-startup "batsignal"
 spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "eww" "daemon"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
@@ -109,7 +110,7 @@ binds {
     Mod+X { spawn "swaylock"; }
     Mod+Z allow-when-locked=true { spawn "systemctl" "suspend"; }
 
-    Mod+S repeat=false { spawn "eww" "open" "--toggle" "status"; }
+    Mod+S repeat=false { spawn "sh" "-c" "eww open-many --toggle $(cat $XDG_CONFIG_HOME/eww/status.txt)"; }
     Mod+O repeat=false { toggle-overview; }
 
     Mod+P { screenshot-screen; }

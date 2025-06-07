@@ -17,6 +17,8 @@
 !/bpython/**
 !/epy/
 !/epy/**
+!/eww/
+!/eww/**
 !/fastfetch/
 !/fastfetch/**
 !/fish/
