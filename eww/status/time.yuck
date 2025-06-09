@@ -1,0 +1,57 @@
+(defpoll time
+  :interval "100ms"
+  `date '+%l:%M:%S'`
+)
+
+(defpoll period
+  :interval "100ms"
+  `date '+%p'`
+)
+
+(defpoll date
+  :interval "100ms"
+  `date '+%A, %B %e' | sed 's/  / /'`
+)
+
+(defwindow time
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry
+    :width "25%"
+    :height "50%"
+    :anchor "center"
+  )
+  (box
+    :orientation "v"
+    :valign "center"
+    :space-evenly false
+    :style `
+      border: 0.02em solid white;
+      border-radius: 0.25em;
+      padding: 0.2em;
+    `
+    (box
+      :orientation "h"
+      :halign "center"
+      :space-evenly false
+      (label
+        :text "  "
+        :unindent false
+        :style "font-size: 0.25em"
+      )
+      (label
+        :text time
+        :style "font-size: 0.5em"
+      )
+      (label
+        :text period
+        :yalign 0.8
+        :style "font-size: 0.25em"
+      )
+    )
+    (label
+      :text date
+      :style "font-size: 0.3em;"
+    )
+  )
+)

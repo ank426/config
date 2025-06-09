@@ -110,7 +110,7 @@ binds {
     Mod+X { spawn "swaylock"; }
     Mod+Z allow-when-locked=true { spawn "systemctl" "suspend"; }
 
-    Mod+S { spawn "sh" "-c" "eww open-many --toggle $(cat $XDG_CONFIG_HOME/eww/status.txt)"; }
+    Mod+S { spawn "sh" "-c" "eww open-many --toggle $(cat $XDG_CONFIG_HOME/eww/status/windows)"; }
     Mod+O { toggle-overview; }
 
     Mod+P { screenshot-screen; }
