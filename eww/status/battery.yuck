@@ -1,0 +1,14 @@
+(defwindow battery
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry
+    :width "50%"
+    :height "50%"
+    :anchor "center"
+  )
+  (label
+    ;; :text {EWW_BATTERY.BAT0}
+    :text EWW_BATTERY
+    :style "font-size: 0.2em"
+  )
+)

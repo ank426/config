@@ -1,23 +1,8 @@
-(defpoll time
-  :interval "100ms"
-  `date '+%l:%M:%S'`
-)
-
-(defpoll period
-  :interval "100ms"
-  `date '+%p'`
-)
-
-(defpoll date
-  :interval "100ms"
-  `date '+%A, %B %e' | sed 's/  / /'`
-)
-
 (defwindow time
   :monitor 0
   :stacking "overlay"
   :geometry (geometry
-    :width "25%"
+    :width "30%"
     :height "50%"
     :anchor "center"
   )
@@ -26,9 +11,9 @@
     :valign "center"
     :space-evenly false
     :style `
-      border: 0.02em solid white;
-      border-radius: 0.25em;
-      padding: 0.2em;
+      border: 0.04em solid white;
+      border-radius: 0.5em;
+      padding: 0.3em;
     `
     (box
       :orientation "h"
@@ -37,21 +22,21 @@
       (label
         :text "  "
         :unindent false
-        :style "font-size: 0.25em"
-      )
-      (label
-        :text time
         :style "font-size: 0.5em"
       )
       (label
-        :text period
+        :text { formattime(EWW_TIME, "%-I:%M:%S") }
+        :style "font-size: 1em"
+      )
+      (label
+        :text { formattime(EWW_TIME, "%p") }
         :yalign 0.8
-        :style "font-size: 0.25em"
+        :style "font-size: 0.5em"
       )
     )
     (label
-      :text date
-      :style "font-size: 0.3em;"
+      :text { formattime(EWW_TIME, "%A, %B %-d") }
+      :style "font-size: 0.6em;"
     )
   )
 )

@@ -1,0 +1,5 @@
+dim
+time
+# battery
+
+# vim: commentstring=#\ %s
