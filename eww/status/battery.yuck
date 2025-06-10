@@ -1,14 +1,65 @@
+(defpoll profile
+  :interval "1s"
+  `asusctl profile -p | awk 'END{print $NF}'` ;; for cross-compatibility use powerprofilesctl get
+)
+
+(defpoll time_till
+  :interval "1s"
+  "$XDG_CONFIG_HOME/eww/status/time_till.sh"
+)
+
 (defwindow battery
   :monitor 0
   :stacking "overlay"
   :geometry (geometry
-    :width "50%"
-    :height "50%"
+    :width "27%"
+    :height "20%"
     :anchor "center"
   )
-  (label
-    ;; :text {EWW_BATTERY.BAT0}
-    :text EWW_BATTERY
-    :style "font-size: 0.2em"
+  (box
+    :orientation "v"
+    :valign "center"
+    :space-evenly false
+    :style `
+      border: 0.04em solid white;
+      border-radius: 0.5em;
+      padding: 0.3em;
+    `
+    (box
+      :halign "center"
+      :space-evenly false
+      (label
+        :text {
+          EWW_BATTERY.BAT0.capacity + "% " + (
+            EWW_BATTERY.BAT0.capacity <= 20 ? "" :
+            EWW_BATTERY.BAT0.capacity <= 40 ? "" :
+            EWW_BATTERY.BAT0.capacity <= 60 ? "" :
+            EWW_BATTERY.BAT0.capacity <= 80 ? "" :
+            ""
+          ) + " " + (
+            EWW_BATTERY.BAT0.status == "Charging" ? "" :
+            EWW_BATTERY.BAT0.status == "Not Charging" ? "" :
+            EWW_BATTERY.BAT0.status == "Discharging" ? " " :
+            EWW_BATTERY.BAT0.status
+          )
+        }
+      )
+      (label
+        :text {
+          " " + (
+            profile == "Quiet" ? "" :
+            profile == "Balanced" ? "" :
+            profile == "Performance" ? "" :
+            " "
+          )
+        }
+        :unindent false
+        :style "font-size: 0.8em"
+      )
+    )
+    (label
+      :text time_till
+      :style "font-size: 0.35em"
+    )
   )
 )

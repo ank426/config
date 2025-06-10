@@ -16,7 +16,6 @@
       padding: 0.3em;
     `
     (box
-      :orientation "h"
       :halign "center"
       :space-evenly false
       (label

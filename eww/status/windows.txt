@@ -1,5 +1,5 @@
 dim
-time
-# battery
+# time
+battery
 
 # vim: commentstring=#\ %s
