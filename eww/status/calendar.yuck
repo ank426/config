@@ -1,0 +1,38 @@
+(defwindow calendar
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry
+    :width "25%"
+    :height "25%"
+    :anchor "center"
+  )
+  (calendar
+    :css `
+      calendar {
+        font-size: 0.4em;
+        border: 0.1em solid white;
+        border-radius: 1.3em;
+        &.button {
+          color: grey;
+        }
+        &:selected {
+          background-color: rgba(255, 255, 255, 0.3);
+          border-radius: 1em;
+        }
+        &.header {
+          border: none;
+        }
+        &:indeterminate {
+          color: grey
+        }
+      }
+    `
+  )
+)
+
+;; The css nodes that I've found so far are:
+;; .button
+;; :selected
+;; .header
+;; .highlight
+;; :indeterminate

@@ -1,11 +1,11 @@
 (defpoll profile
   :interval "1s"
-  `asusctl profile -p | awk 'END{print $NF}'` ;; for cross-compatibility use powerprofilesctl get
+  `asusctl profile -p | awk 'END{print $NF}'` ;; for cross-compatibility use `powerprofilesctl get`
 )
 
 (defpoll time_till
   :interval "1s"
-  "$XDG_CONFIG_HOME/eww/status/time_till.sh"
+  `$XDG_CONFIG_HOME/eww/status/time_till.sh`
 )
 
 (defwindow battery
@@ -39,7 +39,7 @@
           ) + " " + (
             EWW_BATTERY.BAT0.status == "Charging" ? "" :
             EWW_BATTERY.BAT0.status == "Not Charging" ? "" :
-            EWW_BATTERY.BAT0.status == "Discharging" ? " " :
+            EWW_BATTERY.BAT0.status == "Discharging" ? "" :
             EWW_BATTERY.BAT0.status
           )
         }
@@ -50,7 +50,7 @@
             profile == "Quiet" ? "" :
             profile == "Balanced" ? "" :
             profile == "Performance" ? "" :
-            " "
+            profile
           )
         }
         :unindent false

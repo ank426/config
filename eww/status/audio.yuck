@@ -1,0 +1,57 @@
+(defpoll volume
+  :interval "100ms"
+  `wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}' | sed 's/\\.//'`
+)
+
+(defpoll mute
+  :interval "100ms"
+  `[ $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | wc -w) -eq 3 ] && echo true || echo false`
+)
+
+(defpoll mic-volume
+  :interval "100ms"
+  `wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | awk '{print $2}' | sed 's/\\.//'`
+)
+
+(defpoll mic-mute
+  :interval "100ms"
+  `[ $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | wc -w) -eq 3 ] && echo true || echo false`
+)
+
+(defwindow audio
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry
+    :width "30%"
+    :height "20%"
+    :anchor "center"
+  )
+  (box
+    :style `
+      border: 0.04em solid white;
+      border-radius: 0.5em;
+      padding: 0.3em;
+    `
+    (circular-progress
+      :value volume
+      :start-at 75
+      :thickness 10
+      :clockwise false
+      :style "background-color: dimgrey"
+      {
+        mute ? "" :
+        volume <= 33 ? " " :
+        volume < 66 ? " " :
+        " "
+      }
+    )
+    (circular-progress
+      :value mic-volume
+      :start-at 75
+      :thickness 10
+      :clockwise false
+      :style "background-color: dimgrey"
+      { mic-mute ? " " : "" }
+    )
+  )
+)

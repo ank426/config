@@ -1,0 +1,21 @@
+(defpoll ws
+  :interval "1s"
+  `niri msg workspaces`
+)
+
+(defwindow niri_ws
+  :monitor 0
+  :stacking "overlay"
+  :geometry (geometry
+    :width "5%"
+    :height "30%"
+    :anchor "center"
+  )
+  (box
+    :style `
+      border: 0.04em solid white;
+      border-radius: 0.5em;
+      padding: 0.3em;
+    `
+  )
+)
