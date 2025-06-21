@@ -55,3 +55,7 @@ sudo usermod -aG uinput $USER
 for tinygrad and other things that need it (pytorch might not)
 opencl-nvidia
 cuda
+
+qt:
+sudo pacman -S qt5-wayland qt6-wayland
+paru -S adwaita-qt5-git adwaita-qt6-git
