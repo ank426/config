@@ -29,5 +29,5 @@ fi
 
 sh -c "$termcmd sh -c \"$cmd\""
 
-# firefox
-(sleep 1 && [ -d ~/Downloads ] && [ -z "$(ls -A ~/Downloads)" ] && rmdir ~/Downloads) &
+# # firefox
+# (sleep 1 && [ -d ~/Downloads ] && [ -z "$(ls -A ~/Downloads)" ] && rmdir ~/Downloads) &
