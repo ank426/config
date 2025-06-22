@@ -61,6 +61,7 @@ spawn-at-startup "batsignal"
 spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "eww" "daemon"
+spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/rmdir-Downloads.sh"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
@@ -86,6 +87,20 @@ overview {
 
 hotkey-overlay {
     skip-at-startup
+}
+
+window-rule {
+    match app-id="XEyes" title="xeyes"
+    open-floating true
+    open-focused true
+}
+
+window-rule {
+    match app-id="Pinentry-gtk"
+    open-floating true
+    open-focused true
+    clip-to-geometry true
+    geometry-corner-radius 20
 }
 
 animations {
