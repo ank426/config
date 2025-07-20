@@ -128,8 +128,8 @@ binds {
 
     Mod+B { spawn "firefox"; }
     Mod+Shift+B { spawn "firefox" "--private-window"; }
-    Mod+Alt+B { spawn "floorp" "-P" "default"; }
-    Mod+Shift+Alt+B { spawn "floorp" "-P" "default" "--private-window"; }
+    Mod+Alt+B { spawn "firefox" "-P" "default"; }
+    Mod+Shift+Alt+B { spawn "firefox" "-P" "default" "--private-window"; }
 
     Mod+S { spawn "sh" "-c" "eww open-many --toggle dim $(find $XDG_CONFIG_HOME/eww/status/ -name '*.yuck' -exec basename {} .yuck \\;)"; }
     Mod+Shift+S { spawn "eww" "close-all"; }
