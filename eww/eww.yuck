@@ -5,8 +5,8 @@
   (box :style "background: rgba(0, 0, 0, 0.5)")
 )
 
-;; (include "status/time.yuck")
+(include "status/time.yuck")
 ;; (include "status/battery.yuck")
 ;; (include "status/niri_ws.yuck")
 ;; (include "status/calendar.yuck")
-(include "status/audio.yuck")
+;; (include "status/audio.yuck")

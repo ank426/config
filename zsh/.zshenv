@@ -74,4 +74,6 @@ export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
 
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 
+export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
+
 export PATH="$XDG_DATA_HOME/../bin:$PATH"

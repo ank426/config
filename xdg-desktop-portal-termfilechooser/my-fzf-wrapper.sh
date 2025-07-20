@@ -18,13 +18,13 @@ if [ "$save" = "1" ]; then
     cmd="dialog --yesno \"Save to \"$path\"?\" 0 0 && ( printf '%s' \"$path\" > $out ) || ( printf '%s' 'Input path to write to: ' && read input && printf '%s' \"\$input\" > $out)"
 elif [ "$directory" = "1" ]; then
     # upload files from a directory
-    cmd="fd -a --base-directory=$HOME -td | fzf +m --prompt 'Select directory > ' > $out"
+    cmd="fd -u -a --base-directory=$HOME -td | fzf +m --prompt 'Select directory > ' > $out"
 elif [ "$multiple" = "1" ]; then
     # upload multiple files
-    cmd="fd -a --base-directory=$HOME | fzf -m --prompt 'Select files > ' > $out"
+    cmd="fd -u -a --base-directory=$HOME | fzf -m --prompt 'Select files > ' > $out"
 else
     # upload only 1 file
-    cmd="fd -a --base-directory=$HOME | fzf +m --prompt 'Select file > ' > $out"
+    cmd="fd -u -a --base-directory=$HOME | fzf +m --prompt 'Select file > ' > $out"
 fi
 
 sh -c "$termcmd sh -c \"$cmd\""

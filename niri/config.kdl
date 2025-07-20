@@ -5,11 +5,12 @@ input {
     }
 
     touchpad {
-       tap
-       dwt
-       drag-lock
-       natural-scroll
-       middle-emulation
+        // off
+        tap
+        dwt
+        drag-lock
+        natural-scroll
+        middle-emulation
     }
 
     warp-mouse-to-focus
