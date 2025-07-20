@@ -1,6 +1,8 @@
 /Crash\ Reports
 /Pending\ Pings
 
+/default/
+
 /main/*
 !/main/user.js
 !/main/chrome/
