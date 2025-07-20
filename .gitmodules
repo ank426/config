@@ -2,3 +2,7 @@
 	path = nvim
 	url = git@github.com:ank426/nvim.git
 	branch = main
+[submodule "mozilla/firefox/main/chrome"]
+	path = mozilla/firefox/main/chrome
+	url = git@github.com:ank426/Firefox-UI-Fix.git
+	branch = master

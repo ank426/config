@@ -2,6 +2,7 @@ paru -S floorp-bin
 ln -s .config/floorp .floorp
 
 fix toolbar
+set titlebar to on
 change download dir in about:preferences#downloads
 change fonts to make all jetbrains mono nerd font
 
