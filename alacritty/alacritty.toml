@@ -1,5 +1,5 @@
 [general]
-import = ["kanagawa-dragon.toml"]
+import = ["kanagawa-wave.toml"]
 
 [window]
 opacity = 0.7

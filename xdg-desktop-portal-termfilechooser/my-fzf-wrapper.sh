@@ -15,7 +15,8 @@ termcmd="${TERMCMD:-kitty --title 'termfilechooser'}"
 
 if [ "$save" = "1" ]; then
     # save a file
-    cmd="dialog --yesno \"Save to \"$path\"?\" 0 0 && ( printf '%s' \"$path\" > $out ) || ( printf '%s' 'Input path to write to: ' && read input && printf '%s' \"\$input\" > $out)"
+    cmd="echo $XDG_DOWNLOAD_DIR/\$(basename \"$path\") > $out && $EDITOR $out"
+    # cmd="dialog --yesno \"Save to \"$path\"?\" 0 0 && ( printf '%s' \"$path\" > $out ) || ( printf '%s' 'Input path to write to: ' && read input && printf '%s' \"\$input\" > $out)"
 elif [ "$directory" = "1" ]; then
     # upload files from a directory
     cmd="fd -u -a --base-directory=$HOME -td | fzf +m --prompt 'Select directory > ' > $out"

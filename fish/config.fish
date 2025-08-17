@@ -1,7 +1,7 @@
 source $XDG_CONFIG_HOME/zsh/.zshenv
 
 if status is-interactive
-    source $XDG_CONFIG_HOME/fish/themes/kanagawa.fish
+    # source $XDG_CONFIG_HOME/fish/themes/kanagawa.fish
 
     # tide prompt prints blank line on startup / clear screen (bug)
     # set tide layout to compact and do this to do manual sparse
@@ -19,7 +19,7 @@ if status is-interactive
     set --global --export SHELL /usr/bin/fish
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
-    # set --global --export fish_color_command blue
+    set --global --export fish_color_command blue
 
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
