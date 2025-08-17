@@ -1,6 +1,8 @@
 source $XDG_CONFIG_HOME/zsh/.zshenv
 
 if status is-interactive
+    source $XDG_CONFIG_HOME/fish/themes/kanagawa.fish
+
     # tide prompt prints blank line on startup / clear screen (bug)
     # set tide layout to compact and do this to do manual sparse
     set first_line true
@@ -17,7 +19,7 @@ if status is-interactive
     set --global --export SHELL /usr/bin/fish
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
-    set --global --export fish_color_command blue
+    # set --global --export fish_color_command blue
 
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
@@ -108,6 +110,7 @@ if status is-interactive
     alias pacman='pacman --color=always'
     alias pactree='pactree --color'
     alias paru='paru --color=always'
+    alias rg='rg --color=always'
     alias tldr='tldr --color always'
     alias tree='tree -aC --dirsfirst'
     alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
@@ -123,4 +126,6 @@ if status is-interactive
     alias adb="HOME=$XDG_DATA_HOME/android command adb"
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
     alias R='R --no-save'
+
+    alias ttyper-quote="curl -s https://quotes-api-self.vercel.app/quote | jq -r '.quote' | sed 's/’/\'/g' | tr ' –' '\n-' | ttyper -"
 end

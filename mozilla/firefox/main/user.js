@@ -269,7 +269,7 @@ user_pref("mousewheel.default.delta_multiplier_y", 300); // 250-400; adjust this
 
 
 /****************************************************************************
- * BEGIN: LEPTON
+ * BEGIN: LEPTON                                                            *
 ****************************************************************************/
 
 // ** Theme Default Options ****************************************************
@@ -435,7 +435,7 @@ user_pref("userChrome.hidden.urlbar_iconbox",               true);
 // user_pref("userChrome.tabbar.on_bottom.menubar_on_top",     true); // Need on_bottom
 // user_pref("userChrome.tabbar.on_bottom.hidden_single_tab",  true); // Need on_bottom
 user_pref("userChrome.tabbar.one_liner",                    true);
-// user_pref("userChrome.tabbar.one_liner.combine_navbar",     false); // Need one_liner
+// user_pref("userChrome.tabbar.one_liner.combine_navbar",     true); // Need one_liner
 // user_pref("userChrome.tabbar.one_liner.tabbar_first",       true); // Need one_liner
 user_pref("userChrome.tabbar.one_liner.responsive",         true); // Need one_liner
 
@@ -478,7 +478,7 @@ user_pref("userChrome.tabbar.one_liner.responsive",         true); // Need one_l
 // -- User Content -------------------------------------------------------------
 // user_pref("userContent.player.ui.twoline",                  true);
 
-// user_pref("userContent.newTab.hidden_logo",                 false);
+// user_pref("userContent.newTab.hidden_logo",                 true);
 // user_pref("userContent.newTab.background_image",            true); // Need wallpaper image to `userContent.css`. :root { --uc-newTab-wallpaper: url("../icons/background_image.png"); }
 
 user_pref("userContent.page.proton_color.dark_blue_accent", true);
@@ -557,23 +557,32 @@ user_pref("userContent.page.dark_mode",        true); // Need proton_color
 user_pref("userContent.page.proton",           true); // Need proton_color
 
 /****************************************************************************
- * END: LEPTON
+ * END: LEPTON                                                              *
 ****************************************************************************/
 
 
+user_pref("accessibility.monoaudio.enable", true);
 user_pref("browser.aboutwelcome.enabled", false);
-user_pref("layout.css.visited_links_enabled", false);
-user_pref("pdfjs.defaultZoomValue", "page-width");
-user_pref("browser.tabs.warnOnClose", true);
-user_pref("browser.startup.page", 3); // Resume previous browser session
 user_pref("browser.download.dir", "/home/ankit/dwn"); // had to set manually for some reason
 user_pref("browser.download.useDownloadDir", true);
+user_pref("browser.startup.page", 3); // Resume previous browser session
+user_pref("browser.tabs.warnOnClose", true);
 user_pref("browser.toolbars.bookmarks.visibility", "never");
+user_pref("devtools.chrome.enabled", true);
+user_pref("devtools.debugger.remote-enabled", true);
 user_pref("font.name.monospace.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans-serif.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans.x-western", "JetBrainsMono Nerd Font");
-user_pref("accessibility.monoaudio.enable", true);
+user_pref("layout.css.visited_links_enabled", false);
 user_pref("media.hardwaremediakeys.enabled", false); // prevents temp thumbnail from coming into firefox-mpris directory
+user_pref("pdfjs.defaultZoomValue", "page-width");
 user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
-user_pref("devtools.chrome.enabled", true);
-user_pref("devtools.debugger.remote-enabled", true);
+
+// can cause issues but supposed to be worth it
+// https://superuser.com/questions/1610744/how-do-i-get-around-resistfingerprinting-setting-my-preferred-firefox-theme-to-l
+// https://searchfox.org/mozilla-central/source/toolkit/components/resistfingerprinting/RFPTargets.inc
+user_pref("privacy.fingerprintingProtection", true); // using this instead of resistFingerprinting for customization
+user_pref("privacy.fingerprintingProtection.pbmode", true);
+user_pref("privacy.fingerprintingProtection.overrides", "+AllTargets,-CSSPrefersColorScheme,-JSDateTimeUTC");
+// https://coveryourtracks.eff.org/ // seems to make sense
+// https://amiunique.org/fingerprint // always gives unique, so idk
