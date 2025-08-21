@@ -22,6 +22,7 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/fzfrc"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export KERAS_HOME="$XDG_STATE_HOME/keras"
@@ -57,6 +58,7 @@ export SUDO_EDITOR=nvim
 export TERMCMD='alacritty -e'
 export GDK_DEBUG=portals
 
+export FZF_DEFAULT_COMMAND='bfs -color'
 export LS_COLORS='di=01;34:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;33:cd=01;33:su=37;41:sg=30;43:tw=30;42:ow=34;42'
 export MANPAGER='less -IR --incsearch --use-color --color=d+g --color=uc'
 export MANROFFOPT='-P -c' # This sets grotty opts to disable in built color and use bold/underline instead. Noone knows why but it's necessary

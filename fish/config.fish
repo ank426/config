@@ -1,7 +1,84 @@
+function _fzf_run
+    fzf $argv[2..] | read --local op
+    commandline --function repaint # fzf bug so needed when height specified in fzf in script
+    if test -n "$op"
+        commandline "$argv[1] '$op'"
+        commandline --function execute
+    end
+end
+
+function _fzf_ins
+    fzf $argv | read --local op
+    commandline --function repaint
+    if test -n "$op"
+        commandline --insert "'$op'"
+    end
+end
+
+function _fzf_var_preview
+    for row in (set --show $argv[1])
+        if set --local op (string match --groups-only --regex "\\\$$argv[1](\[[1-9][0-9]*\]): \|(.*)\|" $row)
+            echo -e "$op[1] \033[34m$op[2]\033[0m"
+        else if set --local op (string match --groups-only --regex "\\\$$argv[1]: (.*)" $row)
+            echo -e "\033[32m$op\033[0m"
+        else
+            echo $row
+        end
+    end
+end
+
+# TODO: Batch Processing (makes it much faster)
+function _colorize_history
+    while read --null --local entry
+        printf "\e[90m$(string sub --length 17 $entry)\e[0m"
+        set --local prefix "\e[90m               │ "
+
+        set --local str (string sub --start 18 $entry | fish_indent --ansi | sed -z 's/\n\([^\n]*\)$/\1/' | string collect)
+        set --local in_esc false
+        set --local color \e'[0m'
+        for c in (string split -- '' $str)
+            if test $c = \e
+                set in_esc true
+                set color \e
+            else if test $in_esc = true
+                set color "$color$c"
+                if test $c = 'm'
+                    set in_esc false
+                end
+            end
+            printf '%s' $c
+            if test $c = \n
+                printf "$prefix$color"
+            end
+        end
+
+        printf '\0'
+        or break # pipe is broken
+    end
+end
+
+function _fzf_history
+    if test -z "$fish_private_mode"
+        history merge # merges changes from other fish sessions
+    end
+    set --local op (
+        history --null --show-time="%m-%d %H:%M:%S │ " |
+        _colorize_history |
+        # while read --null --local entry
+        #     printf '%s\0' (echo $entry | fish_indent --ansi)
+        #     # or break
+        # end |
+        fzf --scheme=history --read0 --preview='' --query=(commandline) |
+        sed 's/^[^│]* │ *//'
+    )
+    commandline --function repaint
+    commandline --replace $op
+end
+
 source $XDG_CONFIG_HOME/zsh/.zshenv
 
 if status is-interactive
-    # source $XDG_CONFIG_HOME/fish/themes/kanagawa.fish
+    source $XDG_CONFIG_HOME/fish/themes/kanagawa.fish
 
     # tide prompt prints blank line on startup / clear screen (bug)
     # set tide layout to compact and do this to do manual sparse
@@ -19,14 +96,19 @@ if status is-interactive
     set --global --export SHELL /usr/bin/fish
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
-    set --global --export fish_color_command blue
+    # set --global --export fish_color_command blue
 
     # automatically loads same name file in functions
     bind \es 'me_commandline_prepend sudo'
-    bind \e, 'commandline prevd && commandline --function execute'
-    bind \e. 'commandline nextd && commandline --function execute'
-    bind \ec 'me_fzf cd'
-    bind \ev 'me_fzf nvim'
+
+    # Directly run bfs cuz otherwise there is a large buffering delay when fish loads my function
+    bind \ec 'command bfs -color -type d -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_run cd --scheme=path'
+    bind \ev 'command bfs -color -type f -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_run nvim --scheme=path'
+
+    bind \e\cf 'command bfs -color -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path'
+    bind \cv 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
+
+    bind \cr '_fzf_history'
 
     # fish doesn't realize abbr after sudo when using position command
     abbr --add c clear
@@ -62,8 +144,8 @@ if status is-interactive
     abbr --add gd git diff
     abbr --add gdh git diff HEAD
     abbr --add gds git diff --staged
-    abbr --add gl git log
-    abbr --add glo git log --oneline
+    abbr --add gl git log --graph
+    abbr --add glo git log --oneline --graph
     abbr --add gb git branch
     abbr --add grm git rm
     abbr --add grmc git rm --cached
@@ -97,6 +179,10 @@ if status is-interactive
 
     alias cp=advcp
     alias mv=advmv
+
+    function bfs
+        command bfs -color $argv -mindepth 1 -printf '%P\n' # printf needs to be last
+    end
 
     alias diff='diff --color=always'
     alias fd='fd --color=always'

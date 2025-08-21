@@ -25,6 +25,8 @@
 !/fastfetch/**
 !/fish/
 !/fish/**
+!/fzf/
+!/fzf/**
 !/floorp/
 !/floorp/**
 !/gammastep/
@@ -65,6 +67,8 @@
 !/swaylock/**
 !/systemd/
 !/systemd/**
+!/tealdeer/
+!/tealdeer/**
 !/waybar/
 !/waybar/**
 !/xdg-desktop-portal/

@@ -1,0 +1,14 @@
+[style]
+
+[style.command_name]
+foreground = { ansi = 12 }
+
+[style.example_text]
+foreground = { ansi = 10 }
+
+[style.example_code]
+foreground = { ansi = 12 }
+
+[style.example_variable]
+foreground = { ansi = 12 }
+underline = true

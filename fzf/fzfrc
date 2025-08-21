@@ -1,0 +1,11 @@
+# vim: cms=#\ %s
+
+--ansi
+--style minimal
+--height=40%
+--reverse
+--scroll-off=999
+--scrollbar=│
+--info-command='sh "$XDG_CONFIG_HOME"/fzf/info_command.sh'
+--preview='sh "$XDG_CONFIG_HOME"/fzf/preview_command.sh {}'
+--preview-window=wrap
