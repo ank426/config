@@ -31,7 +31,6 @@ end
 function _colorize_history
     while read --null --local entry
         printf "\e[90m$(string sub --length 17 $entry)\e[0m"
-        set --local prefix "\e[90m               │ "
 
         set --local str (string sub --start 18 $entry | fish_indent --ansi | sed -z 's/\n\([^\n]*\)$/\1/' | string collect)
         set --local in_esc false
@@ -48,7 +47,7 @@ function _colorize_history
             end
             printf '%s' $c
             if test $c = \n
-                printf "$prefix$color"
+                printf "\e[90m               │ $color"
             end
         end
 
