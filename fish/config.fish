@@ -27,7 +27,7 @@ function _fzf_var_preview
     end
 end
 
-# TODO: Batch Processing (makes it much faster)
+# Batched version done in 
 function _colorize_history
     while read --null --local entry
         printf "\e[90m$(string sub --length 17 $entry)\e[0m"
@@ -62,11 +62,8 @@ function _fzf_history
     end
     set --local op (
         history --null --show-time="%m-%d %H:%M:%S │ " |
-        _colorize_history |
-        # while read --null --local entry
-        #     printf '%s\0' (echo $entry | fish_indent --ansi)
-        #     # or break
-        # end |
+        "$XDG_CONFIG_HOME/fish/colorize_history" 2>/dev/null |
+        # _colorize_history |
         fzf --scheme=history --read0 --preview='' --query=(commandline) |
         sed 's/^[^│]* │ *//'
     )
