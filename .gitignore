@@ -13,6 +13,8 @@
 
 !/alacritty/
 !/alacritty/**
+!/bat/
+!/bat/**
 !/bpython/
 !/bpython/**
 !/btop/
