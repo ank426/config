@@ -108,6 +108,7 @@ if status is-interactive
 
     # fish doesn't realize abbr after sudo when using position command
     abbr --add c clear
+    abbr --add ff fastfetch
     abbr --add lg lazygit
     abbr --add slg sudo lazygit
     abbr --add pm pacman
@@ -120,7 +121,7 @@ if status is-interactive
     abbr --add v nvim
 
     abbr --add g git
-    abbr --add gst git status
+    abbr --add gs git status
     abbr --add ga git add
     abbr --add gaa git add -A
     abbr --add gc git commit
@@ -135,8 +136,8 @@ if status is-interactive
     abbr --add ggp 'git add -A && git commit --allow-empty-message -m \'\' && git push'
     abbr --add gp git pull
     abbr --add gP git push
-    abbr --add gs git switch
-    abbr --add gsc git switch -c
+    abbr --add gsw git switch
+    abbr --add gswc git switch -c
     abbr --add gd git diff
     abbr --add gdh git diff HEAD
     abbr --add gds git diff --staged
