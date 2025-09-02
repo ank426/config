@@ -105,7 +105,7 @@ if status is-interactive
     bind \cv 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
     bind \e\cp '
         ps axh -o pid,start_time,user,command |
-        string replace -r \'^( *[1-9][0-9]*) (.{5}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
+        string replace --regex \'^( *[1-9][0-9]*) (.{5}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
         _fzf_ins --accept-nth=1 --no-preview
     '
 
