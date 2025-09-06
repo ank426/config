@@ -44,3 +44,5 @@ ClearURLs
 bypass paywalls
 youtube unhook
 libredirect
+
+web.whatsapp needs some html5 canvas to be allowed
