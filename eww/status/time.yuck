@@ -35,7 +35,7 @@
     )
     (label
       :text { formattime(EWW_TIME, "%A, %B %-d") }
-      :style "font-size: 0.6em"
+      :style "font-size: 0.54em"
     )
   )
 )
