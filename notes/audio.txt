@@ -25,5 +25,6 @@ power on
 scan on
 connect ...
 trust ...
+# trust is autoconnect
 
 for microphone check the pic

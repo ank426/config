@@ -137,9 +137,9 @@ binds {
     Mod+O { toggle-overview; }
 
     Mod+X { spawn "swaylock"; }
-    Mod+Z allow-when-locked=true { spawn "systemctl" "suspend"; }
+    Mod+Z { power-off-monitors; } // works when locked for some reason
+    Mod+Shift+Z allow-when-locked=true { spawn "systemctl" "suspend"; }
 
-    Mod+Ctrl+P { power-off-monitors; }
     Mod+Ctrl+Q { quit; }
     Mod+Ctrl+S { spawn "systemctl" "poweroff"; }
     Mod+Ctrl+R { spawn "systemctl" "reboot"; }
@@ -215,9 +215,9 @@ binds {
     Mod+Alt+P { screenshot-window; }
     Mod+Shift+P { screenshot; }
 
-    Mod+E { spawn "bluetoothctl" "connect" "64:03:7F:F7:97:38"; }
-    Mod+Shift+E { spawn "bluetoothctl" "disconnect" "64:03:7F:F7:97:38"; }
-    Mod+Ctrl+E { spawn "sh" "-c" "bluetoothctl disconnect 64:03:7F:F7:97:38 && bluetoothctl connect 64:03:7F:F7:97:38"; }
+    Mod+E { spawn "bluetoothctl" "connect" "D0:56:FB:42:22:A8"; }
+    Mod+Shift+E { spawn "bluetoothctl" "disconnect" "D0:56:FB:42:22:A8"; }
+    Mod+Ctrl+E { spawn "sh" "-c" "bluetoothctl disconnect D0:56:FB:42:22:A8 && bluetoothctl connect D0:56:FB:42:22:A8"; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }

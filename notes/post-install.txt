@@ -11,7 +11,7 @@ Install:
 gtk3
 hyprland
 alacritty
-nvidia-dkms (supposed to be hassle-free)
+nvidia-open-dkms (supposed to be hassle-free)
 nvidia-utils
 lib32-nvidia-utils
 egl-wayland
