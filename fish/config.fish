@@ -94,22 +94,24 @@ if status is-interactive
     set --global --export fzf_fd_opts --hidden --no-ignore
     # set --global --export fish_color_command blue
 
+    bind ctrl-shift-n 'alacritty --working-directory . & disown'
+
     # automatically loads same name file in functions
-    bind \es 'me_commandline_prepend sudo'
+    bind alt-s 'me_commandline_prepend sudo'
 
     # Directly run bfs cuz otherwise there is a large buffering delay when fish loads my function
-    bind \ec 'command bfs -color -type d -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_run cd --scheme=path'
-    bind \ev 'command bfs -color -type f -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_run nvim --scheme=path'
+    bind alt-c 'command bfs -color -type d -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_run cd --scheme=path'
+    bind alt-v 'command bfs -color -type f -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_run nvim --scheme=path'
 
-    bind \e\cf 'command bfs -color -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
-    bind \cv 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
-    bind \e\cp '
+    bind ctrl-alt-f 'command bfs -color -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
+    bind ctrl-v 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
+    bind ctrl-alt-p '
         ps axh -o pid,start_time,user,command |
         string replace --regex \'^( *[1-9][0-9]*) (.{5}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
         _fzf_ins --accept-nth=1 --no-preview
     '
 
-    bind \cr '_fzf_history'
+    bind ctrl-r '_fzf_history'
 
     # fish doesn't realize abbr after sudo when using position command
     abbr --add c clear

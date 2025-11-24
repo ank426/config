@@ -5,6 +5,8 @@
 --height=40%
 --reverse
 --scroll-off=999
+--gutter='┃'
+--pointer='┃'
 --scrollbar=│
 --info-command='sh "$XDG_CONFIG_HOME"/fzf/info_command.sh'
 --preview='sh "$XDG_CONFIG_HOME"/fzf/preview_command.sh {}'

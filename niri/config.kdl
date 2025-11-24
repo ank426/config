@@ -63,6 +63,7 @@ spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "eww" "daemon"
 spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/rmdir-Downloads.sh" // firefox with xdp
+spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/turn-off-mouse-led.sh"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
