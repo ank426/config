@@ -202,7 +202,7 @@ if status is-interactive
     alias paru='paru --color=always'
     alias rg='rg --color=always'
     alias tldr='tldr --color always'
-    alias tree='tree -aC --dirsfirst'
+    alias tree='CLICOLOR_FORCE=true command tree -a --dirsfirst' # using CLICOLOR_FORCE instead of -C allows disabling with -n
     alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 
     alias arm="$XDG_CONFIG_HOME/bin/arm.sh"

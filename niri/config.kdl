@@ -23,6 +23,10 @@ output "eDP-1" {
     // variable-refresh-rate // on-demand=true
 }
 
+// output "HDMI-A-2" {
+//     mode "2560x1600@60.000"
+// }
+
 layout {
     gaps 0
     always-center-single-column
@@ -55,21 +59,19 @@ layout {
     background-color "#000000"
 }
 
-spawn-at-startup "sh" "-c" "swaybg -i $XDG_PICTURES_DIR/wallpapers/calm-space-being/fill/999999.png"
+spawn-sh-at-startup "swaybg -i $XDG_PICTURES_DIR/wallpapers/calm-space-being/fill/999999.png"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "batsignal"
-spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
-spawn-at-startup "xwayland-satellite"
+spawn-sh-at-startup "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
 spawn-at-startup "eww" "daemon"
-spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/rmdir-Downloads.sh" // firefox with xdp
-spawn-at-startup "sh" "-c" "$XDG_CONFIG_HOME/bin/turn-off-mouse-led.sh"
+spawn-sh-at-startup "$XDG_CONFIG_HOME/bin/rmdir-Downloads.sh" // firefox with xdp
+spawn-sh-at-startup "$XDG_CONFIG_HOME/bin/turn-off-mouse-led.sh"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
 
 environment {
-    DISPLAY ":0"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 
     // Copied from hyprland wiki
@@ -124,7 +126,7 @@ binds {
     Mod+C { close-window; }
 
     Mod+F { toggle-windowed-fullscreen; }
-    Mod+Shift+F { spawn "sh" "-c" "killall waybar || waybar"; }
+    Mod+Shift+F { spawn-sh "killall waybar || waybar"; }
     Mod+Ctrl+F { fullscreen-window; }
 
     Mod+B { spawn "firefox"; }
@@ -133,7 +135,7 @@ binds {
     Mod+Shift+Alt+B { spawn "firefox" "-P" "default" "--private-window"; }
     Mod+Ctrl+B { spawn "brave" "--enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation" "--ozone-platform-hint=auto"; }
 
-    Mod+S { spawn "sh" "-c" "eww open-many --toggle dim $(find $XDG_CONFIG_HOME/eww/status/ -name '*.yuck' -exec basename {} .yuck \\;)"; }
+    Mod+S { spawn-sh "eww open-many --toggle dim $(find $XDG_CONFIG_HOME/eww/status/ -name '*.yuck' -exec basename {} .yuck \\;)"; }
     Mod+Shift+S { spawn "eww" "close-all"; }
     Mod+O { toggle-overview; }
 
@@ -164,15 +166,22 @@ binds {
     Mod+Ctrl+Shift+J { move-window-to-workspace 255; }
     Mod+Ctrl+Shift+K { move-window-to-workspace 0; }
 
-    Mod+U { spawn "sh" "-c" "$XDG_CONFIG_HOME/niri/new_workspace.sh focus down"; }
-    Mod+I { spawn "sh" "-c" "$XDG_CONFIG_HOME/niri/new_workspace.sh focus up"; }
-    Mod+Shift+U { spawn "sh" "-c" "$XDG_CONFIG_HOME/niri/new_workspace.sh move down"; }
-    Mod+Shift+I { spawn "sh" "-c" "$XDG_CONFIG_HOME/niri/new_workspace.sh move up"; }
+    Mod+U { spawn-sh "$XDG_CONFIG_HOME/niri/new_workspace.sh focus down"; }
+    Mod+I { spawn-sh "$XDG_CONFIG_HOME/niri/new_workspace.sh focus up"; }
+    Mod+Shift+U { spawn-sh "$XDG_CONFIG_HOME/niri/new_workspace.sh move down"; }
+    Mod+Shift+I { spawn-sh "$XDG_CONFIG_HOME/niri/new_workspace.sh move up"; }
 
     Mod+Alt+U { move-workspace-down; }
     Mod+Alt+I { move-workspace-up; }
 
     Mod+Tab { focus-workspace-previous; }
+
+    Mod+Q { focus-monitor-previous; }
+    Mod+W { focus-monitor-next; }
+    Mod+Shift+Q { move-window-to-monitor-previous; }
+    Mod+Shift+W { move-window-to-monitor-next; }
+    Mod+Alt+Q { move-workspace-to-monitor-previous; }
+    Mod+Alt+W { move-workspace-to-monitor-next; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -193,15 +202,15 @@ binds {
     Mod+Shift+8 { move-window-to-workspace 8; }
     Mod+Shift+9 { move-window-to-workspace 9; }
 
-    XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/backlight.sh down"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/backlight.sh up"; }
-    Alt+XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/fake-backlight.sh set -10"; }
-    Alt+XF86MonBrightnessUp   allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/fake-backlight.sh set +10"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh down"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh up"; }
+    Alt+XF86MonBrightnessDown allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set -10"; }
+    Alt+XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set +10"; }
 
-    Mod+Alt+J allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/backlight.sh down"; }
-    Mod+Alt+K allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/backlight.sh up"; }
-    Mod+Alt+H allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/fake-backlight.sh set -10"; }
-    Mod+Alt+L allow-when-locked=true { spawn "sh" "-c" "$XDG_CONFIG_HOME/bin/fake-backlight.sh set +10"; }
+    Mod+Alt+J allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh down"; }
+    Mod+Alt+K allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh up"; }
+    Mod+Alt+H allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set -10"; }
+    Mod+Alt+L allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set +10"; }
 
     XF86KbdBrightnessDown allow-when-locked=true { spawn "asusctl" "-p"; }
     XF86KbdBrightnessUp   allow-when-locked=true { spawn "asusctl" "-n"; }
@@ -218,7 +227,7 @@ binds {
 
     Mod+E { spawn "bluetoothctl" "connect" "D0:56:FB:42:22:A8"; }
     Mod+Shift+E { spawn "bluetoothctl" "disconnect" "D0:56:FB:42:22:A8"; }
-    Mod+Ctrl+E { spawn "sh" "-c" "bluetoothctl disconnect D0:56:FB:42:22:A8 && bluetoothctl connect D0:56:FB:42:22:A8"; }
+    Mod+Ctrl+E { spawn-sh "bluetoothctl disconnect D0:56:FB:42:22:A8 && bluetoothctl connect D0:56:FB:42:22:A8"; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
