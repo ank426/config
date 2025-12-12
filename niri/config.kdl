@@ -135,6 +135,8 @@ binds {
     Mod+Shift+Alt+B { spawn "firefox" "-P" "default" "--private-window"; }
     Mod+Ctrl+B { spawn "brave" "--enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation" "--ozone-platform-hint=auto"; }
 
+    Mod+Shift+X { spawn "xeyes"; }
+
     Mod+S { spawn-sh "eww open-many --toggle dim $(find $XDG_CONFIG_HOME/eww/status/ -name '*.yuck' -exec basename {} .yuck \\;)"; }
     Mod+Shift+S { spawn "eww" "close-all"; }
     Mod+O { toggle-overview; }

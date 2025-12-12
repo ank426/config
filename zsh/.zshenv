@@ -43,6 +43,7 @@ export R_HOME_USER="$XDG_CONFIG_HOME/R"
 export R_PROFILE_USER="$XDG_CONFIG_HOME/R/profile"
 export R_HISTFILE="$XDG_CONFIG_HOME/R/history"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup" # not working for some reason
+export SQLITE_HISTORY="$XDG_CACHE_HOME/sqlite_history"
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
@@ -64,7 +65,8 @@ export MANPAGER='less -IR --incsearch --use-color --color=d+g --color=uc'
 export MANROFFOPT='-P -c' # This sets grotty opts to disable in built color and use bold/underline instead. Noone knows why but it's necessary
 export UV_PYTHON_PREFERENCE=system
 
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True # Fixes a weird pytorch error when lots of memory is reserved for pytorch but not available
+# export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True # Fixes a weird pytorch error when lots of memory is reserved for pytorch but not available
+export PYTORCH_ALLOC_CONF=expandable_segments:True # Fixes a weird pytorch error when lots of memory is reserved for pytorch but not available
 
 # Can't figure out what is using these so keep for now
 export CUDA_PATH=/opt/cuda

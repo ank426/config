@@ -208,6 +208,7 @@ if status is-interactive
     alias arm="$XDG_CONFIG_HOME/bin/arm.sh"
     alias brave='brave --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation --ozone-platform-hint=auto' # --disable-gpu
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
+    alias phs="$XDG_CONFIG_HOME/bin/py-http-server.sh"
     # alias wey='ip -4 -brief address && weylus --no-gui'
     alias wey="$XDG_CONFIG_HOME/bin/weylus.sh"
     # alias weylus='weylus --auto-start --access-code $(head /dev/urandom | tr -cd A-Za-z0-9 | head -c 20)'
