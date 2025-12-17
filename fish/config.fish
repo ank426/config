@@ -218,7 +218,7 @@ if status is-interactive
     # alias wey='ip -4 -brief address && weylus --no-gui'
     alias wey="$XDG_CONFIG_HOME/bin/weylus.sh"
     # alias weylus='weylus --auto-start --access-code $(head /dev/urandom | tr -cd A-Za-z0-9 | head -c 20)'
-    alias sl="$XDG_CONFIG_HOME/bin/scroll.py"
+    alias scl="$XDG_CONFIG_HOME/bin/scroll.py"
     alias mgr="~/code/mgr/bin/mgr"
 
     alias adb="HOME=$XDG_DATA_HOME/android command adb"
