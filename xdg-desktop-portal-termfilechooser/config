@@ -1,2 +1,2 @@
 [filechooser]
-cmd=my-fzf-wrapper.sh
+cmd=fzf-wrapper.sh

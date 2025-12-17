@@ -1,5 +1,5 @@
 use std::process::{Command, Stdio};
-use std::io::{self, Read, Write};
+use std::io::{self, BufReader, Read, Write};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     const TIME_LEN: usize = 19;
@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         let mut idx = 0;
         let mut c = 0;
-        for byte in io::stdin().bytes().flatten() {
+        for byte in BufReader::new(io::stdin()).bytes().flatten() {
             if c < TIME_LEN {
                 times[idx][c] = byte;
                 c += 1;
@@ -51,7 +51,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         idx = 0;
         print!("\x1b[90m");
         io::stdout().write_all(&times[0])?;
-        for byte in stdout.bytes().flatten() {
+        for byte in BufReader::new(stdout).bytes().flatten() {
             if byte == b'\n' {
                 l += 1;
                 if l == num_lines[idx] {

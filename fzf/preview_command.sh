@@ -1,3 +1,5 @@
+#!/bin/sh
+
 [ -z "$1" ] && exit 1
 [ -d "$1" ] || [ -f "$1" ] || (echo "Not Found: $1" && exit 1)
 
