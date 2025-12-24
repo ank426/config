@@ -6,3 +6,8 @@ edition = "2024"
 [[bin]]
 name = "colorize_history"
 path = "colorize_history.rs"
+
+
+[[bin]]
+name = "colorize_history2"
+path = "colorize_history2.rs"

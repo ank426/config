@@ -62,7 +62,7 @@ function _fzf_history
     end
     set --local op (
         history --null --show-time="%m-%d %H:%M:%S │ " |
-        "$XDG_CONFIG_HOME/fish/colorize_history" 2>/dev/null |
+        "$XDG_CONFIG_HOME/fish/colorize_history.py" 2>/dev/null |
         # _colorize_history |
         fzf --scheme=history --read0 --preview='' --query=(commandline) |
         sed 's/^[^│]* │ *//'
