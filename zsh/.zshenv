@@ -13,6 +13,8 @@ export XDG_DOWNLOAD_DIR="$HOME/dwn"
 export XDG_PICTURES_DIR="$HOME/pic"
 export XDG_VIDEOS_DIR="$HOME/vid"
 
+export SCRIPTS_DIR="$HOME/.config/bin"
+
 export ANDROID_USER_HOME="$XDG_DATA_HOME/android"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"

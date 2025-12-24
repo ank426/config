@@ -10,3 +10,5 @@
 --scrollbar=│
 --info-command='"$XDG_CONFIG_HOME"/fzf/info_command.sh'
 --preview-window=wrap
+
+# FZF_DEFAULT_COMMAND set in .zshenv
