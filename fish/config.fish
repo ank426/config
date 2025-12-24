@@ -27,7 +27,7 @@ function _fzf_var_preview
     end
 end
 
-# Batched version done in 
+# Batched version done in python
 function _colorize_history
     while read --null --local entry
         printf "\e[90m$(string sub --length 17 $entry)\e[0m"
@@ -62,7 +62,7 @@ function _fzf_history
     end
     set --local op (
         history --null --show-time="%m-%d %H:%M:%S │ " |
-        "$XDG_CONFIG_HOME/fish/colorize_history.py" 2>/dev/null |
+        "$XDG_CONFIG_HOME/fish/colorize_history.py" |
         # _colorize_history |
         fzf --scheme=history --read0 --preview='' --query=(commandline) |
         sed 's/^[^│]* │ *//'
