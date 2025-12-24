@@ -102,11 +102,11 @@ if status is-interactive
     # Directly run bfs cuz otherwise there is a large buffering delay when fish loads my function
     bind alt-c "
         command bfs -color -type d -mindepth 1 -printf %P\\n 2>/dev/null |
-        _fzf_run cd --scheme=path --preview='$XDG_CONFIG_HOME/fzf/preview_command.sh {}'
+        _fzf_run cd --scheme=path --preview='$XDG_CONFIG_HOME/fzf/preview.sh {}'
     "
     bind alt-v "
         command bfs -color -type f -mindepth 1 -printf %P\\n 2>/dev/null |
-        _fzf_run nvim --scheme=path --preview='$XDG_CONFIG_HOME/fzf/preview_command.sh {}'
+        _fzf_run nvim --scheme=path --preview='$XDG_CONFIG_HOME/fzf/preview.sh {}'
     "
 
     bind ctrl-alt-f 'command bfs -color -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
@@ -132,6 +132,10 @@ if status is-interactive
     abbr --add s systemctl
     abbr --add ss sudo systemctl
     abbr --add v nvim
+
+    abbr --add phs py-http-server.sh
+    abbr --add sl scroll.py
+    abbr --add wey weylus.sh
 
     abbr --add g git
     abbr --add gs git status
@@ -213,12 +217,6 @@ if status is-interactive
 
     alias brave='brave --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation --ozone-platform-hint=auto' # --disable-gpu
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
-    alias phs="py-http-server.sh"
-    # alias wey='ip -4 -brief address && weylus --no-gui'
-    alias wey="weylus.sh"
-    # alias weylus='weylus --auto-start --access-code $(head /dev/urandom | tr -cd A-Za-z0-9 | head -c 20)'
-    alias scl="scroll.py"
-    alias mgr="~/code/mgr/bin/mgr"
 
     alias adb="HOME=$XDG_DATA_HOME/android command adb"
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
