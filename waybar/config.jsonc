@@ -123,7 +123,7 @@
     },
 
     "custom/backlight": {
-        "exec": "echo \"{\\\"percentage\\\": \"$($XDG_CONFIG_HOME/bin/backlight.sh get) \"}\"",
+        "exec": "echo \"{\\\"percentage\\\": \"$(backlight.sh get) \"}\"",
         "return-type": "json",
         "interval": 1,
         "format": "{percentage}% {icon}",
@@ -131,7 +131,7 @@
     },
 
     "custom/gammastep": {
-        "exec": "$XDG_CONFIG_HOME/bin/fake-backlight.sh g",
+        "exec": "fake-backlight.sh g",
         "interval": 1,
         "format": "{}",
     },

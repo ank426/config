@@ -63,10 +63,10 @@ spawn-sh-at-startup "swaybg -i $XDG_PICTURES_DIR/wallpapers/calm-space-being/fil
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "batsignal"
-spawn-sh-at-startup "$XDG_CONFIG_HOME/bin/auto-rotate.sh"
+spawn-sh-at-startup "auto-rotate.sh"
 spawn-at-startup "eww" "daemon"
-spawn-sh-at-startup "$XDG_CONFIG_HOME/bin/rmdir-Downloads.sh" // firefox with xdp
-spawn-sh-at-startup "$XDG_CONFIG_HOME/bin/turn-off-mouse-led.sh"
+spawn-sh-at-startup "rmdir-Downloads.sh" // firefox with xdp
+spawn-sh-at-startup "turn-off-mouse-led.sh"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
@@ -204,15 +204,15 @@ binds {
     Mod+Shift+8 { move-window-to-workspace 8; }
     Mod+Shift+9 { move-window-to-workspace 9; }
 
-    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh down"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh up"; }
-    Alt+XF86MonBrightnessDown allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set -10"; }
-    Alt+XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set +10"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "backlight.sh down"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "backlight.sh up"; }
+    Alt+XF86MonBrightnessDown allow-when-locked=true { spawn-sh "fake-backlight.sh set -10"; }
+    Alt+XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "fake-backlight.sh set +10"; }
 
-    Mod+Alt+J allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh down"; }
-    Mod+Alt+K allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/backlight.sh up"; }
-    Mod+Alt+H allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set -10"; }
-    Mod+Alt+L allow-when-locked=true { spawn-sh "$XDG_CONFIG_HOME/bin/fake-backlight.sh set +10"; }
+    Mod+Alt+J allow-when-locked=true { spawn-sh "backlight.sh down"; }
+    Mod+Alt+K allow-when-locked=true { spawn-sh "backlight.sh up"; }
+    Mod+Alt+H allow-when-locked=true { spawn-sh "fake-backlight.sh set -10"; }
+    Mod+Alt+L allow-when-locked=true { spawn-sh "fake-backlight.sh set +10"; }
 
     XF86KbdBrightnessDown allow-when-locked=true { spawn "asusctl" "-p"; }
     XF86KbdBrightnessUp   allow-when-locked=true { spawn "asusctl" "-n"; }

@@ -95,7 +95,6 @@ alias fzf='fzf --preview "bat --color=always {}"'
 alias tree='tree -aC --dirsfirst'
 alias tree-git='tree -aC --dirsfirst --gitignore -I .git'
 
-alias arm="$XDG_CONFIG_HOME/bin/arm.sh"
 alias brave='brave --ozone-platform-hint=auto --disable-gpu --enable-features="TouchpadOverscrollHistoryNavigation"'
 alias mariadb='mariadb -u ankit --password=$(pass code/mariadb/ankit)'
 alias wey='ip -4 -brief address && weylus --no-gui'
