@@ -11,7 +11,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DOCUMENTS_DIR="$HOME/doc"
 export XDG_DOWNLOAD_DIR="$HOME/dwn"
 export XDG_PICTURES_DIR="$HOME/pic"
-export XDG_VIDEOS_DIR="$HOME/vid"
+# export XDG_VIDEOS_DIR="$HOME/vid"
 
 export SCRIPTS_DIR="$HOME/.config/bin"
 
