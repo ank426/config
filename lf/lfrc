@@ -113,7 +113,7 @@ set relativenumber true
 set hidden true
 set scrolloff 9999
 
-set previewer "~/.config/fzf/preview.sh"
+set previewer "preview.sh"
 
 # set previewer ctpv
 # set cleaner ctpvclear
