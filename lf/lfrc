@@ -107,6 +107,15 @@ cmd zip ${{
     rm -rf $1
 }}
 
+
 set number true
 set relativenumber true
 set hidden true
+set scrolloff 9999
+
+set previewer "~/.config/fzf/preview.sh"
+
+# set previewer ctpv
+# set cleaner ctpvclear
+# &ctpv -s $id
+# &ctpvquit $id
