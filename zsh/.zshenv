@@ -81,4 +81,4 @@ export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
 
 export PATH="$XDG_DATA_HOME/../bin:$PATH"
 
-export PATH="$PATH:$HOME/.local/script"
+export PATH="$PATH:$XDG_DATA_HOME/../script"
