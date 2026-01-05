@@ -7,3 +7,5 @@
 !/functions/
 !/functions/__fish_print_pacman_packages.fish
 !/functions/me*
+!/themes/
+!/themes/**
