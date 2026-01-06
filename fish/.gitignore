@@ -1,7 +1,7 @@
 *
 !/.gitignore
 !/Cargo.toml
-!/colorize_history.rs
+!/colorize_history.py
 !/config.fish
 !/fish_plugins
 !/functions/
