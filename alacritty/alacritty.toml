@@ -4,7 +4,7 @@ import = ["kanagawa-wave.toml"]
 [window]
 opacity = 0.7
 padding = { x = 10, y = 10 }
-
+option_as_alt = "Both"
 
 [font]
 size = 12.5

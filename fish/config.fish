@@ -89,7 +89,7 @@ if status is-interactive
         command clear
     end
 
-    set --global --export SHELL /usr/bin/fish
+    set --global --export SHELL (command -s fish)
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
     # set --global --export fish_color_command blue
@@ -191,8 +191,8 @@ if status is-interactive
     abbr --add gm git merge
     abbr --add gsb git submodule
 
-    alias cp=advcp
-    alias mv=advmv
+    # alias cp=advcp
+    # alias mv=advmv
 
     function bfs
         command bfs -color $argv -mindepth 1 -printf '%P\n' # printf needs to be last
@@ -205,7 +205,7 @@ if status is-interactive
     alias info='info --vi-keys'
     alias jq='jq -C'
     alias less='less --IGNORE-CASE --RAW-CONTROL-CHARS --incsearch --use-color'
-    alias ls='LC_COLLATE=C command ls --almost-all --color --group-directories-first'
+    alias ls='LC_COLLATE=C command gls -A --color --group-directories-first'
     alias ncdu='ncdu --color=dark'
     alias pacman='pacman --color=always'
     alias pactree='pactree --color'
@@ -223,4 +223,12 @@ if status is-interactive
     alias R='R --no-save'
 
     alias ttyper-quote="curl -s https://quotes-api-self.vercel.app/quote | jq -r '.quote' | sed 's/’/\'/g' | tr ' –' '\n-' | ttyper -"
+
+
+    # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+    set -gx SDKMAN_DIR $HOME/.sdkman
+
+    if test -s $HOME/.sdkman/bin/sdkman-init.sh
+        bass source $HOME/.sdkman/bin/sdkman-init.sh
+    end
 end
