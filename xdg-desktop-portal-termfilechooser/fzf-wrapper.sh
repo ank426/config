@@ -35,7 +35,7 @@ else
         exit 1
     fi
     search="command bfs -color -type $type -mindepth 1 -printf '%P\n'"
-    select="fzf $m --scheme=path --prompt '$prompt' --preview='$XDG_CONFIG_HOME/fzf/preview_command.sh {}'"
+    select="fzf $m --scheme=path --prompt '$prompt' --preview='preview.sh {}'"
     $TERMCMD sh -c "$search 2>/dev/null | $select | sed 's|^|$HOME/|' > '$out'"
 fi
 
