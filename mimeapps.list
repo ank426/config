@@ -15,6 +15,7 @@ image/png=imv.desktop
 image/jpeg=imv.desktop
 image/jpg=imv.desktop
 text/plain=nvim.desktop
+application/mbox=nvim.desktop
 application/json=nvim.desktop
 text/x-script.python=nvim.desktop
 text/x-shellscript=nvim.desktop

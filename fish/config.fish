@@ -93,6 +93,7 @@ if status is-interactive
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
     # set --global --export fish_color_command blue
+    set --global --export fish_key_bindings fish_default_key_bindings # workaround until https://github.com/IlanCosman/tide/pull/626
 
     bind ctrl-shift-n 'alacritty --working-directory . & disown'
 
@@ -124,6 +125,7 @@ if status is-interactive
     abbr --add ff fastfetch
     abbr --add lg lazygit
     abbr --add slg sudo lazygit
+    abbr --add lo loffice
     abbr --add pm pacman
     abbr --add spm sudo pacman
     abbr --add p paru
