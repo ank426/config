@@ -67,6 +67,7 @@ spawn-sh-at-startup "auto-rotate.sh"
 spawn-at-startup "eww" "daemon"
 spawn-sh-at-startup "rmdir-Downloads.sh" // firefox with xdp
 spawn-sh-at-startup "turn-off-mouse-led.sh"
+spawn-at-startup "fcitx5" "-d"
 
 prefer-no-csd
 screenshot-path "~/pic/scnsht/%F_%T_niri.png"
@@ -258,8 +259,8 @@ binds {
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
 
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+V { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+V { toggle-window-floating; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 }
