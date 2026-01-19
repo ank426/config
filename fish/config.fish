@@ -221,6 +221,7 @@ if status is-interactive
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
 
     alias adb="HOME=$XDG_DATA_HOME/android command adb"
+    alias qbt="qbt --config $XDG_CONFIG_HOME/qbt/.qbt.toml"
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
     alias R='R --no-save'
 
