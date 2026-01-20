@@ -3,9 +3,13 @@ fix toolbar - set titlebar to on
 change download dir in about:preferences#downloads
 remove Profile Groups
 
+set search engine to startpage (private also)
+disable promotional messaging, then save the cookie
+
 ext button, ubo, dark reader, menu
 
 some websites like web.whatsapp need html5 canvas to be allowed for images
+
 
 Browserpass (installed through pacman)
 
