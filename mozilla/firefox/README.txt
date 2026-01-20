@@ -44,3 +44,8 @@ Not Installed:
 - bypass paywalls
 - youtube unhook
 - libredirect
+
+Manage Extension Shortcuts:
+yomitan:
+    ctrl alt y for toggle
+    remove everything else
