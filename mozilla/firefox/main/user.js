@@ -222,7 +222,7 @@ user_pref("browser.search.suggest.enabled", true);
 // user_pref("privacy.userContext.enabled", true);
 
 // PREF: disable Firefox Sync
-user_pref("identity.fxaccounts.enabled", true);
+user_pref("identity.fxaccounts.enabled", false);
 // PREF: disable the Firefox View tour from popping up
 user_pref("browser.firefox-view.feature-tour", '{"screen":"","complete":true}');
 // PREF: disable login manager
