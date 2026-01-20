@@ -10,3 +10,5 @@
 !/functions/me*
 !/themes/
 !/themes/**
+!/conf.d/
+!/conf.d/fish_frozen_theme.fish
