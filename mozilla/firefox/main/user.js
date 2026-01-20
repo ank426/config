@@ -563,7 +563,7 @@ user_pref("userContent.page.proton",           true); // Need proton_color
 
 user_pref("accessibility.monoaudio.enable", true);
 user_pref("browser.aboutwelcome.enabled", false);
-user_pref("browser.download.dir", "/home/ankit/dwn"); // had to set manually for some reason
+user_pref("browser.download.dir", "/home/gamer/dwn"); // had to set manually for some reason
 user_pref("browser.download.useDownloadDir", true);
 user_pref("browser.startup.page", 3); // Resume previous browser session
 user_pref("browser.tabs.warnOnClose", true);
