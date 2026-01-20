@@ -102,15 +102,15 @@ if status is-interactive
 
     # Directly run bfs cuz otherwise there is a large buffering delay when fish loads my function
     bind alt-c "
-        command bfs -color -type d -mindepth 1 -printf %P\\n 2>/dev/null |
+        command bfs -color -follow -mindepth 1 -type d -printf %P\\n 2>/dev/null |
         _fzf_run cd --scheme=path --preview='preview.sh {}'
     "
     bind alt-v "
-        command bfs -color -type f -mindepth 1 -printf %P\\n 2>/dev/null |
+        command bfs -color -follow -mindepth 1 -type f -printf %P\\n 2>/dev/null |
         _fzf_run nvim --scheme=path --preview='preview.sh {}'
     "
 
-    bind ctrl-alt-f 'command bfs -color -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
+    bind ctrl-alt-f 'command bfs -color -follow -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
     bind ctrl-v 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
     bind ctrl-alt-p '
         ps axh -o pid,start_time,user,command |
