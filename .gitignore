@@ -25,6 +25,8 @@
 !/eww/**
 !/fastfetch/
 !/fastfetch/**
+!/fcitx5/
+!/fcitx5/**
 !/fish/
 !/fish/**
 !/fzf/

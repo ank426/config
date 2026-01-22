@@ -1,0 +1,57 @@
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { desc = "Nvim's redraw" })
+-- vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
+-- vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
+
+vim.keymap.set("n", "<leader>=", function()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  vim.cmd("keepjumps normal! gg=G")
+  vim.api.nvim_win_set_cursor(0, pos)
+end, { desc = "Reindent file" })
+
+vim.keymap.set("n", "<leader><leader>x", "<cmd>.lua<cr>", { desc = "E[x]ecute line (lua)" })
+vim.keymap.set("x", "<leader><leader>x", ":lua<cr>", { desc = "E[x]ecute (lua)" })
+
+vim.keymap.set({"n", "x"}, "<leader>y", [["+y]],  { desc = "System Yank" })
+vim.keymap.set({"n", "x"}, "<leader>Y", [["+y$]], { desc = "System Yank" }) -- Y=yy in maps as per old behavior unless remap=true
+vim.keymap.set({"n", "x"}, "<leader>p", [["+p]],  { desc = "System Paste" })
+vim.keymap.set({"n", "x"}, "<leader>P", [["+P]],  { desc = "System Paste" })
+-- vim.keymap.set({"n", "x"}, "<leader>d", [["+d]],  { desc = "System Delete" })
+-- vim.keymap.set({"n", "x"}, "<leader>D", [["+D]],  { desc = "System Delete" })
+
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
+
+vim.keymap.set({"o", "x"}, "ir", "i[")
+vim.keymap.set({"o", "x"}, "ar", "a[")
+vim.keymap.set({"o", "x"}, "ia", "i<")
+vim.keymap.set({"o", "x"}, "aa", "a<")
+
+vim.keymap.set("x", "<", "<gv")
+vim.keymap.set("x", ">", ">gv")
+
+vim.keymap.set("n", "zS", vim.show_pos, { desc = "Show Position" })
+
+vim.keymap.set("n", "gD",  vim.lsp.buf.declaration,      { desc = "LSP: [G]oto [D]eclaration" })
+vim.keymap.set("n", "grf", vim.lsp.buf.format,           { desc = "LSP: [F]ormat" })
+vim.keymap.set("n", "grt", vim.lsp.buf.type_definition,  { desc = "LSP: Goto [T]ype Definition" })
+vim.keymap.set("n", "grT", vim.lsp.buf.typehierarchy,    { desc = "LSP: [T]ype Hierarchy" })
+vim.keymap.set("n", "grw", vim.lsp.buf.workspace_symbol, { desc = "LSP: [W]orkspace Symbols" })
+
+local confpath = vim.fn.stdpath("config")
+vim.keymap.set("n", "<leader>en", "<cmd>edit "..confpath.."<cr>",                      { desc = "Edit Neovim" })
+vim.keymap.set("n", "<leader>ei", "<cmd>edit "..confpath.."/init.lua<cr>",             { desc = "Edit init.lua" })
+vim.keymap.set("n", "<leader>ep", "<cmd>edit "..confpath.."/lua/plugins<cr>",          { desc = "Edit lua/plugins" })
+vim.keymap.set("n", "<leader>eo", "<cmd>edit "..confpath.."/lua/options.lua<cr>",      { desc = "Edit lua/options.lua" })
+vim.keymap.set("n", "<leader>ek", "<cmd>edit "..confpath.."/lua/keymaps.lua<cr>",      { desc = "Edit lua/keymaps.lua" })
+vim.keymap.set("n", "<leader>ea", "<cmd>edit "..confpath.."/lua/autocommands.lua<cr>", { desc = "Edit lua/autocommands.lua" })
+vim.keymap.set("n", "<leader>eh", "<cmd>edit "..confpath.."/lua/help.lua<cr>",         { desc = "Edit lua/help.lua" })
+vim.keymap.set("n", "<leader>ed", "<cmd>edit "..confpath.."/lua/diagnostics.lua<cr>",  { desc = "Edit lua/diagnostics.lua" })
+vim.keymap.set("n", "<leader>el", "<cmd>edit "..confpath.."/lua/lsp.lua<cr>",          { desc = "Edit lua/lsp.lua" })
+vim.keymap.set("n", "<leader>ez", "<cmd>edit "..confpath.."/lua/lazy-nvim.lua<cr>",    { desc = "Edit lua/lazy-nvim.lua" })
+vim.keymap.set("n", "<leader>e.", "<cmd>edit "..confpath.."/lua<cr>",                  { desc = "Edit lua" })
+vim.keymap.set("n", "<leader>eQ", "<cmd>edit "..confpath.."/queries<cr>",              { desc = "Edit queries" })
+vim.keymap.set("n", "<leader>eL", "<cmd>edit "..confpath.."/after/lsp<cr>",                  { desc = "Edit lsp" })
+vim.keymap.set("n", "<leader>ef", "<cmd>edit "..confpath.."/after/ftplugin<cr>",       { desc = "Edit after/ftplugin" })
+vim.keymap.set("n", "<leader>eN", "<cmd>edit "..confpath.."/after<cr>",                { desc = "Edit after" })

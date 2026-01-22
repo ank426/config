@@ -93,6 +93,7 @@ if status is-interactive
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
     # set --global --export fish_color_command blue
+    set --global --export fish_key_bindings fish_default_key_bindings # workaround until https://github.com/IlanCosman/tide/pull/626
 
     bind ctrl-shift-n 'alacritty --working-directory . & disown'
 
@@ -101,15 +102,15 @@ if status is-interactive
 
     # Directly run bfs cuz otherwise there is a large buffering delay when fish loads my function
     bind alt-c "
-        command bfs -color -type d -mindepth 1 -printf %P\\n 2>/dev/null |
+        command bfs -color -follow -mindepth 1 -type d -printf %P\\n 2>/dev/null |
         _fzf_run cd --scheme=path --preview='preview.sh {}'
     "
     bind alt-v "
-        command bfs -color -type f -mindepth 1 -printf %P\\n 2>/dev/null |
+        command bfs -color -follow -mindepth 1 -type f -printf %P\\n 2>/dev/null |
         _fzf_run nvim --scheme=path --preview='preview.sh {}'
     "
 
-    bind ctrl-alt-f 'command bfs -color -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
+    bind ctrl-alt-f 'command bfs -color -follow -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
     bind ctrl-v 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
     bind ctrl-alt-p '
         ps axh -o pid,start,user,command |
@@ -124,6 +125,7 @@ if status is-interactive
     abbr --add ff fastfetch
     abbr --add lg lazygit
     abbr --add slg sudo lazygit
+    abbr --add lo loffice
     abbr --add pm pacman
     abbr --add spm sudo pacman
     abbr --add p paru
@@ -219,6 +221,7 @@ if status is-interactive
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
 
     alias adb="HOME=$XDG_DATA_HOME/android command adb"
+    alias qbt="qbt --config $XDG_CONFIG_HOME/qbt/.qbt.toml"
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
     alias R='R --no-save'
 

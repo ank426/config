@@ -573,6 +573,8 @@ user_pref("devtools.debugger.remote-enabled", true);
 user_pref("font.name.monospace.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans-serif.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.sans.x-western", "JetBrainsMono Nerd Font");
+user_pref("font.name.serif.x-western", "JetBrainsMono Nerd Font");
+user_pref("layout.css.prefers-color-scheme.content-override", 0); // for some reason, firefox not picking up system theme
 user_pref("layout.css.visited_links_enabled", false);
 user_pref("media.hardwaremediakeys.enabled", false); // prevents temp thumbnail from coming into firefox-mpris directory
 user_pref("pdfjs.defaultZoomValue", "page-width");
