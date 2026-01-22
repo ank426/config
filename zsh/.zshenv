@@ -3,13 +3,12 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/fzfrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
-
-export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/fzfrc"
 
 export TERMCMD='alacritty -e'
 export GDK_DEBUG=portals

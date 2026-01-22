@@ -207,7 +207,7 @@ if status is-interactive
     alias info='info --vi-keys'
     alias jq='jq -C'
     alias less='less --IGNORE-CASE --RAW-CONTROL-CHARS --incsearch --use-color'
-    alias ls='LC_COLLATE=C command gls -A --color --group-directories-first'
+    alias ls='LC_COLLATE=C command gls --almost-all --color --group-directories-first'
     alias ncdu='ncdu --color=dark'
     alias pacman='pacman --color=always'
     alias pactree='pactree --color'
