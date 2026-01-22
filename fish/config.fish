@@ -112,7 +112,7 @@ if status is-interactive
     bind ctrl-alt-f 'command bfs -color -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
     bind ctrl-v 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
     bind ctrl-alt-p '
-        ps axh -o pid,start_time,user,command |
+        ps axh -o pid,start,user,command |
         string replace --regex \'^( *[1-9][0-9]*) (.{5}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
         _fzf_ins --accept-nth=1
     '
@@ -223,6 +223,25 @@ if status is-interactive
     alias R='R --no-save'
 
     alias ttyper-quote="curl -s https://quotes-api-self.vercel.app/quote | jq -r '.quote' | sed 's/’/\'/g' | tr ' –' '\n-' | ttyper -"
+
+
+    function jarvis
+        cd ~/Desktop/jarvis-ai-assistant/jarvis-assistant/ || return
+        claude $argv
+    end
+
+    function load_jarvis_env
+        for line in (cat ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env)
+            if string match -qr '^\s*#' -- $line
+                continue
+            end
+            if string match -qr '=' -- $line
+                set -lx (string split -m1 '=' $line)
+            end
+        end
+    end
+
+    load_jarvis_env
 
 
     # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

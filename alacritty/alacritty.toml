@@ -66,5 +66,12 @@ hide_when_typing = true
 
 [keyboard]
 bindings = [
-  { key = "Back", mods = "Control", chars = "\u0017" }
+  { key = "Back", mods = "Control", chars = "\u0017" },
+  { key = "Tab", mods = "Control", action = "SelectNextTab" },
+  { key = "Tab", mods = "Control|Shift", action = "SelectPreviousTab" }
 ]
+
+# [[keyboard.bindings]]
+# key = "Return"
+# mods = "Shift"
+# chars = "\x1b\r"
