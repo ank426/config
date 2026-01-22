@@ -193,8 +193,12 @@ if status is-interactive
     abbr --add gm git merge
     abbr --add gsb git submodule
 
-    # alias cp=advcp
-    # alias mv=advmv
+    if command --query advcp
+        alias cp=advcp
+    end
+    if command --query advmv
+        alias mv=advmv
+    end
 
     function bfs
         command bfs -color $argv -mindepth 1 -printf '%P\n' # printf needs to be last
