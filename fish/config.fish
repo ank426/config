@@ -113,8 +113,9 @@ if status is-interactive
     bind ctrl-alt-f 'command bfs -color -follow -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
     bind ctrl-v 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
     bind ctrl-alt-p '
-        ps axh -o pid,start,user,command |
-        string replace --regex \'^( *[1-9][0-9]*) (.{5}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
+        ps ax -o pid,start,user,command |
+        tail -n +2 |
+        string replace --regex \'^( *[1-9][0-9]*) (.{7}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
         _fzf_ins --accept-nth=1
     '
 
@@ -192,6 +193,8 @@ if status is-interactive
     abbr --add gcfge git config --global edit
     abbr --add gm git merge
     abbr --add gsb git submodule
+
+    abbr --add jv jarvis
 
     if command --query advcp
         alias cp=advcp

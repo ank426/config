@@ -61,6 +61,12 @@ return {
   },
   opts = {
     defaults = {
+      path_display = {
+        -- smart = true,
+        -- shorten = 2,
+        -- truncate = true,
+        filename_first = true,
+      },
       results_title = false,
       prompt_title = false,
       history = false,
