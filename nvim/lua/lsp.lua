@@ -1,11 +1,10 @@
 -- These names can be anything. Use lspconfig names to use their config.
 
--- C / C++
+-- C
 vim.lsp.enable("clangd-c")
-vim.lsp.enable("clangd")
 
--- C Sharp
-vim.lsp.enable("csharp_ls")
+-- C++
+vim.lsp.enable("clangd")
 
 -- Java
 vim.lsp.enable("jdtls")
