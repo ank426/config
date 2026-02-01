@@ -5,10 +5,9 @@ import = ["kanagawa-wave.toml"]
 opacity = 0.7
 padding = { x = 10, y = 10 }
 
-
 [font]
-size = 12.5
-# size = 15.5
+# size = 12.5
+size = 15.2
 
 [font.normal]
 family = "JetBrainsMono NF"
@@ -66,5 +65,5 @@ hide_when_typing = true
 
 [keyboard]
 bindings = [
-  { key = "Back", mods = "Control", chars = "\u0017" }
+  { key = "Back", mods = "Control", chars = "\u0017" },
 ]

@@ -22,6 +22,17 @@ return {
     { "<leader>sd", "<cmd>Telescope diagnostics<cr>",               desc = "[S]earch [D]iagnostics" },
     { "<leader>/",  "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "[/] Fuzzily search in current buffer" },
     {
+      "<leader>sF",
+      function()
+        require("telescope.builtin").find_files({
+          -- hidden = true,
+          no_ignore = true,
+          no_ignore_parent = true,
+        })
+      end,
+      desc = "[S]earch all [F]iles",
+    },
+    {
       "<leader>s/",
       function()
         require("telescope.builtin").live_grep({
@@ -78,7 +89,7 @@ return {
       grep_string = { preview_title = false },
       find_files = {
         preview_title = false,
-        -- hidden = true,
+        hidden = true,
         -- no_ignore = true,
         -- no_ignore_parent = true,
       },

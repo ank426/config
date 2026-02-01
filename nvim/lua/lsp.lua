@@ -1,22 +1,30 @@
 -- These names can be anything. Use lspconfig names to use their config.
 
--- C / C++
+-- C
 vim.lsp.enable("clangd-c")
+
+-- C++
 vim.lsp.enable("clangd")
+
+-- Java
+vim.lsp.enable("jdtls")
+
+-- Lua
+vim.lsp.enable("lua_ls")
 
 -- Python
 -- vim.lsp.enable("basedpyright")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 
--- Lua
-vim.lsp.enable("lua_ls")
-
--- C Sharp
-vim.lsp.enable("csharp_ls")
-
 -- Rust
 vim.lsp.enable("rust_analyzer")
+
+-- Tailwind
+vim.lsp.enable("tailwindcss")
+
+-- Typescript
+vim.lsp.enable("ts_ls")
 
 
 -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/

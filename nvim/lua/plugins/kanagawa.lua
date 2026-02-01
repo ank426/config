@@ -19,6 +19,9 @@ return {
         FloatBorder = { bg = "none" },
         FloatTitle = { bg = "none" },
         Pmenu = { bg = "none" },
+        -- there are more things that might be necessary to make status line bg transparent, but these work for now
+        StatusLine = { bg = "none" },
+        StatusLineNC = { bg = "none" },
       }
     end,
     theme="wave",

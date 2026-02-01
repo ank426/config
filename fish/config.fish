@@ -89,7 +89,7 @@ if status is-interactive
         command clear
     end
 
-    set --global --export SHELL /usr/bin/fish
+    set --global --export SHELL (command -s fish)
     set --global --export fish_greeting
     set --global --export fzf_fd_opts --hidden --no-ignore
     # set --global --export fish_color_command blue
@@ -193,8 +193,12 @@ if status is-interactive
     abbr --add gm git merge
     abbr --add gsb git submodule
 
-    alias cp=advcp
-    alias mv=advmv
+    if command --query advcp
+        alias cp=advcp
+    end
+    if command --query advmv
+        alias mv=advmv
+    end
 
     function bfs
         command bfs -color $argv -mindepth 1 -printf '%P\n' # printf needs to be last
