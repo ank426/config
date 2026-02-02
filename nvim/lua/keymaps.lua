@@ -1,4 +1,6 @@
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { desc = "Nvim's redraw" })
+vim.keymap.set("n", "<C-s>", "<cmd>write<cr><esc>", { remap = true, desc = "Save" })
+
 -- vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
 -- vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
 
