@@ -23,6 +23,9 @@ vim.lsp.enable("rust_analyzer")
 -- Tailwind
 vim.lsp.enable("tailwindcss")
 
+-- Terraform
+vim.lsp.enable("terraformls")
+
 -- Typescript
 vim.lsp.enable("ts_ls")
 

@@ -81,6 +81,7 @@ return {
       results_title = false,
       prompt_title = false,
       history = false,
+      file_ignore_patterns = {"^.git/"},
       mappings = {
         i = {
           ["<C-u>"] = false,
