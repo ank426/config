@@ -11,6 +11,7 @@ return {
     scope = { enabled = false },
     exclude = {
       filetypes = {
+        "markdown",
         "lspinfo",
         "lazy",
         "checkhealth",
