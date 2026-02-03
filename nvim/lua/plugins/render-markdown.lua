@@ -4,8 +4,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
   },
-  ---@module 'render-markdown'
-  ---@type render.md.UserConfig
   opts = {
     anti_conceal = {
       enabled = false,
@@ -20,6 +18,14 @@ return {
     },
     heading = {
       position = "inline",
+      -- backgrounds = {
+      --   "Function",
+      --   "Constant",
+      --   "String",
+      --   "Type",
+      --   "Number",
+      --   "Operator",
+      -- }
       backgrounds = {
         "bold",
         "bold",
@@ -37,10 +43,11 @@ return {
       right_pad = 4,
       border = "none",
       highlight_border = "none",
+      highlight_inline = "none",
     },
     pipe_table = {
       preset = "round",
-      border_virtual = true,
+      -- border_virtual = true, -- enabled by default cuz indent is enabled
     },
     sign = {
       enabled = false,
@@ -53,6 +60,9 @@ return {
       enabled = false,
     },
     win_options = {
+      list = {
+        rendered = false,
+      },
       showbreak = {
         rendered = "NONE",
       },
