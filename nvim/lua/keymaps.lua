@@ -1,6 +1,9 @@
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch|diffupdate|normal! <C-l><cr>", { desc = "Nvim's redraw" })
 vim.keymap.set("n", "<C-s>", "<cmd>write<cr><esc>", { remap = true, desc = "Save" })
 
+vim.keymap.set("n", "<C-tab>", "gt")
+vim.keymap.set("n", "<C-S-tab>", "gT")
+
 -- vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
 -- vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
 
@@ -50,6 +53,7 @@ vim.keymap.set("n", "<leader>ek", "<cmd>edit "..confpath.."/lua/keymaps.lua<cr>"
 vim.keymap.set("n", "<leader>ea", "<cmd>edit "..confpath.."/lua/autocommands.lua<cr>", { desc = "Edit lua/autocommands.lua" })
 vim.keymap.set("n", "<leader>eh", "<cmd>edit "..confpath.."/lua/help.lua<cr>",         { desc = "Edit lua/help.lua" })
 vim.keymap.set("n", "<leader>ed", "<cmd>edit "..confpath.."/lua/diagnostics.lua<cr>",  { desc = "Edit lua/diagnostics.lua" })
+vim.keymap.set("n", "<leader>ec", "<cmd>edit "..confpath.."/lua/colors.lua<cr>",       { desc = "Edit lua/colors.lua" })
 vim.keymap.set("n", "<leader>el", "<cmd>edit "..confpath.."/lua/lsp.lua<cr>",          { desc = "Edit lua/lsp.lua" })
 vim.keymap.set("n", "<leader>ez", "<cmd>edit "..confpath.."/lua/lazy-nvim.lua<cr>",    { desc = "Edit lua/lazy-nvim.lua" })
 vim.keymap.set("n", "<leader>e.", "<cmd>edit "..confpath.."/lua<cr>",                  { desc = "Edit lua" })
