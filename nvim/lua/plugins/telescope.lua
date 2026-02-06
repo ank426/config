@@ -89,12 +89,12 @@ return {
           curr_len = curr_len - #part + 1
           i = i - 1
         end
+        local disp_path = table.concat(parts, sep)
         local hl = {{{0, curr_len - #parts[#parts]}, "@variable.parameter"}}
-        local short_path = table.concat(parts, sep)
-        if #short_path <= width then
-          return short_path, hl
+        if #disp_path <= width then
+          return disp_path, hl
         else
-          return short_path:sub(1, width-1).."…", hl
+          return disp_path:sub(1, width-1).."…", hl
         end
       end,
       results_title = false,
