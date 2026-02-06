@@ -6,7 +6,7 @@ local function bold(group)
 end
 
 vim.api.nvim_set_hl(0, "@comment.error", bold("DiagnosticError"))
-vim.api.nvim_set_hl(0, "@comment.warn", bold("DiagnosticWarn"))
+vim.api.nvim_set_hl(0, "@comment.warning", bold("DiagnosticWarn"))
 vim.api.nvim_set_hl(0, "@comment.note", bold("DiagnosticHint"))
 vim.api.nvim_set_hl(0, "@comment.todo", bold("DiagnosticInfo"))
 
