@@ -81,13 +81,13 @@ return {
         if #parts == 1 then
           return path
         end
-        local i = 1
+        local i = #parts - 1
         local curr_len = #path
-        while curr_len > width and i < #parts do
+        while curr_len > width and i >= 1 do
           local part = parts[i]
           parts[i] = part:sub(1, 1)
           curr_len = curr_len - #part + 1
-          i = i + 1
+          i = i - 1
         end
         local hl = {{{0, curr_len - #parts[#parts]}, "@variable.parameter"}}
         local short_path = table.concat(parts, sep)
