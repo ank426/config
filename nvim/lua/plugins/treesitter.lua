@@ -5,7 +5,7 @@ return {
   config = function()
     local ts = require("nvim-treesitter")
     local include = {}
-    local exclude = {"comment"}
+    local exclude = {"mermaid"}
     ts.install(
       vim.iter({ts.get_available(1), ts.get_available(2), include})
         :flatten()
