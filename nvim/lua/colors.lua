@@ -11,4 +11,7 @@ vim.api.nvim_set_hl(0, "@comment.note", bold("DiagnosticHint"))
 vim.api.nvim_set_hl(0, "@comment.todo", bold("DiagnosticInfo"))
 
 
+vim.api.nvim_set_hl(0, "@string.special.url", { underline = true })
+
+
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "@Keyword" })
