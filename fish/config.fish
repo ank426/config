@@ -163,6 +163,12 @@ if status is-interactive
     abbr --add gl git log --graph
     abbr --add glo git log --oneline --graph
     abbr --add gb git branch
+    abbr --add gst git stash
+    abbr --add gstl git stash list
+    abbr --add gsta git stash apply
+    abbr --add gstc git stash clear
+    abbr --add gstp git stash pop
+    abbr --add gstP git stash push
     abbr --add grm git rm
     abbr --add grmc git rm --cached
     abbr --add gr git restore
