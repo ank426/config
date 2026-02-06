@@ -1,7 +1,7 @@
-vim.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd("FileType", {
   pattern = vim.tbl_map(
-    function(path) return vim.fn.fnamemodify(path, ':t:r') end,
-    vim.api.nvim_get_runtime_file('parser/*', true)
+    function(path) return vim.fn.fnamemodify(path, ":t:r") end,
+    vim.api.nvim_get_runtime_file("parser/*", true)
   ),
   callback = function() vim.treesitter.start() end,
 })

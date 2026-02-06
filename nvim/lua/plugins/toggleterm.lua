@@ -13,6 +13,11 @@ return {
   config = function(_, opts)
     require("toggleterm").setup(opts)
 
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "toggleterm",
+      command = "setlocal scrolloff=9999"
+    })
+
     local lazygit_term = require("toggleterm.terminal").Terminal:new({
       cmd = "lazygit",
       hidden = true,
