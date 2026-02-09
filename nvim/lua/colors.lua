@@ -1,6 +1,9 @@
 vim.cmd.colorscheme("kanagawa")
 
 
+vim.api.nvim_set_hl(0, "@string.special.url", { underline = true })
+
+
 local function bold(group)
   return vim.tbl_extend("force", vim.api.nvim_get_hl(0, { name = group, link = false }), { bold = true })
 end

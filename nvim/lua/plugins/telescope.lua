@@ -72,12 +72,37 @@ return {
   },
   opts = {
     defaults = {
-      path_display = {
-        -- smart = true,
-        -- shorten = 2,
-        -- truncate = true,
-        filename_first = true,
-      },
+      -- path_display = {
+      --   -- smart = true,
+      --   -- shorten = 2,
+      --   -- truncate = true,
+      --   filename_first = true,
+      -- },
+      path_display = function(_, path)
+        local state = require("telescope.state")
+        local bufnr = state.get_existing_prompt_bufnrs()[1]
+        local width = state.get_status(bufnr).layout.results.border.content_win_options.width - 4 -- plz dont break
+        local sep = package.config:sub(1, 1)
+        local parts = vim.split(path, sep)
+        if #parts == 1 then
+          return path
+        end
+        local i = #parts - 1
+        local curr_len = #path
+        while curr_len > width and i >= 1 do
+          local part = parts[i]
+          parts[i] = part:sub(1, 1)
+          curr_len = curr_len - #part + 1
+          i = i - 1
+        end
+        local disp_path = table.concat(parts, sep)
+        local hl = {{{0, curr_len - #parts[#parts]}, "@variable.parameter"}}
+        if #disp_path <= width then
+          return disp_path, hl
+        else
+          return disp_path:sub(1, width-1).."…", hl
+        end
+      end,
       results_title = false,
       prompt_title = false,
       history = false,
