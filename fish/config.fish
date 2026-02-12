@@ -126,6 +126,7 @@ if status is-interactive
     abbr --add lg lazygit
     abbr --add slg sudo lazygit
     abbr --add lo loffice
+    abbr --add oc opencode
     abbr --add pm pacman
     abbr --add spm sudo pacman
     abbr --add p paru

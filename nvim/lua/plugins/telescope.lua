@@ -20,7 +20,7 @@ return {
     { "<leader>sb", "<cmd>Telescope buffers<cr>",                   desc = "[S]earch Existing [B]uffers" },
     { "<leader>sk", "<cmd>Telescope keymaps<cr>",                   desc = "[S]earch [K]eymaps" },
     { "<leader>sd", "<cmd>Telescope diagnostics<cr>",               desc = "[S]earch [D]iagnostics" },
-    { "<leader>/",  "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "[/] Fuzzily search in current buffer" },
+    { "g/",         "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "[/] Fuzzily search in current buffer" },
     {
       "<leader>sF",
       function()
