@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "disabled_hooks": [
+    "directory-readme-injector",
+    "rules-injector",
+    "auto-update-checker",
+    "background-notification",
+    "session-notification",
+    "agent-usage-reminder",
+    "claude-code-hooks"
+  ],
+  "disabled_commands": ["init-deep"],
+  "browser_automation_engine": {
+    "provider": "agent-browser"
+  },
+  "agents": {
+    "build": {
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "plan": {
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "sisyphus": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max",
+      "permission": {
+        "doom_loop": "ask",
+        "external_directory": "ask"
+      }
+    },
+    "sisyphus-junior": {
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "OpenCode-Builder": {
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "prometheus": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max",
+      "tools": {
+        "task": false // it is able to call sisyphus-junior with this
+      },
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "metis": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max",
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "momus": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max",
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "oracle": {
+      "model": "google/gemini-3-pro",
+      "variant": "high",
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "librarian": {
+      "model": "anthropic/claude-sonnet-4-5",
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "explore": {
+      "model": "anthropic/claude-haiku-4-5",
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "multimodal-looker": {
+      "model": "google/gemini-3-flash",
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    },
+    "atlas": {
+      "model": "anthropic/claude-sonnet-4-5",
+      "permission": {
+        "doom_loop": "deny",
+        "external_directory": "ask"
+      }
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "google/gemini-3-pro"
+    },
+    "ultrabrain": {
+      "model": "google/gemini-3-pro",
+      "variant": "high"
+    },
+    "artistry": {
+      "model": "google/gemini-3-pro",
+      "variant": "high"
+    },
+    "quick": {
+      "model": "anthropic/claude-haiku-4-5"
+    },
+    "unspecified-low": {
+      "model": "anthropic/claude-sonnet-4-5"
+    },
+    "unspecified-high": {
+      "model": "anthropic/claude-opus-4-6",
+      "variant": "max"
+    },
+    "writing": {
+      "model": "google/gemini-3-flash"
+    }
+  },
+  "git_master": {
+    "commit_footer": false,
+    "include_co_authored_by": false
+  }
+}

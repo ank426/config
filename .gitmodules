@@ -5,9 +5,3 @@
 [submodule "opencode/skill-repos/anthropics-skills"]
 	path = opencode/skill-repos/anthropics-skills
 	url = https://github.com/anthropics/skills
-[submodule "opencode/skill-repos/vercel-skills"]
-	path = opencode/skill-repos/vercel-skills
-	url = https://github.com/vercel-labs/agent-skills
-[submodule "opencode/skill-repos/agent-browser"]
-	path = opencode/skill-repos/agent-browser
-	url = https://github.com/vercel-labs/agent-browser
