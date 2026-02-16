@@ -18,7 +18,9 @@ export LS_COLORS='di=01;34:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;33:cd=01;33
 export MANPAGER='less -IR --incsearch --use-color --color=d+g --color=uc'
 export MANROFFOPT='-P -c' # This sets grotty opts to disable in built color and use bold/underline instead. Noone knows why but it's necessary
 
-export PATH=/opt/homebrew/share/google-cloud-sdk/bin:"$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 

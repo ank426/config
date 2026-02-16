@@ -241,23 +241,27 @@ if status is-interactive
     alias ttyper-quote="curl -s https://quotes-api-self.vercel.app/quote | jq -r '.quote' | sed 's/’/\'/g' | tr ' –' '\n-' | ttyper -"
 
 
+    source ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env
+
     function jarvis
         cd ~/Desktop/jarvis-ai-assistant/jarvis-assistant/ || return
-        claude $argv
+        source ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env
+        # claude $argv
+        opencode $argv
     end
 
-    function load_jarvis_env
-        for line in (cat ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env)
-            if string match -qr '^\s*#' -- $line
-                continue
-            end
-            if string match -qr '=' -- $line
-                set -lx (string split -m1 '=' $line)
-            end
-        end
-    end
-
-    load_jarvis_env
+    # function load_jarvis_env
+    #     for line in (cat ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env)
+    #         if string match -qr '^\s*#' -- $line
+    #             continue
+    #         end
+    #         if string match -qr '=' -- $line
+    #             set -lx (string split -m1 '=' $line)
+    #         end
+    #     end
+    # end
+    #
+    # load_jarvis_env
 
 
     # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
