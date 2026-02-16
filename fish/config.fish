@@ -127,6 +127,7 @@ if status is-interactive
     abbr --add lg lazygit
     abbr --add slg sudo lazygit
     abbr --add lo loffice
+    abbr --add oc opencode
     abbr --add pm pacman
     abbr --add spm sudo pacman
     abbr --add p paru
@@ -232,6 +233,7 @@ if status is-interactive
 
     alias brave='brave --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation --ozone-platform-hint=auto' # --disable-gpu
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
+    alias opencode='opencode --agent nestor'
 
     alias adb="HOME=$XDG_DATA_HOME/android command adb"
     alias qbt="qbt --config $XDG_CONFIG_HOME/qbt/.qbt.toml"

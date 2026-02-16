@@ -59,6 +59,8 @@
 !/nfs/**
 !/nvim/
 !/nvim/**
+!/opencode/
+!/opencode/**
 !/python/
 !/python/**
 !/qBittorrent/

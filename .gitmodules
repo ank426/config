@@ -2,3 +2,6 @@
 	path = mozilla/firefox/main/chrome
 	url = git@github.com:ank426/Firefox-UI-Fix.git
 	branch = master
+[submodule "opencode/skill-repos/anthropics-skills"]
+	path = opencode/skill-repos/anthropics-skills
+	url = https://github.com/anthropics/skills
