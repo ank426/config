@@ -76,11 +76,9 @@ export PATH="$CUDA_PATH/bin:$CUDA_PATH/nsight_compute:$CUDA_PATH/nsight_systems/
 export NVCC_CCBIN='/usr/bin/g++-13'
 
 export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools" # Add .NET Core SDK tools
-
+export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
+export PATH="$XDG_CACHE_HOME/.bun/bin:$PATH"
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 
-export PATH="$XDG_DATA_HOME/npm/bin:$PATH"
-
 export PATH="$XDG_DATA_HOME/../bin:$PATH"
-
 export PATH="$PATH:$XDG_DATA_HOME/../script"

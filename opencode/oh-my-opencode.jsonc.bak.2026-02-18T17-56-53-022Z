@@ -9,9 +9,7 @@
     "agent-usage-reminder",
     "claude-code-hooks"
   ],
-  "disabled_commands": [
-    "init-deep"
-  ],
+  "disabled_commands": ["init-deep"],
   "browser_automation_engine": {
     "provider": "agent-browser"
   },
@@ -84,7 +82,7 @@
       }
     },
     "librarian": {
-      "model": "anthropic/claude-sonnet-4-6",
+      "model": "anthropic/claude-sonnet-4-5",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
@@ -105,7 +103,7 @@
       }
     },
     "atlas": {
-      "model": "anthropic/claude-sonnet-4-6",
+      "model": "anthropic/claude-sonnet-4-5",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
@@ -128,7 +126,7 @@
       "model": "anthropic/claude-haiku-4-5"
     },
     "unspecified-low": {
-      "model": "anthropic/claude-sonnet-4-6"
+      "model": "anthropic/claude-sonnet-4-5"
     },
     "unspecified-high": {
       "model": "anthropic/claude-opus-4-6",
