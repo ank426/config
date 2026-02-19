@@ -49,7 +49,7 @@ description: >-
   recommendations on monorepo structure and organization."
 mode: primary
 tools:
-  bash: false
+  # bash: false
   write: false
   edit: false
   todowrite: false

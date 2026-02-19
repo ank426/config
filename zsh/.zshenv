@@ -27,5 +27,4 @@ export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 export PATH="$XDG_DATA_HOME/../bin:$PATH"
-
 export PATH="$PATH:$XDG_DATA_HOME/../script"

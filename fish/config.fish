@@ -138,6 +138,7 @@ if status is-interactive
     abbr --add v nvim
 
     abbr --add phs py-http-server.sh
+    abbr --add mkr mokuro.sh
     abbr --add sl scroll.py
     abbr --add wey weylus.sh
 
