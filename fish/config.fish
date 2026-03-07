@@ -83,6 +83,7 @@ if status is-interactive
         contains -- $argv[1] clear
         or echo
     end
+    bind \r 'test -n (commandline) || echo; commandline --function execute' # terminals send \r on enter
 
     set --global --export SHELL (command -s fish)
     set --global --export fish_greeting
