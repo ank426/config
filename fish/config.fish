@@ -78,15 +78,10 @@ if status is-interactive
 
     # tide prompt prints blank line on startup / clear screen (bug)
     # set tide layout to compact and do this to do manual sparse
-    set first_line true
-    function manual_sparse --on-event fish_prompt
-        $first_line
-        and set first_line false
+    # https://github.com/IlanCosman/tide/issues/327
+    function postexec_newline --on-event fish_postexec
+        contains -- $argv[1] clear
         or echo
-    end
-    function clear
-        set first_line true
-        command clear
     end
 
     set --global --export SHELL (command -s fish)
