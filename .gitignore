@@ -69,6 +69,8 @@
 !/qbt/**
 !/ranger/
 !/ranger/**
+!/rustfmt/
+!/rustfmt/**
 !/swaylock/
 !/swaylock/**
 !/systemd/
