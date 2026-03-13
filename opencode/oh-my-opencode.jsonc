@@ -1,11 +1,17 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "disabled_agents": [
+    "sisyphus",
+    "hephaestus",
+    "prometheus",
+    "atlas"
+  ],
   "disabled_hooks": [
     "directory-readme-injector",
     "rules-injector",
     "auto-update-checker",
     "background-notification",
-    "session-notification",
+    // "session-notification",
     "agent-usage-reminder",
     "claude-code-hooks"
   ],
@@ -17,12 +23,14 @@
   },
   "agents": {
     "build": {
+      "model": "openai/gpt-5.2-codex",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "plan": {
+      "model": "google/gemini-3.1-pro-preview",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
@@ -49,7 +57,7 @@
       }
     },
     "prometheus": {
-      "model": "google/gemini-3.1-pro-preview",
+      "model": "openai/gpt-5.4",
       "variant": "max",
       "tools": {
         "task": false // it is able to call sisyphus-junior with this
@@ -60,7 +68,7 @@
       }
     },
     "metis": {
-      "model": "google/gemini-3.1-pro-preview",
+      "model": "openai/gpt-5.4",
       "variant": "max",
       "permission": {
         "doom_loop": "deny",
@@ -68,7 +76,7 @@
       }
     },
     "momus": {
-      "model": "google/gemini-3.1-pro-preview",
+      "model": "openai/gpt-5.4",
       "variant": "max",
       "permission": {
         "doom_loop": "deny",
@@ -76,7 +84,7 @@
       }
     },
     "oracle": {
-      "model": "google/gemini-3-pro",
+      "model": "openai/gpt-5.4",
       "variant": "high",
       "permission": {
         "doom_loop": "deny",
@@ -98,14 +106,14 @@
       }
     },
     "multimodal-looker": {
-      "model": "google/gemini-3-flash",
+      "model": "google/gemini-3-flash-preview",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "atlas": {
-      "model": "google/gemini-3-flash-preview",
+      "model": "openai/gpt-5.4",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
@@ -114,14 +122,14 @@
   },
   "categories": {
     "visual-engineering": {
-      "model": "google/gemini-3-pro"
+      "model": "google/gemini-3.1-pro-preview"
     },
     "ultrabrain": {
-      "model": "google/gemini-3-pro",
+      "model": "openai/gpt-5.4",
       "variant": "high"
     },
     "artistry": {
-      "model": "google/gemini-3-pro",
+      "model": "openai/gpt-5.4",
       "variant": "high"
     },
     "quick": {
@@ -135,8 +143,12 @@
       "variant": "max"
     },
     "writing": {
-      "model": "google/gemini-3-flash"
+      "model": "google/gemini-3-flash-preview"
     }
+  },
+  "sisyphus_agent": {
+    "default_builder_enabled": true,
+    "replace_plan": false
   },
   "git_master": {
     "commit_footer": false,
