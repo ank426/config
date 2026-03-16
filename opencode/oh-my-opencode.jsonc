@@ -1,11 +1,17 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "disabled_agents": [
+    "sisyphus",
+    // "hephaestus",
+    "prometheus",
+    "atlas"
+  ],
   "disabled_hooks": [
     "directory-readme-injector",
     "rules-injector",
     "auto-update-checker",
     "background-notification",
-    "session-notification",
+    // "session-notification",
     "agent-usage-reminder",
     "claude-code-hooks"
   ],
@@ -17,22 +23,21 @@
   },
   "agents": {
     "build": {
+      "model": "openai/gpt-5.2-codex",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "plan": {
+      "model": "google/gemini-3.1-pro-preview",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "sisyphus": {
-      // "model": "anthropic/claude-opus-4-6",
-      // "model": "google/antigravity-claude-opus-4-5-thinking",
       "model": "google/gemini-3.1-pro-preview",
-      // "model": "openai/gpt-5.3-codex",
       "variant": "max",
       "permission": {
         "doom_loop": "ask",
@@ -52,11 +57,8 @@
       }
     },
     "prometheus": {
-      // "model": "anthropic/claude-opus-4-6",
-      // "model": "google/antigravity-claude-opus-4-5-thinking",
-      "model": "google/gemini-3.1-pro-preview",
-      // "model": "openai/gpt-5.3-codex",
-      "variant": "medium",
+      "model": "openai/gpt-5.2-codex",
+      "variant": "max",
       "tools": {
         "task": false // it is able to call sisyphus-junior with this
       },
@@ -66,73 +68,52 @@
       }
     },
     "metis": {
-      // "model": "anthropic/claude-opus-4-6",
-      // "model": "google/antigravity-claude-opus-4-5-thinking",
-      // "model": "google/gemini-3.1-pro-preview",
       "model": "openai/gpt-5.2-codex",
-      "variant": "low",
+      "variant": "max",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "momus": {
-      // "model": "anthropic/claude-opus-4-6",
-      // "model": "google/antigravity-claude-opus-4-5-thinking",
-      // "model": "google/gemini-3.1-pro-preview",
       "model": "openai/gpt-5.2-codex",
-      "variant": "low",
+      "variant": "max",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "oracle": {
-      // "model": "google/gemini-3-pro",
-      // "model": "google/gemini-3.1-pro-preview",
       "model": "openai/gpt-5.2-codex",
-      "variant": "low",
+      "variant": "high",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "librarian": {
-      // "model": "anthropic/claude-sonnet-4-6",
-      // "model": "google/antigravity-claude-sonnet-4-6",
-      "model": "google/gemini-3.1-pro-preview",
-      // "model": "openai/gpt-5.3-codex",
-      "variant": "low",
+      "model": "google/gemini-3-flash-preview",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "explore": {
-      // "model": "anthropic/claude-haiku-4-5",
-      // "model": "google/antigravity-gemini-3-flash",
       "model": "google/gemini-3-flash-preview",
-      // "model": "openai/gpt-5.1-codex-mini",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "multimodal-looker": {
-      // "model": "google/antigravity-gemini-3-flash",
       "model": "google/gemini-3-flash-preview",
-      // "model": "openai/gpt-5.1-codex-mini",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
       }
     },
     "atlas": {
-      // "model": "anthropic/claude-sonnet-4-6",
-      // "model": "google/antigravity-claude-sonnet-4-6",
-      // "model": "google/gemini-3.1-pro-preview",
       "model": "openai/gpt-5.2-codex",
-      "variant": "low",
       "permission": {
         "doom_loop": "deny",
         "external_directory": "ask"
@@ -144,35 +125,24 @@
       "model": "google/gemini-3.1-pro-preview"
     },
     "ultrabrain": {
-      "model": "google/gemini-3.1-pro-preview",
+      "model": "openai/gpt-5.2-codex",
       "variant": "high"
     },
     "artistry": {
-      "model": "google/gemini-3.1-pro-preview",
+      "model": "openai/gpt-5.2-codex",
       "variant": "high"
     },
     "quick": {
-      // "model": "anthropic/claude-haiku-4-5"
-      // "model": "google/antigravity-gemini-3-flash"
       "model": "google/gemini-3-flash-preview"
-      // "model": "openai/gpt-5.3-codex"
     },
     "unspecified-low": {
-      // "model": "anthropic/claude-sonnet-4-6"
-      // "model": "google/antigravity-claude-sonnet-4-6"
-      // "model": "google/gemini-3.1-pro-preview"
-      "model": "google/gemini-3-flash-preview",
-      "variant": "low"
+      "model": "google/gemini-3-flash-preview"
     },
     "unspecified-high": {
-      // "model": "anthropic/claude-opus-4-6",
-      // "model": "google/antigravity-claude-opus-4-5-thinking",
-      // "model": "google/gemini-3.1-pro-preview",
-      "model": "openai/gpt-5.2-codex",
-      "variant": "medium"
+      "model": "google/gemini-3.1-pro-preview",
+      "variant": "max"
     },
     "writing": {
-      // "model": "google/antigravity-gemini-3-flash"
       "model": "google/gemini-3-flash-preview"
     }
   },
