@@ -7,11 +7,12 @@
     "atlas"
   ],
   "disabled_hooks": [
+    // "session-notification",
     "directory-readme-injector",
     "rules-injector",
     "auto-update-checker",
     "background-notification",
-    // "session-notification",
+    "keyword-detector",
     "agent-usage-reminder",
     "claude-code-hooks"
   ],

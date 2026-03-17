@@ -68,6 +68,16 @@ return {
         rendered = "NONE",
       },
     },
+    overrides = {
+      buftype = {
+        nofile = {
+          code = {
+            left_pad = 0,
+            right_pad = 0,
+          },
+        },
+      },
+    },
     yaml = {
       enabled = false,
     },

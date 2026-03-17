@@ -5,7 +5,7 @@
   "small_model": "google/gemini-3-flash-preview",
   "mode": {
     "build": {
-      "model": "openai/gpt-5.2-codex"
+      "model": "openai/gpt-5.4"
     },
     "plan": {
       "model": "google/gemini-3.1-pro-preview"

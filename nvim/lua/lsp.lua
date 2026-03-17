@@ -27,7 +27,11 @@ vim.lsp.enable("tailwindcss")
 vim.lsp.enable("terraformls")
 
 -- Typescript
-vim.lsp.enable("ts_ls")
+-- vim.lsp.enable("ts_ls")
+
+
+-- Web
+vim.lsp.enable("biome")
 
 
 -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/
