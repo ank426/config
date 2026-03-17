@@ -14,6 +14,7 @@ export XDG_PICTURES_DIR="$HOME/pic"
 # export XDG_VIDEOS_DIR="$HOME/vid"
 
 export ANDROID_USER_HOME="$XDG_DATA_HOME/android"
+export BIOME_CONFIG_PATH="$XDG_CONFIG_HOME/biome"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CODEX_HOME="$XDG_CONFIG_HOME/codex"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
