@@ -27,7 +27,7 @@ vim.lsp.enable("tailwindcss")
 vim.lsp.enable("terraformls")
 
 -- Typescript
--- vim.lsp.enable("ts_ls")
+vim.lsp.enable("ts_ls")
 
 
 -- Web
