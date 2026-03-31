@@ -1,10 +1,6 @@
 *
 !/.gitignore
 !/README.*
-!/bin/
-!/bin/**
-!/notes/
-!/notes/**
 
 !/batsignal
 !/mimeapps.list
@@ -15,6 +11,8 @@
 !/alacritty/**
 !/bat/
 !/bat/**
+!/biome/
+!/biome/**
 !/bpython/
 !/bpython/**
 !/btop/
@@ -69,6 +67,8 @@
 !/qbt/**
 !/ranger/
 !/ranger/**
+!/ruff/
+!/ruff/**
 !/rustfmt/
 !/rustfmt/**
 !/swaylock/

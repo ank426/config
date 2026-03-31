@@ -1,0 +1,12 @@
+line-length = 120
+show-fixes = true
+
+[analyze]
+detect-string-imports = true
+
+[format]
+docstring-code-format = true
+skip-magic-trailing-comma = true
+
+[lint]
+future-annotations = true
