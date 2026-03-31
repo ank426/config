@@ -76,14 +76,14 @@ source $XDG_CONFIG_HOME/zsh/.zshenv
 if status is-interactive
     source $XDG_CONFIG_HOME/fish/themes/kanagawa.fish
 
-    # tide prompt prints blank line on startup / clear screen (bug)
-    # set tide layout to compact and do this to do manual sparse
-    # https://github.com/IlanCosman/tide/issues/327
-    function postexec_newline --on-event fish_postexec
-        contains -- $argv[1] clear
-        or echo
-    end
-    bind \r 'test -n (commandline) || echo; commandline --function execute' # terminals send \r on enter
+    # # tide prompt prints blank line on startup / clear screen (bug)
+    # # set tide layout to compact and do this to do manual sparse
+    # # https://github.com/IlanCosman/tide/issues/327
+    # function postexec_newline --on-event fish_postexec
+    #     contains -- $argv[1] clear
+    #     or echo
+    # end
+    # bind \r 'test -n (commandline) || echo; commandline --function execute' # terminals send \r on enter
 
     set --global --export SHELL (command -s fish)
     set --global --export fish_greeting
