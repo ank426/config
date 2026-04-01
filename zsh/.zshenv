@@ -67,7 +67,6 @@ export FZF_DEFAULT_COMMAND='bfs -color -mindepth 1 -printf %P\n'
 export LS_COLORS='di=01;34:ln=01;36:so=01;35:pi=01;33:ex=01;32:bd=01;33:cd=01;33:su=37;41:sg=30;43:tw=30;42:ow=34;42'
 export MANPAGER='less -IR --incsearch --use-color --color=d+g --color=uc'
 export MANROFFOPT='-P -c' # This sets grotty opts to disable in built color and use bold/underline instead. Noone knows why but it's necessary
-export UV_PYTHON_PREFERENCE=system
 
 # export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True # Fixes a weird pytorch error when lots of memory is reserved for pytorch but not available
 export PYTORCH_ALLOC_CONF=expandable_segments:True # Fixes a weird pytorch error when lots of memory is reserved for pytorch but not available

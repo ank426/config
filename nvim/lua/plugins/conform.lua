@@ -13,6 +13,7 @@ return {
   opts = {
     formatters_by_ft = {
       javascript = {"biome"},
+      python = {"ruff_fix", "ruff_format"},
       rust = {"rustfmt"},
       typescript = {"biome"},
     },
