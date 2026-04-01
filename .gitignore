@@ -69,6 +69,8 @@
 !/ranger/**
 !/ruff/
 !/ruff/**
+!/rust-analyzer/
+!/rust-analyzer/**
 !/rustfmt/
 !/rustfmt/**
 !/swaylock/
