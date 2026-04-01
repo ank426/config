@@ -4,8 +4,8 @@
 [init]
 	defaultBranch = main
 [remote]
-  pushDefault = origin
+	pushDefault = origin
 [pull]
-  rebase = false
+	rebase = false
 [credential]
 	helper = cache
