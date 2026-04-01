@@ -13,8 +13,7 @@ vim.lsp.enable("jdtls")
 vim.lsp.enable("lua_ls")
 
 -- Python
--- vim.lsp.enable("basedpyright")
-vim.lsp.enable("pyright")
+vim.lsp.enable("ty")
 vim.lsp.enable("ruff")
 
 -- Rust
