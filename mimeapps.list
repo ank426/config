@@ -23,3 +23,4 @@ text/x-shellscript=nvim.desktop
 inode/x-empty=nvim.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-base.desktop
 application/vnd.oasis.opendocument.text=libreoffice-base.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
