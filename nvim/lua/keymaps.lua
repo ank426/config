@@ -40,7 +40,6 @@ vim.keymap.set("n", "zS", vim.show_pos, { desc = "Show Position" })
 
 vim.keymap.set("n", "gD",  vim.lsp.buf.declaration,      { desc = "LSP: [G]oto [D]eclaration" })
 vim.keymap.set("n", "grf", vim.lsp.buf.format,           { desc = "LSP: [F]ormat" })
-vim.keymap.set("n", "grt", vim.lsp.buf.type_definition,  { desc = "LSP: Goto [T]ype Definition" })
 vim.keymap.set("n", "grT", vim.lsp.buf.typehierarchy,    { desc = "LSP: [T]ype Hierarchy" })
 vim.keymap.set("n", "grw", vim.lsp.buf.workspace_symbol, { desc = "LSP: [W]orkspace Symbols" })
 
