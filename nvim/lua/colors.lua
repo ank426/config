@@ -3,15 +3,13 @@ vim.cmd.colorscheme("kanagawa")
 
 vim.api.nvim_set_hl(0, "@string.special.url", { underline = true })
 
-
-local function bold(group)
-  return vim.tbl_extend("force", vim.api.nvim_get_hl(0, { name = group, link = false }), { bold = true })
-end
-
-vim.api.nvim_set_hl(0, "@comment.error", bold("DiagnosticError"))
-vim.api.nvim_set_hl(0, "@comment.warning", bold("DiagnosticWarn"))
-vim.api.nvim_set_hl(0, "@comment.note", bold("DiagnosticHint"))
-vim.api.nvim_set_hl(0, "@comment.todo", bold("DiagnosticInfo"))
-
+vim.api.nvim_set_hl(0, "@comment.error",   { link = "DiagnosticError" })
+vim.api.nvim_set_hl(0, "@comment.warning", { link = "DiagnosticWarn"  })
+vim.api.nvim_set_hl(0, "@comment.note",    { link = "DiagnosticHint"  })
+vim.api.nvim_set_hl(0, "@comment.todo",    { link = "DiagnosticInfo"  })
+vim.api.nvim_set_hl(0, "@comment.error",   { bold = true, update = true })
+vim.api.nvim_set_hl(0, "@comment.warning", { bold = true, update = true })
+vim.api.nvim_set_hl(0, "@comment.note",    { bold = true, update = true })
+vim.api.nvim_set_hl(0, "@comment.todo",    { bold = true, update = true })
 
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "@Keyword" })
