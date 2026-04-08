@@ -1,19 +1,12 @@
--- Now that nvim sorts by severity there might be a slightly faster algorithm (also shows higher priority signs earlier)
--- :h diagnostic-handlers-example (second one)
 local ns = vim.api.nvim_create_namespace("custom-sign-handler")
 local orig_signs_handler = vim.diagnostic.handlers.signs
 vim.diagnostic.handlers.signs = {
   show = function(_, bufnr, _, opts)
-    local diagnostics = vim.diagnostic.get(bufnr)
-    local max_severity_per_line = {}
-    for _, d in pairs(diagnostics) do
-      local m = max_severity_per_line[d.lnum]
-      if not m or d.severity < m.severity then
-        max_severity_per_line[d.lnum] = d
-      end
+    local diagnostics = {}
+    for _, d in ipairs(vim.diagnostic.get(bufnr)) do
+      diagnostics[d.lnum] = diagnostics[d.lnum] or d
     end
-    local filtered_diagnostics = vim.tbl_values(max_severity_per_line)
-    orig_signs_handler.show(ns, bufnr, filtered_diagnostics, opts)
+    orig_signs_handler.show(ns, bufnr, vim.tbl_values(diagnostics), opts)
   end,
   hide = function(_, bufnr)
     orig_signs_handler.hide(ns, bufnr)
