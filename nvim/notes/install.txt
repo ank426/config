@@ -1,3 +1,0 @@
-wl-clipboard
-ripgrep
-tree-sitter-cli
