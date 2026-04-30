@@ -265,6 +265,9 @@ if status is-interactive
     #
     # load_jarvis_env
 
+    function imgcopy
+        osascript -e "set the clipboard to (read (POSIX file \"$argv[1]\") as TIFF picture)"
+    end
 
     # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
     set -gx SDKMAN_DIR $HOME/.sdkman

@@ -3,3 +3,4 @@
 - Always use the `gh` CLI instead of web fetch when interacting with GitHub without me having to explicitly ask as this provides cleaner outputs.
 - I have `jq`, `fd`, and `rg` installed. Use them in your scripts as they are faster than their alternatives.
 - Use `git-master` skill if `git-worktree` skill is not available.
+- When waiting on background agents, do other work or wait actively. Don't end the conversation prematurely.

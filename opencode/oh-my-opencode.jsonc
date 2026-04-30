@@ -11,7 +11,8 @@
     "rules-injector",
     "auto-update-checker",
     "background-notification",
-    // "session-notification",
+    "keyword-detector",
+    "session-notification",
     "agent-usage-reminder",
     "claude-code-hooks"
   ],
