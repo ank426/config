@@ -72,6 +72,12 @@ return {
   },
   opts = {
     defaults = {
+      -- path_display = {
+      --   -- smart = true,
+      --   -- shorten = 2,
+      --   -- truncate = true,
+      --   filename_first = true,
+      -- },
       path_display = function(_, path)
         local state = require("telescope.state")
         local bufnr = state.get_existing_prompt_bufnrs()[1]
