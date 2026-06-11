@@ -204,6 +204,8 @@ if status is-interactive
     abbr --add gm git merge
     abbr --add gsb git submodule
 
+    abbr --add jv jarvis
+
     if command --query advcp
         alias cp=advcp
     end
@@ -243,7 +245,39 @@ if status is-interactive
     alias ttyper-quote="curl -s https://quotes-api-self.vercel.app/quote | jq -r '.quote' | sed 's/’/\'/g' | tr ' –' '\n-' | ttyper -"
 
 
+    source ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env
+
+    function jarvis
+        cd ~/Desktop/jarvis-ai-assistant/jarvis-assistant/ || return
+        source ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env
+        # claude $argv
+        opencode $argv
+    end
+
+    # function load_jarvis_env
+    #     for line in (cat ~/Desktop/jarvis-ai-assistant/jarvis-assistant/jarvis.env)
+    #         if string match -qr '^\s*#' -- $line
+    #             continue
+    #         end
+    #         if string match -qr '=' -- $line
+    #             set -lx (string split -m1 '=' $line)
+    #         end
+    #     end
+    # end
+    #
+    # load_jarvis_env
+
     function imgcopy
         osascript -e "set the clipboard to (read (POSIX file \"$argv[1]\") as TIFF picture)"
+    end
+
+    # sdkman without bass: just wire up env/PATH for installed candidates.
+    # The `sdk` command itself is a bash function — run it via bash when needed.
+    set -gx SDKMAN_DIR $HOME/.sdkman
+    for candidate in $HOME/.sdkman/candidates/*/current/bin
+        fish_add_path --global $candidate
+    end
+    if test -d $HOME/.sdkman/candidates/java/current
+        set -gx JAVA_HOME $HOME/.sdkman/candidates/java/current
     end
 end
