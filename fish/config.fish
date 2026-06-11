@@ -115,8 +115,9 @@ if status is-interactive
     bind ctrl-alt-f 'command bfs -color -follow -mindepth 1 -printf %P\\n 2>/dev/null | _fzf_ins --scheme=path --accept-nth="\'{..}\'"'
     bind ctrl-v 'set --names | string match --invert history | _fzf_ins --preview="_fzf_var_preview {}"'
     bind ctrl-alt-p '
-        ps axh -o pid,start_time,user,command |
-        string replace --regex \'^( *[1-9][0-9]*) (.{5}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
+        ps ax -o pid,start,user,command |
+        tail -n +2 |
+        string replace --regex \'^( *[1-9][0-9]*) (.{7}) ([^ ]+) (.*)$\' \'\\e[90m$1  \\e[34m$2  \\e[35m$3  \\e[36m$4\' |
         _fzf_ins --accept-nth=1
     '
 
@@ -221,7 +222,7 @@ if status is-interactive
     alias info='info --vi-keys'
     alias jq='jq -C'
     alias less='less --IGNORE-CASE --RAW-CONTROL-CHARS --incsearch --use-color'
-    alias ls='LC_COLLATE=C command ls --almost-all --color --group-directories-first'
+    alias ls='LC_COLLATE=C command gls --almost-all --color --group-directories-first'
     alias ncdu='ncdu --color=dark'
     alias pacman='pacman --color=always'
     alias pactree='pactree --color'
@@ -240,4 +241,9 @@ if status is-interactive
     alias R='R --no-save'
 
     alias ttyper-quote="curl -s https://quotes-api-self.vercel.app/quote | jq -r '.quote' | sed 's/’/\'/g' | tr ' –' '\n-' | ttyper -"
+
+
+    function imgcopy
+        osascript -e "set the clipboard to (read (POSIX file \"$argv[1]\") as TIFF picture)"
+    end
 end
