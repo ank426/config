@@ -1,12 +1,13 @@
 vim.opt.breakindent = true
 vim.opt.cinkeys:remove(":")
 vim.opt.clipboard = "unnamed" -- Vim's clipboard system is seriously fucked. Just use * for internal and + for external
+vim.opt.cmdheight = 0
 vim.opt.confirm = true
 vim.opt.completeopt:append("noselect")
 vim.opt.completeopt:append("fuzzy")
 vim.opt.expandtab = true
 vim.opt.exrc = true
-vim.opt.fillchars:append({ eob = " "})
+vim.opt.fillchars:append({ eob = " " })
 vim.opt.formatoptions:remove("o")
 -- vim.opt.guicursor:append("c:ver25") -- Done in autocommands
 vim.opt.ignorecase = true

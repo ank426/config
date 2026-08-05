@@ -23,5 +23,9 @@ gui:
 git:
   autoFetch: false
   parseEmoji: true
+os:
+  edit: '[ -z "$NVIM" ] && $EDITOR -- {{filename}} || nvim --server "$NVIM" --remote-send "<Cmd>close<CR><Cmd>edit {{filename}}<CR>"'
+  editAtLine: '[ -z "$NVIM" ] && $EDITOR +{{line}} -- {{filename}} || nvim --server "$NVIM" --remote-send "<Cmd>close<CR><Cmd>edit +{{line}} {{filename}}<CR>"'
+  editInTerminal: true
 notARepository: skip
 promptToReturnFromSubprocess: false
