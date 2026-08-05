@@ -140,7 +140,7 @@ if status is-interactive
 
     abbr --add phs py-http-server.sh
     abbr --add mkr mokuro.sh
-    abbr --add sl scroll.py
+    abbr --add sl scroll.sh
     abbr --add wey weylus.sh
 
     abbr --add g git
@@ -234,7 +234,7 @@ if status is-interactive
     alias brave='brave --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation --ozone-platform-hint=auto' # --disable-gpu
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
 
-    alias adb="HOME=$XDG_DATA_HOME/android command adb"
+    # alias adb="HOME=$XDG_DATA_HOME/android command adb"
     alias qbt="qbt --config $XDG_CONFIG_HOME/qbt/.qbt.toml"
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
     alias R='R --no-save'

@@ -15,12 +15,12 @@ return {
     },
     overrides = function(_)
       return {
-        NormalFloat = { bg = "none" },
-        FloatBorder = { bg = "none" },
-        FloatTitle = { bg = "none" },
-        Pmenu = { bg = "none" },
+        NormalFloat  = { bg = "none" },
+        FloatBorder  = { bg = "none" },
+        FloatTitle   = { bg = "none" },
+        Pmenu        = { bg = "none" },
         -- there are more things that might be necessary to make status line bg transparent, but these work for now
-        StatusLine = { bg = "none" },
+        StatusLine   = { bg = "none" },
         StatusLineNC = { bg = "none" },
       }
     end,
