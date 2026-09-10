@@ -23,6 +23,8 @@ return {
       python3 = {
         -- before = true, -- Default imports which only work for python and java
         before = {
+          "# ruff: noqa: ANN001, ANN201, ANN202, ANN204, UP006, UP045, E741",
+          "# ty: ignore[invalid-assignment, unresolved-attribute]",
           "# Imports:",
           "import string # noqa: F401",
           "import re #noqa: F401",

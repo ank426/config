@@ -28,6 +28,9 @@ vim.lsp.enable("terraformls")
 -- Typescript
 vim.lsp.enable("ts_ls")
 
+-- Typst
+vim.lsp.enable("tinymist")
+
 
 -- Web
 vim.lsp.enable("biome")
