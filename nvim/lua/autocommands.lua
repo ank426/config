@@ -57,12 +57,12 @@ vim.api.nvim_create_autocmd({"TextChanged", "TextChangedI"}, {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "Remove trailing whitespace on save",
-  command = [[%s/\s\+$//e]],
+  command = [[silent keeppatterns %s/\s\+$//e]],
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "Remove trailing blank lines on save",
-  command = [[%s/\($\n\)\+\%$//e]],
+  command = [[silent keeppatterns %s/\($\n\)\+\%$//e]],
 })
 
 -- vim.api.nvim_create_autocmd("BufWritePre", {
