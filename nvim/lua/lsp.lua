@@ -19,8 +19,8 @@ vim.lsp.enable("ruff")
 -- Rust
 vim.lsp.enable("rust_analyzer")
 
--- Tailwind
-vim.lsp.enable("tailwindcss")
+-- -- Tailwind
+-- vim.lsp.enable("tailwindcss")
 
 -- Terraform
 vim.lsp.enable("terraformls")

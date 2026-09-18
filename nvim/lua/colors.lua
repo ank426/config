@@ -11,5 +11,6 @@ vim.api.nvim_set_hl(0, "@comment.error",   { bold = true, update = true })
 vim.api.nvim_set_hl(0, "@comment.warning", { bold = true, update = true })
 vim.api.nvim_set_hl(0, "@comment.note",    { bold = true, update = true })
 vim.api.nvim_set_hl(0, "@comment.todo",    { bold = true, update = true })
+vim.api.nvim_set_hl(0, "Todo", { link = "@comment.todo" })
 
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "@Keyword" })

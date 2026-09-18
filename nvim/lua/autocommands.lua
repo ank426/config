@@ -62,7 +62,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "Remove trailing blank lines on save",
-  command = [[silent keeppatterns %s/\($\n\)\+\%$//e]],
+  callback = function(args)
+    if vim.bo[args.buf].filetype == "markdown" then
+      vim.cmd([[silent keeppatterns %s/\($\n\)\@<=\($\n\)\+\%$//e]])
+    else
+      vim.cmd([[silent keeppatterns %s/\($\n\)\+\%$//e]])
+    end
+  end,
 })
 
 -- vim.api.nvim_create_autocmd("BufWritePre", {

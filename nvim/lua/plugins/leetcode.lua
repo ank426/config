@@ -1,3 +1,106 @@
+local python_imports = [[
+# Imports and Ignores:
+
+# ruff: noqa: F401, F403, F405, I001, UP006, UP007, UP045, ANN001, ANN002, ANN003, ANN201, ANN202, ANN204, ANN205, ANN206, ANN401
+# ty: ignore[empty-body]
+
+from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from sortedcontainers import *
+
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+import sortedcontainers
+
+from typing import *
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: ListNode | None = None) -> None:
+        self.val = val
+        self.next = next
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: TreeNode | None = None, right: TreeNode | None = None) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class NestedInteger:
+    """
+    This is the interface that allows for creating nested lists.
+    You should not implement it, or speculate about its implementation
+    """
+
+    def __init__(self, value: int | None = None) -> None:
+        """
+        If value is not specified, initializes an empty list.
+        Otherwise initializes a single integer equal to value.
+        """
+
+    def isInteger(self) -> bool:
+        """
+        @return True if this NestedInteger holds a single integer, rather than a nested list.
+        :rtype bool
+        """
+
+    def add(self, elem: NestedInteger) -> None:
+        """
+        Set this NestedInteger to hold a nested list and adds a nested integer elem to it.
+        :rtype void
+        """
+
+    def setInteger(self, value: int) -> None:
+        """
+        Set this NestedInteger to hold a single integer equal to value.
+        :rtype void
+        """
+
+    def getInteger(self) -> int:
+        """
+        @return the single integer that this NestedInteger holds, if it holds a single integer.
+        The result is undefined if this NestedInteger holds a nested list.
+        :rtype int
+        """
+
+    def getList(self) -> list[NestedInteger]:
+        """
+        @return the nested list that this NestedInteger holds, if it holds a nested list.
+        The result is undefined if this NestedInteger holds a single integer.
+        :rtype List[NestedInteger]
+        """
+]]
+
 return {
   "kawre/leetcode.nvim",
   cmd = "Leet",
@@ -18,34 +121,9 @@ return {
   opts = {
     lang = "python3",
     injector = {
-      -- for python, I have the defaults without * imports (throw warning in ruff) and without conflicts
-      -- rest I have just a few common ones
       python3 = {
         -- before = true, -- Default imports which only work for python and java
-        before = {
-          "# ruff: noqa: ANN001, ANN201, ANN202, ANN204, UP006, UP045, E741",
-          "# ty: ignore[invalid-assignment, unresolved-attribute]",
-          "# Imports:",
-          "import string # noqa: F401",
-          "import re #noqa: F401",
-          "import datetime #noqa: F401",
-          "import collections #noqa: F401",
-          "from collections import deque, defaultdict, namedtuple #noqa: F401",
-          "import heapq #noqa: F401",
-          "import bisect #noqa: F401",
-          "import copy #noqa: F401",
-          "import math #noqa: F401",
-          "import random #noqa: F401",
-          "import statistics #noqa: F401",
-          "import itertools #noqa: F401",
-          "import functools #noqa: F401",
-          "import operator #noqa: F401",
-          "import io #noqa: F401",
-          "import sys #noqa: F401",
-          "import json #noqa: F401",
-          -- typing.__dir__() except things that start with '_' and things that conflict with above imports
-          "from typing import ABCMeta, AbstractSet, Annotated, Any, AnyStr, AsyncGenerator, AsyncIterable, AsyncIterator, Awaitable, BinaryIO, ByteString, CT_co, Callable, ChainMap, ClassVar, Collection, Concatenate, Container, Coroutine, Counter, DefaultDict, Deque, Dict, EXCLUDED_ATTRIBUTES, Final, ForwardRef, FrozenSet, Generator, Generic, GenericAlias, Hashable, IO, ItemsView, Iterable, Iterator, KT, KeysView, List, Literal, LiteralString, Mapping, MappingView, MethodDescriptorType, MethodWrapperType, MutableMapping, MutableSequence, MutableSet, NamedTuple, NamedTupleMeta, Never, NewType, NoDefault, NoReturn, NotRequired, Optional, OrderedDict, ParamSpec, ParamSpecArgs, ParamSpecKwargs, Protocol, ReadOnly, Required, Reversible, Self, Sequence, Set, Sized, SupportsAbs, SupportsBytes, SupportsComplex, SupportsFloat, SupportsIndex, SupportsInt, SupportsRound, T, TYPE_CHECKING, T_co, T_contra, Text, TextIO, Tuple, Type, TypeAlias, TypeAliasType, TypeGuard, TypeIs, TypeVar, TypeVarTuple, TypedDict, Union, Unpack, VT, VT_co, V_co, ValuesView, WrapperDescriptorType, abstractmethod, assert_never, assert_type, cast, clear_overloads, copyreg, dataclass_transform, final, get_args, get_origin, get_overloads, get_protocol_members, get_type_hints, is_protocol, is_typeddict, no_type_check, no_type_check_decorator, overload, override, reveal_type, runtime_checkable, types # noqa: F401, E501",
-        },
+        before = vim.split(python_imports, "\n", { trimempty = true }),
       },
       c = { -- There's also address sanitizer
         before = {
