@@ -1,47 +1,4 @@
-local python_imports = [[
-# Imports and Ignores:
-
-# ruff: noqa: F401, F403, F405, I001, UP006, UP007, UP045, ANN001, ANN002, ANN003, ANN201, ANN202, ANN204, ANN205, ANN206, ANN401
-# ty: ignore[empty-body]
-
-from string import *
-from re import *
-from datetime import *
-from collections import *
-from heapq import *
-from bisect import *
-from copy import *
-from math import *
-from random import *
-from statistics import *
-from itertools import *
-from functools import *
-from operator import *
-from io import *
-from sys import *
-from json import *
-from sortedcontainers import *
-
-import string
-import re
-import datetime
-import collections
-import heapq
-import bisect
-import copy
-import math
-import random
-import statistics
-import itertools
-import functools
-import operator
-import io
-import sys
-import json
-import sortedcontainers
-
-from typing import *
-
+local python_classes = [[
 
 class ListNode:
     def __init__(self, val: int = 0, next: ListNode | None = None) -> None:
@@ -122,71 +79,76 @@ return {
     lang = "python3",
     injector = {
       python3 = {
-        -- before = true, -- Default imports which only work for python and java
-        before = vim.split(python_imports, "\n", { trimempty = true }),
+        imports = function(default_imports)
+          return vim.iter({
+            {
+              "# ruff: noqa: F401, F403, F405, I001, UP006, UP007, UP045, ANN001, ANN002, ANN003, ANN201, ANN202, ANN204, ANN205, ANN206, ANN401",
+              "# ty: ignore[empty-body, invalid-assignment, invalid-return-type, unresolved-attribute, unused-ignore-comment]",
+              "",
+            },
+            default_imports,
+            vim.split(python_classes, "\n"),
+          }):flatten():totable()
+        end,
       },
-      c = { -- There's also address sanitizer
-        before = {
-          "// Includes:",
-          "// IWYU pragma: begin_keep",
-          "#include <stdbool.h>",
-          "#include <stdio.h>",
-          "#include <stdlib.h>",
-          "#include <ctype.h>",
-          "#include <inttypes.h>",
-          "#include <limits.h>",
-          "#include <math.h>",
-          "#include <string.h>",
-          "#include <time.h>",
-          -- "#include <uthash.h>", -- haven't installed
-          "// IWYU pragma: end_keep",
-        },
-      },
-      cpp = {
-        -- before = {
-        --   "// Includes:",
-        --   "// IWYU pragma: begin_keep",
-        --   "#include <iostream>",
-        --   "#include <algorithm>",
-        --   "#include <cmath>",
-        --   "#include <deque>",
-        --   "#include <list>",
-        --   "#include <map>",
-        --   "#include <queue>",
-        --   "#include <set>",
-        --   "#include <span>",
-        --   "#include <stack>",
-        --   "#include <string>",
-        --   "#include <tuple>",
-        --   "#include <vector>",
-        --   "// IWYU pragma: end_keep",
-        --   -- "using namespace std;",
-        -- },
-        before = {
-          "// Includes:",
-          "#include <bits/stdc++.h>",
-          "using namespace std;",
-        },
+      c = {
+        imports = function(_)
+          return {
+            "// IWYU pragma: begin_keep",
+            "#include <stdbool.h>",
+            "#include <stdio.h>",
+            "#include <stdlib.h>",
+            "#include <ctype.h>",
+            "#include <inttypes.h>",
+            "#include <limits.h>",
+            "#include <math.h>",
+            "#include <string.h>",
+            "#include <time.h>",
+            -- "#include <uthash.h>", -- haven't installed
+            "// IWYU pragma: end_keep",
+          }
+        end
       },
       rust = {
-        before = {
-          "#![allow(dead_code)]",
-          "struct Solution {}",
-        },
+        imports = function(_)
+          return {
+            "#![allow(dead_code)]",
+            "struct Solution {}",
+          }
+        end,
         after = {
           "fn main() {}",
         },
       }
     },
+    image_support = true,
   },
   config = function(_, opts)
     require("leetcode").setup(opts)
+
+    local image = require("image")
+    local from_url = image.from_url
+    image.from_url = function(url, image_opts, callback)
+      local buffer = image_opts and image_opts.buffer
+      if not buffer or not vim.api.nvim_buf_is_valid(buffer) or vim.bo[buffer].filetype ~= "leetcode.nvim" then
+        return from_url(url, image_opts, callback)
+      end
+
+      return from_url(url, image_opts, function(img)
+        if img and image_opts.window and vim.api.nvim_win_is_valid(image_opts.window) then
+          img.geometry.width = vim.api.nvim_win_get_width(image_opts.window)
+          img.max_width_window_percentage = 100
+        end
+        callback(img)
+      end)
+    end
 
     vim.opt.signcolumn = "auto:1-9"
 
     vim.keymap.set("n", "<leader>c", "<cmd>Leet console<cr>")
     vim.keymap.set("n", "<leader>d", "<cmd>Leet desc<cr>")
     vim.keymap.set("n", "<leader>D", "<cmd>Leet desc stats<cr>")
+    vim.keymap.set("n", "<leader>f", "<cmd>Leet fold<cr>")
     vim.keymap.set("n", "<leader>h", "<cmd>Leet hints<cr>")
     vim.keymap.set("n", "<leader>i", "<cmd>Leet info<cr>")
     vim.keymap.set("n", "<leader>I", "<cmd>Leet inject<cr>")
