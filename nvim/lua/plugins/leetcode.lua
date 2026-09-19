@@ -121,27 +121,85 @@ return {
         },
       }
     },
-    image_support = true,
+    -- image_support = true,
   },
   config = function(_, opts)
     require("leetcode").setup(opts)
 
-    local image = require("image")
-    local from_url = image.from_url
-    image.from_url = function(url, image_opts, callback)
-      local buffer = image_opts and image_opts.buffer
-      if not buffer or not vim.api.nvim_buf_is_valid(buffer) or vim.bo[buffer].filetype ~= "leetcode.nvim" then
-        return from_url(url, image_opts, callback)
-      end
-
-      return from_url(url, image_opts, function(img)
-        if img and image_opts.window and vim.api.nvim_win_is_valid(image_opts.window) then
-          img.geometry.width = vim.api.nvim_win_get_width(image_opts.window)
-          img.max_width_window_percentage = 100
-        end
-        callback(img)
-      end)
-    end
+    -- local image = require("image")
+    -- local from_url = image.from_url
+    -- local pending_inversions = {}
+    --
+    -- local function configure_leetcode_image(img, inverted_path, window, callback)
+    --   img.path = inverted_path
+    --   img.original_path = inverted_path
+    --   img.resized_path = inverted_path
+    --   img.cropped_path = inverted_path
+    --   img.source_format = "png"
+    --   img.last_modified = vim.fn.getftime(inverted_path)
+    --   img.resize_hash = nil
+    --   img.crop_hash = nil
+    --   img.transform_key = nil
+    --   img.transform_signature = nil
+    --   img.pending_transform_key = nil
+    --   img.geometry.width = vim.api.nvim_win_get_width(window)
+    --   img.max_width_window_percentage = 100
+    --   callback(img)
+    -- end
+    --
+    -- ---@diagnostic disable-next-line: duplicate-set-field
+    -- image.from_url = function(url, image_opts, callback)
+    --   local buffer = image_opts and image_opts.buffer
+    --   if not buffer or not vim.api.nvim_buf_is_valid(buffer) or vim.bo[buffer].filetype ~= "leetcode.nvim" then
+    --     return from_url(url, image_opts, callback)
+    --   end
+    --
+    --   return from_url(url, image_opts, function(img)
+    --     if not img or not image_opts.window or not vim.api.nvim_win_is_valid(image_opts.window) then
+    --       return callback(img)
+    --     end
+    --
+    --     local source_path = img.path
+    --     if source_path:sub(-#"-inverted.png") == "-inverted.png" then
+    --       return configure_leetcode_image(img, source_path, image_opts.window, callback)
+    --     end
+    --
+    --     local inverted_path = source_path:gsub("(%.[^./]+)$", "-inverted.png")
+    --     if source_path == inverted_path then
+    --       vim.notify("Unable to determine an output path for LeetCode image inversion", vim.log.levels.ERROR)
+    --       return callback(nil)
+    --     end
+    --
+    --     if vim.uv.fs_stat(inverted_path) then
+    --       return configure_leetcode_image(img, inverted_path, image_opts.window, callback)
+    --     end
+    --
+    --     pending_inversions[inverted_path] = pending_inversions[inverted_path] or {}
+    --     table.insert(pending_inversions[inverted_path], { image = img, window = image_opts.window, callback = callback })
+    --     if #pending_inversions[inverted_path] > 1 then
+    --       return
+    --     end
+    --
+    --     vim.system({ "magick", source_path, "-channel", "RGB", "-negate", "+channel", inverted_path }, {}, function(result)
+    --       vim.schedule(function()
+    --         local waiters = pending_inversions[inverted_path]
+    --         pending_inversions[inverted_path] = nil
+    --
+    --         if result.code ~= 0 then
+    --           vim.notify("Failed to invert LeetCode image: " .. (result.stderr or "unknown error"), vim.log.levels.ERROR)
+    --           for _, waiter in ipairs(waiters) do
+    --             waiter.callback(nil)
+    --           end
+    --           return
+    --         end
+    --
+    --         for _, waiter in ipairs(waiters) do
+    --           configure_leetcode_image(waiter.image, inverted_path, waiter.window, waiter.callback)
+    --         end
+    --       end)
+    --     end)
+    --   end)
+    -- end
 
     vim.opt.signcolumn = "auto:1-9"
 
@@ -176,7 +234,7 @@ return {
     vim.keymap.set("n", "<leader><leader>m", "<cmd>Leet list difficulty=medium status=notac,todo<cr>")
     vim.keymap.set("n", "<leader><leader>h", "<cmd>Leet list difficulty=hard status=notac,todo<cr>")
 
-
+    -- Might be better to check https://github.com/kawre/leetcode.nvim/issues/86
     -- Create autocmd that generates Cargo.toml for all rust files in leetcode directory
     vim.api.nvim_create_autocmd("BufEnter", {
       pattern = "*.rs",
@@ -239,6 +297,9 @@ return {
   end,
 }
 
+-- Images working, but makes whole nvim really buggy when scrolling up
+
+-- Old:
 -- Images not working:
 -- image_support option in leetcode.nvim
 -- ueberzug works fine. the main problem is magick
