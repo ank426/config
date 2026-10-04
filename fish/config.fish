@@ -231,7 +231,7 @@ if status is-interactive
     alias tree='CLICOLOR_FORCE=true command tree -a --dirsfirst' # using CLICOLOR_FORCE instead of -C allows disabling with -n
     alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 
-    alias brave='brave --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation --ozone-platform-hint=auto' # --disable-gpu
+    alias anki='QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" command anki'
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
 
     # alias adb="HOME=$XDG_DATA_HOME/android command adb"

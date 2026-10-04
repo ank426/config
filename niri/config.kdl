@@ -134,7 +134,7 @@ binds {
     Mod+Shift+B { spawn "firefox" "--private-window"; }
     Mod+Alt+B { spawn "firefox" "-P" "default"; }
     Mod+Shift+Alt+B { spawn "firefox" "-P" "default" "--private-window"; }
-    Mod+Ctrl+B { spawn "brave" "--enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation" "--ozone-platform-hint=auto"; }
+    Mod+Ctrl+B { spawn "brave-origin"; }
 
     Mod+Shift+X { spawn "xeyes"; }
     Mod+Q { spawn "qbittorrent-nox"; }

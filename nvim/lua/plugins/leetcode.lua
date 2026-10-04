@@ -1,5 +1,4 @@
 local python_classes = [[
-
 class ListNode:
     def __init__(self, val: int = 0, next: ListNode | None = None) -> None:
         self.val = val
@@ -82,11 +81,16 @@ return {
         imports = function(default_imports)
           return vim.iter({
             {
-              "# ruff: noqa: F401, F403, F405, I001, UP006, UP007, UP045, ANN001, ANN002, ANN003, ANN201, ANN202, ANN204, ANN205, ANN206, ANN401",
+              "# ruff: noqa: B905, E741, F401, F403, F405, I001, UP006, UP007, UP029, UP045, ANN001, ANN002, ANN003, ANN201, ANN202, ANN204, ANN205, ANN206, ANN401",
               "# ty: ignore[empty-body, invalid-assignment, invalid-return-type, unresolved-attribute, unused-ignore-comment]",
               "",
             },
-            default_imports,
+            vim.list_slice(default_imports, 1, #default_imports - 1),
+            {
+              "",
+              "from typing import AbstractSet, Annotated, Any, AnyStr, AsyncContextManager, BinaryIO, ClassVar, Concatenate, ContextManager, DefaultDict, Deque, Dict, Final, ForwardRef, FrozenSet, Generic, IO, List, Literal, LiteralString, NamedTuple, Never, NewType, NoReturn, NotRequired, Optional, ParamSpec, ParamSpecArgs, ParamSpecKwargs, Protocol, Required, Self, Set, SupportsAbs, SupportsBytes, SupportsComplex, SupportsFloat, SupportsIndex, SupportsInt, SupportsRound, Text, TextIO, Tuple, Type, TypeAlias, TypeGuard, TypeIs, TypeVar, TypeVarTuple, TypedDict, Union, Unpack, assert_never, assert_type, cast, final, get_args, get_origin, get_type_hints, is_typeddict, no_type_check, overload, override, reveal_type, runtime_checkable # noqa: UP035, E501",
+              "",
+            },
             vim.split(python_classes, "\n"),
           }):flatten():totable()
         end,
