@@ -4,6 +4,8 @@
 !/colorize_history.py
 !/config.fish
 !/fish_plugins
+!/completions/
+!/completions/openvpn3.fish
 !/functions/
 !/functions/fisher.fish
 !/functions/__fish_print_pacman_packages.fish

@@ -85,12 +85,20 @@ return {
               "# ty: ignore[empty-body, invalid-assignment, invalid-return-type, unresolved-attribute, unused-ignore-comment]",
               "",
             },
-            vim.list_slice(default_imports, 1, #default_imports - 1),
+            vim.list_slice(default_imports, 1, 7),
+            {
+              "from math import acos, acosh, asin, asinh, atan, atan2, atanh, cbrt, ceil, comb, copysign, cos, cosh, degrees, dist, e, erf, erfc, exp, exp2, expm1, fabs, factorial, floor, fma, fmod, frexp, fsum, gamma, gcd, hypot, inf, isclose, isfinite, isinf, isnan, isqrt, lcm, ldexp, lgamma, log, log10, log1p, log2, modf, nan, nextafter, perm, pi, prod, radians, remainder, sin, sinh, sqrt, sumprod, tan, tanh, tau, trunc, ulp # noqa: E501"
+            }, -- pow fn collides with builtin
+            vim.list_slice(default_imports, 9, 12),
+            {
+              "from operator import abs, add, and_, attrgetter, call, concat, contains, countOf, delitem, eq, floordiv, ge, getitem, gt, iadd, iand, iconcat, ifloordiv, ilshift, imatmul, imod, imul, index, indexOf, inv, invert, ior, ipow, irshift, is_, is_none, is_not, is_not_none, isub, itemgetter, itruediv, ixor, le, length_hint, lshift, lt, matmul, methodcaller, mod, mul, ne, neg, not_, or_, pos, rshift, setitem, sub, truediv, truth, xor # noqa: E501"
+            }, -- pow fn collides with builtin
+            vim.list_slice(default_imports, 14, #default_imports - 1),
             {
               "",
-              "from typing import AbstractSet, Annotated, Any, AnyStr, AsyncContextManager, BinaryIO, ClassVar, Concatenate, ContextManager, DefaultDict, Deque, Dict, Final, ForwardRef, FrozenSet, Generic, IO, List, Literal, LiteralString, NamedTuple, Never, NewType, NoReturn, NotRequired, Optional, ParamSpec, ParamSpecArgs, ParamSpecKwargs, Protocol, Required, Self, Set, SupportsAbs, SupportsBytes, SupportsComplex, SupportsFloat, SupportsIndex, SupportsInt, SupportsRound, Text, TextIO, Tuple, Type, TypeAlias, TypeGuard, TypeIs, TypeVar, TypeVarTuple, TypedDict, Union, Unpack, assert_never, assert_type, cast, final, get_args, get_origin, get_type_hints, is_typeddict, no_type_check, overload, override, reveal_type, runtime_checkable # noqa: UP035, E501",
+              "from typing import AbstractSet, Annotated, Any, AnyStr, AsyncGenerator, AsyncIterable, AsyncIterator, Awaitable, BinaryIO, ByteString, Callable, ChainMap, ClassVar, Collection, Concatenate, Container, Coroutine, DefaultDict, Deque, Dict, Final, FrozenSet, Generator, Generic, Hashable, IO, ItemsView, Iterable, Iterator, KeysView, List, Literal, LiteralString, Mapping, MappingView, Match, MutableMapping, MutableSequence, MutableSet, NamedTuple, Never, NewType, NoDefault, NoReturn, NotRequired, Optional, OrderedDict, ParamSpec, ParamSpecArgs, ParamSpecKwargs, Protocol, ReadOnly, Required, Reversible, Self, Sequence, Set, Sized, SupportsAbs, SupportsBytes, SupportsComplex, SupportsFloat, SupportsIndex, SupportsInt, SupportsRound, TYPE_CHECKING, Text, TextIO, Tuple, Type, TypeAlias, TypeAliasType, TypeGuard, TypeIs, TypeVar, TypeVarTuple, TypedDict, Union, Unpack, ValuesView, assert_never, assert_type, cast, clear_overloads, dataclass_transform, evaluate_forward_ref, final, get_args, get_origin, get_overloads, get_protocol_members, get_type_hints, is_protocol, is_typeddict, no_type_check, overload, override, reveal_type, runtime_checkable # noqa: UP035, E501",
               "",
-            },
+            }, -- Counter collides with collections
             vim.split(python_classes, "\n"),
           }):flatten():totable()
         end,
