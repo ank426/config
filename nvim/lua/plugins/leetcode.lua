@@ -76,8 +76,8 @@ impl ListNode {
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
     pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
+    pub left: Option<std::rc::Rc<std::cell::RefCell<TreeNode>>>,
+    pub right: Option<std::rc::Rc<std::cell::RefCell<TreeNode>>>,
 }
 
 impl TreeNode {
@@ -99,6 +99,77 @@ pub enum NestedInteger {
 
 struct Solution;
 ]]
+
+-- Rust: keep <leetcode dir>/Cargo.toml in sync so rust-analyzer gets a real project
+-- (and the crates LeetCode provides). See https://github.com/kawre/leetcode.nvim/issues/86
+local leetcode_home = vim.fn.stdpath("data") .. "/leetcode"
+
+local function sync_cargo_toml(question)
+  if question.lang ~= "rust" then
+    return
+  end
+  if vim.fn.isdirectory(leetcode_home) == 0 then
+    return
+  end
+
+  local seen = {}
+  for name, kind in vim.fs.dir(leetcode_home) do
+    if kind == "file" and name:match("%.rs$") then
+      seen[name] = true
+    end
+  end
+  -- The hook may fire before leetcode.nvim has written the file to disk
+  local current = vim.fs.basename(question:path())
+  if current:match("%.rs$") then
+    seen[current] = true
+  end
+
+  local files = vim.tbl_keys(seen)
+  table.sort(files)
+
+  local lines = {
+    "[package]",
+    'name = "leetcode"',
+    'version = "0.1.0"',
+    'edition = "2024"',
+    "",
+    "[dependencies]",
+    'rand = "0.8"',
+    'regex = "1"',
+    'itertools = "0.14"',
+    "",
+  }
+  for _, file in ipairs(files) do
+    local bin_name = file:gsub("%.rs$", ""):gsub("[^%w_]", "_"):gsub("^(%d)", "_%1")
+    vim.list_extend(lines, {
+      "[[bin]]",
+      string.format('name = "%s"', bin_name),
+      string.format('path = "%s"', file),
+      "",
+    })
+  end
+  local content = table.concat(lines, "\n")
+
+  -- Only touch the file when something changed, so rust-analyzer isn't reloaded needlessly
+  local cargo_toml_path = leetcode_home .. "/Cargo.toml"
+  local existing = io.open(cargo_toml_path, "r")
+  local old = existing and existing:read("*a")
+  if existing then
+    existing:close()
+  end
+  if old == content then
+    return
+  end
+
+  local out = io.open(cargo_toml_path, "w")
+  if out then
+    out:write(content)
+    out:close()
+    pcall(function()
+      vim.cmd("LspRestart rust_analyzer")
+    end)
+  end
+end
 
 return {
   "kawre/leetcode.nvim",
@@ -172,6 +243,9 @@ return {
           "fn main() {}",
         },
       }
+    },
+    hooks = {
+      question_enter = { sync_cargo_toml },
     },
     -- image_support = true,
   },
@@ -285,67 +359,6 @@ return {
     vim.keymap.set("n", "<leader><leader>e", "<cmd>Leet list difficulty=easy status=notac,todo<cr>")
     vim.keymap.set("n", "<leader><leader>m", "<cmd>Leet list difficulty=medium status=notac,todo<cr>")
     vim.keymap.set("n", "<leader><leader>h", "<cmd>Leet list difficulty=hard status=notac,todo<cr>")
-
-    -- Might be better to check https://github.com/kawre/leetcode.nvim/issues/86
-    -- Create autocmd that generates Cargo.toml for all rust files in leetcode directory
-    vim.api.nvim_create_autocmd("BufEnter", {
-      pattern = "*.rs",
-      callback = function()
-        local leetcode_dir = vim.fn.stdpath("data") .. "/leetcode"
-        local cargo_toml_path = leetcode_dir .. "/Cargo.toml"
-
-        -- Check if the leetcode directory exists
-        if vim.fn.isdirectory(leetcode_dir) == 0 then
-          return
-        end
-
-        -- Get all .rs files in the directory
-        local rust_files = {}
-        local handle = vim.uv.fs_scandir(leetcode_dir)
-
-        if handle then
-          while true do
-            local name, type = vim.uv.fs_scandir_next(handle)
-            if not name then break end
-
-            if type == "file" and name:match("%.rs$") then
-              table.insert(rust_files, name)
-            end
-          end
-        end
-
-        -- Only proceed if we found rust files
-        if #rust_files == 0 then
-          return
-        end
-
-        -- Generate Cargo.toml content
-        local cargo_content = {
-          "[package]",
-          'name = "leetcode"',
-          'version = "0.1.0"',
-          'edition = "2024"',
-          ""
-        }
-
-        -- Add binary entries for each rust file
-        for _, file in ipairs(rust_files) do
-          local name = file:match("^(.+)%.rs$"):gsub("[^%w_]", "_"):gsub("^(%d)", "_%1")
-          table.insert(cargo_content, "[[bin]]")
-          table.insert(cargo_content, string.format('name = "%s"', name))
-          table.insert(cargo_content, string.format('path = "%s"', file))
-          table.insert(cargo_content, "")
-        end
-
-        -- Write the Cargo.toml file
-        local content_str = table.concat(cargo_content, "\n")
-        local file = io.open(cargo_toml_path, "w")
-        if file then
-          file:write(content_str)
-          file:close()
-        end
-      end,
-    })
   end,
 }
 
