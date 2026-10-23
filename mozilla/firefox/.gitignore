@@ -8,3 +8,8 @@
 !/main/user.js
 !/main/chrome/
 !/main/chrome/**
+
+/main-esr/*
+!/main-esr/user.js
+!/main-esr/chrome/
+!/main-esr/chrome/**
