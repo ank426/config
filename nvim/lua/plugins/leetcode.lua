@@ -58,7 +58,7 @@ class NestedInteger:
 ]]
 
 local rust_structs = [[
-#![allow(dead_code)]
+#![allow(dead_code, clippy::empty_line_after_doc_comments)]
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
