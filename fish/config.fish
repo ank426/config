@@ -203,12 +203,12 @@ if status is-interactive
     abbr --add gm git merge
     abbr --add gsb git submodule
 
-    if command --query advcp
-        alias cp=advcp
-    end
-    if command --query advmv
-        alias mv=advmv
-    end
+    # if command --query advcp
+    #     alias cp=advcp
+    # end
+    # if command --query advmv
+    #     alias mv=advmv
+    # end
 
     function bfs
         command bfs -color $argv -mindepth 1 -printf '%P\n' # printf needs to be last
@@ -232,6 +232,7 @@ if status is-interactive
     alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 
     alias anki='QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" command anki'
+    alias brave='brave-origin --password-store=basic'
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
 
     # alias adb="HOME=$XDG_DATA_HOME/android command adb"

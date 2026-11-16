@@ -7,6 +7,8 @@ vim.keymap.set("n", "<C-S-tab>", "gT")
 -- vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Normal mode in terminal" })
 -- vim.keymap.set("n", "<leader>=", "mzgg=G`z", { desc = "Reindent file" })
 
+vim.keymap.set("n", "<C-c>", "<cmd>silent %y+<cr>")
+
 vim.keymap.set("n", "<leader>=", function()
   local pos = vim.api.nvim_win_get_cursor(0)
   vim.cmd("keepjumps normal! gg=G")

@@ -4,6 +4,10 @@ return {
   opts = {
     sign_priority = 100,
     on_attach = function(bufnr)
+      if vim.b[bufnr].disable_gitsigns then
+        return false
+      end
+
       local gitsigns = require('gitsigns')
 
       local function map(mode, l, r, opts)
