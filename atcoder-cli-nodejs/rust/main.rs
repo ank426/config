@@ -549,6 +549,15 @@ pub mod io {
         write_text_atom(String::from_utf8_lossy(bytes).as_ref(), io, first);
     }
 
+    fn write_text_byte_iter<R: Read, W: Write, I: IntoIterator<Item = u8>>(
+        bytes: I,
+        io: &mut IoInner<R, W>,
+        first: &mut bool,
+    ) {
+        let bytes: Vec<_> = bytes.into_iter().collect();
+        write_text_bytes(&bytes, io, first);
+    }
+
     fn write_text_chars<R: Read, W: Write, I: IntoIterator<Item = char>>(
         chars: I,
         io: &mut IoInner<R, W>,
@@ -662,187 +671,76 @@ pub mod io {
         }
     }
 
+    macro_rules! impl_text_sequences {
+        ($item:ty, $write:ident; $($container:ident),* $(,)?) => {$ (
+            impl TextWrite for $container<$item> {
+                fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
+                    let mut first = true;
+                    $write(self.iter().copied(), io, &mut first);
+                }
+            }
+        )*};
+    }
+
+    impl_text_sequences!(u8, write_text_byte_iter; VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
+    impl_text_sequences!(char, write_text_chars; Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
+    impl_text_sequences!(bool, write_text_bools; Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
+
+    macro_rules! impl_text_rows {
+        ($item:ty, $write:ident, $row:ident, $items:expr; $($container:ident),* $(,)?) => {$ (
+            impl TextWrite for $container<Vec<$item>> {
+                fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
+                    let mut first = true;
+                    for $row in self {
+                        $write($items, io, &mut first);
+                    }
+                }
+            }
+        )*};
+    }
+
+    impl_text_rows!(u8, write_text_bytes, row, row.as_slice(); Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
+    impl_text_rows!(char, write_text_chars, row, row.iter().copied(); Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
+    impl_text_rows!(bool, write_text_bools, row, row.iter().copied(); Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
+
+    macro_rules! impl_text_array_rows {
+        ($item:ty, $write:ident, $row:ident, $items:expr) => {
+            impl<const N: usize> TextWrite for [Vec<$item>; N] {
+                fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
+                    let mut first = true;
+                    for $row in self {
+                        $write($items, io, &mut first);
+                    }
+                }
+            }
+
+            impl<const M: usize> TextWrite for Vec<[$item; M]> {
+                fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
+                    let mut first = true;
+                    for $row in self {
+                        $write($items, io, &mut first);
+                    }
+                }
+            }
+
+            impl<const N: usize, const M: usize> TextWrite for [[$item; M]; N] {
+                fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
+                    let mut first = true;
+                    for $row in self {
+                        $write($items, io, &mut first);
+                    }
+                }
+            }
+        };
+    }
+
+    impl_text_array_rows!(u8, write_text_bytes, row, row.as_slice());
+    impl_text_array_rows!(char, write_text_chars, row, row.iter().copied());
+    impl_text_array_rows!(bool, write_text_bools, row, row.iter().copied());
+
     impl TextWrite for Vec<u8> {
         fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
             self.as_slice().write_text(io);
-        }
-    }
-
-    impl TextWrite for Vec<char> {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            self.as_slice().write_text(io);
-        }
-    }
-
-    impl TextWrite for Vec<bool> {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            self.as_slice().write_text(io);
-        }
-    }
-
-    macro_rules! impl_text_byte_sequence {
-            ($($container:ident),* $(,)?) => {$ (
-                impl TextWrite for $container<u8> {
-                    fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-                        let mut first = true;
-                        let bytes: Vec<u8> = self.iter().copied().collect();
-                        write_text_bytes(&bytes, io, &mut first);
-                    }
-                }
-            )* };
-        }
-
-    impl_text_byte_sequence!(VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
-
-    macro_rules! impl_text_char_sequence {
-            ($($container:ident),* $(,)?) => {$ (
-                impl TextWrite for $container<char> {
-                    fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-                        let mut first = true;
-                        write_text_chars(self.iter().copied(), io, &mut first);
-                    }
-                }
-            )* };
-        }
-
-    impl_text_char_sequence!(VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
-
-    macro_rules! impl_text_bool_sequence {
-            ($($container:ident),* $(,)?) => {$ (
-                impl TextWrite for $container<bool> {
-                    fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-                        let mut first = true;
-                        write_text_bools(self.iter().copied(), io, &mut first);
-                    }
-                }
-            )* };
-        }
-
-    impl_text_bool_sequence!(VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
-
-    macro_rules! impl_text_byte_rows {
-            ($($container:ident),* $(,)?) => {$ (
-                impl TextWrite for $container<Vec<u8>> {
-                    fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-                        let mut first = true;
-                        for row in self {
-                            write_text_bytes(row, io, &mut first);
-                        }
-                    }
-                }
-            )* };
-        }
-
-    impl_text_byte_rows!(Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
-
-    macro_rules! impl_text_char_rows {
-            ($($container:ident),* $(,)?) => {$ (
-                impl TextWrite for $container<Vec<char>> {
-                    fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-                        let mut first = true;
-                        for row in self {
-                            write_text_chars(row.iter().copied(), io, &mut first);
-                        }
-                    }
-                }
-            )* };
-        }
-
-    impl_text_char_rows!(Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
-
-    macro_rules! impl_text_bool_rows {
-            ($($container:ident),* $(,)?) => {$ (
-                impl TextWrite for $container<Vec<bool>> {
-                    fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-                        let mut first = true;
-                        for row in self {
-                            write_text_bools(row.iter().copied(), io, &mut first);
-                        }
-                    }
-                }
-            )* };
-        }
-
-    impl_text_bool_rows!(Vec, VecDeque, LinkedList, BinaryHeap, BTreeSet, HashSet);
-
-    impl<const N: usize> TextWrite for [Vec<u8>; N] {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_bytes(row, io, &mut first);
-            }
-        }
-    }
-
-    impl<const N: usize> TextWrite for [Vec<char>; N] {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_chars(row.iter().copied(), io, &mut first);
-            }
-        }
-    }
-
-    impl<const N: usize> TextWrite for [Vec<bool>; N] {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_bools(row.iter().copied(), io, &mut first);
-            }
-        }
-    }
-
-    impl<const M: usize> TextWrite for Vec<[u8; M]> {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_bytes(row, io, &mut first);
-            }
-        }
-    }
-
-    impl<const M: usize> TextWrite for Vec<[char; M]> {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_chars(row.iter().copied(), io, &mut first);
-            }
-        }
-    }
-
-    impl<const M: usize> TextWrite for Vec<[bool; M]> {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_bools(row.iter().copied(), io, &mut first);
-            }
-        }
-    }
-
-    impl<const N: usize, const M: usize> TextWrite for [[u8; M]; N] {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_bytes(row, io, &mut first);
-            }
-        }
-    }
-
-    impl<const N: usize, const M: usize> TextWrite for [[char; M]; N] {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_chars(row.iter().copied(), io, &mut first);
-            }
-        }
-    }
-
-    impl<const N: usize, const M: usize> TextWrite for [[bool; M]; N] {
-        fn write_text<R: Read, W: Write>(&self, io: &mut IoInner<R, W>) {
-            let mut first = true;
-            for row in self {
-                write_text_bools(row.iter().copied(), io, &mut first);
-            }
         }
     }
 
