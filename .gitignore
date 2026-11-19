@@ -9,6 +9,8 @@
 
 !/alacritty/
 !/alacritty/**
+!/atcoder-cli-nodejs/
+!/atcoder-cli-nodejs/**
 !/bat/
 !/bat/**
 !/biome/

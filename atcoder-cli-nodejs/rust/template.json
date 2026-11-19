@@ -1,0 +1,12 @@
+{
+  "task": {
+    "program": [
+      "main.rs"
+    ],
+    "submit": "main.rs",
+    "static": [
+      "Cargo.toml"
+    ],
+    "cmd": "cargo generate-lockfile"
+  }
+}
