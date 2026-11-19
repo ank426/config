@@ -231,14 +231,16 @@ if status is-interactive
     alias tree='CLICOLOR_FORCE=true command tree -a --dirsfirst' # using CLICOLOR_FORCE instead of -C allows disabling with -n
     alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 
-    alias anki='QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" command anki'
-    alias brave='brave-origin --password-store=basic'
+    alias anki='QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" box.sh anki'
+    alias brave='box.sh brave-origin --password-store=basic'
     alias mariadb='mariadb --user=ankit --password=$(pass code/mariadb/ankit)'
 
     # alias adb="HOME=$XDG_DATA_HOME/android command adb"
     alias qbt="qbt --config $XDG_CONFIG_HOME/qbt/.qbt.toml"
     alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
     alias R='R --no-save'
+
+    alias epy="box.sh epy"
 
     alias ttyper-quote="curl -s https://quotes-api-self.vercel.app/quote | jq -r '.quote' | sed 's/’/\'/g' | tr ' –' '\n-' | ttyper -"
 end
