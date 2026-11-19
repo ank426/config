@@ -1,5 +1,6 @@
 // {{{ imports, io, helpers
-#![allow(unused_imports, unused_variables, static_mut_refs)]
+#![allow(unused_imports, unused_variables)]
+#![expect(static_mut_refs)]
 
 // {{{ imports
 use itertools::*;
