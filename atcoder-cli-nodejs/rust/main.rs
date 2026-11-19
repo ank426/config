@@ -2356,6 +2356,10 @@ pub mod io {
             (@plan [$($done:expr,)*] [$($current:tt)+]) => {
                 [$($done,)* $crate::r!(@directive [$($current)+])]
             };
+            (($first:expr) $(, $dims:expr)* $(,)?) => {{
+                let io = unsafe { $crate::io::IO.as_mut().unwrap_unchecked() };
+                io.r(&[$crate::r!(@count $first), $($crate::r!(@count $dims)),*])
+            }};
             ($ty:ty; [$($bracketed:tt)*] $(, [$($more:tt)*])*) => {
                 compile_error!("r! dimensions are comma-separated; do not wrap them in square brackets")
             };
@@ -2478,6 +2482,11 @@ pub mod io {
             (* $($dims:tt)*) => {{
                 $crate::rc!(@read []; * $($dims)*)
             }};
+            (($first:expr) $(, $($dims:tt)*)?) => {{
+                let io = unsafe { $crate::io::IO.as_mut().unwrap_unchecked() };
+                let dims = $crate::rc!(@dimensions [] [] ($first) $(, $($dims)*)?);
+                io.read_continuous_shape(&dims)
+            }};
             ($ty:ty; [$($bracketed:tt)*] $(, $($more:tt)*)?) => {
                 compile_error!("rc! dimensions are comma-separated; do not wrap them in square brackets")
             };
@@ -2491,6 +2500,26 @@ pub mod io {
                 $crate::rc!(@read []; $($dims)*)
             }};
         }
+
+    #[macro_export]
+    macro_rules! ric {
+        (* $(, $($dims:tt)*)?) => {{
+            let count: usize = $crate::r!();
+            (0..count).map(move |_| $crate::rc!($($($dims)*)?))
+        }};
+        ($ty:ty; * $(, $($dims:tt)*)?) => {{
+            let count: usize = $crate::r!();
+            (0..count).map(move |_| $crate::rc!($ty; $($($dims)*)?))
+        }};
+        ($ty:ty; $count:expr $(, $($dims:tt)*)?) => {{
+            let count: usize = $count;
+            (0..count).map(move |_| $crate::rc!($ty; $($($dims)*)?))
+        }};
+        ($count:expr $(, $($dims:tt)*)?) => {{
+            let count: usize = $count;
+            (0..count).map(move |_| $crate::rc!($($($dims)*)?))
+        }};
+    }
 
     #[macro_export]
     macro_rules! w {
