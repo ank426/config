@@ -8,6 +8,7 @@ vim.opt.completeopt:append("fuzzy")
 vim.opt.expandtab = true
 vim.opt.exrc = true
 vim.opt.fillchars:append({ eob = " " })
+vim.opt.foldmethod = "marker"
 vim.opt.formatoptions:remove("o")
 -- vim.opt.guicursor:append("c:ver25") -- Done in autocommands
 vim.opt.ignorecase = true
