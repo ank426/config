@@ -1,13 +1,27 @@
-// {{{ imports, io, template
-#![allow(unused_variables, static_mut_refs, unexpected_cfgs)]
+// {{{ imports and macros
+#![allow(unused_imports, unused_variables, static_mut_refs)]
 
-#[allow(unused_imports)]
-use lib::*;
+// {{{ imports
+use itertools::*;
+use itertools::{Intersperse, IntersperseWith, chain}; // remove once undeprecated from std::iter
+use itertools::{max as imax, min as imin};
+use std::cmp::{max, min};
+use std::iter::{Product, RepeatN, Zip, repeat_n, zip};
 
-pub mod lib {
+use std::cmp::Ordering::*;
+use std::cmp::*;
+use std::collections::*;
+use std::convert::*;
+use std::hash::*;
+use std::iter::*;
+use std::mem::*;
+use std::num::*;
+use std::ops::*;
+// }}}
+
+// {{{ macros
+pub mod macros {
     // {{{ io
-    pub use self::io::*;
-
     pub mod io {
         use std::{
             collections::*,
@@ -2367,14 +2381,14 @@ pub mod lib {
         #[macro_export]
         macro_rules! r {
             (* $($marker:tt)*) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 let plan = $crate::r!(@plan [] [] * $($marker)*);
                 let value = io.read_plan(&plan);
                 $crate::r!(@check_first_inferred value; [] * $($marker)*);
                 value
             }};
             (@check_marker $ty:ty; [# $($rest:tt)*]) => {{
-                fn require_hash_root<T: $crate::lib::io::ReadHashRoot>() {}
+                fn require_hash_root<T: $crate::macros::io::ReadHashRoot>() {}
                 require_hash_root::<$ty>();
             }};
             (@check_marker $ty:ty; [$first:tt $($rest:tt)*]) => {
@@ -2391,7 +2405,7 @@ pub mod lib {
                 $crate::r!(@check_marker $ty; [$($current)+])
             };
             (@check_marker_inferred $value:ident; [# $($rest:tt)*]) => {{
-                fn require_hash_root<T: $crate::lib::io::ReadHashRoot>(_: &T) {}
+                fn require_hash_root<T: $crate::macros::io::ReadHashRoot>(_: &T) {}
                 require_hash_root(&$value);
             }};
             (@check_marker_inferred $value:ident; [$first:tt $($rest:tt)*]) => {
@@ -2413,25 +2427,25 @@ pub mod lib {
             }};
             (@explicit $count:expr; [$($marker:tt)*]) => {{
                 const _: () = assert!(
-                    $crate::lib::io::ReadDirective::markers_valid(stringify!($($marker)*), true),
+                    $crate::macros::io::ReadDirective::markers_valid(stringify!($($marker)*), true),
                     "invalid r! annotation; '$$$' has no explicit count and markers must be valid"
                 );
                 let count: usize = $count;
-                $crate::lib::io::ReadDirective::parse(count, stringify!($($marker)*))
+                $crate::macros::io::ReadDirective::parse(count, stringify!($($marker)*))
             }};
             (@default [$($marker:tt)+]) => {{
                 const _: () = assert!(
-                    $crate::lib::io::ReadDirective::markers_valid(stringify!($($marker)+), false),
+                    $crate::macros::io::ReadDirective::markers_valid(stringify!($($marker)+), false),
                     "invalid r! annotation markers"
                 );
-                $crate::lib::io::ReadDirective::parse_default(stringify!($($marker)+))
+                $crate::macros::io::ReadDirective::parse_default(stringify!($($marker)+))
             }};
             (@dynamic [$($marker:tt)*]) => {{
                 const _: () = assert!(
-                    $crate::lib::io::ReadDirective::markers_valid(stringify!($($marker)*), true),
+                    $crate::macros::io::ReadDirective::markers_valid(stringify!($($marker)*), true),
                     "invalid r! annotation or dynamic count"
                 );
-                $crate::lib::io::ReadDirective::parse_dynamic(stringify!($($marker)*))
+                $crate::macros::io::ReadDirective::parse_dynamic(stringify!($($marker)*))
             }};
             (@directive [* $($marker:tt)*]) => {
                 $crate::r!(@dynamic [$($marker)*])
@@ -2467,40 +2481,40 @@ pub mod lib {
                 compile_error!("r! dimensions are comma-separated; do not wrap them in square brackets")
             };
             ($ty:ty; #) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 $crate::r!(@check_first $ty; [] #);
                 let plan = $crate::r!(@plan [] [] #);
                 io.read_plan::<$ty>(&plan)
             }};
             ($ty:ty; * $($marker:tt)*) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 $crate::r!(@check_first $ty; [] * $($marker)*);
                 let plan = $crate::r!(@plan [] [] * $($marker)*);
                 io.read_plan::<$ty>(&plan)
             }};
             ($ty:ty; $($dim:expr),* $(,)?) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 io.r::<$ty>(&[$($crate::r!(@count $dim)),*])
             }};
             ($ty:ty; $($marker:tt)+) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 $crate::r!(@check_first $ty; [] $($marker)+);
                 let plan = $crate::r!(@plan [] [] $($marker)+);
                 io.read_plan::<$ty>(&plan)
             }};
             (#) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 let plan = $crate::r!(@plan [] [] #);
                 let value = io.read_plan(&plan);
                 $crate::r!(@check_first_inferred value; [] #);
                 value
             }};
             ($($dim:expr),* $(,)?) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 io.r(&[$($crate::r!(@count $dim)),*])
             }};
             ($($marker:tt)+) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 let plan = $crate::r!(@plan [] [] $($marker)+);
                 let value = io.read_plan(&plan);
                 $crate::r!(@check_first_inferred value; [] $($marker)+);
@@ -2532,17 +2546,17 @@ pub mod lib {
         #[macro_export]
         macro_rules! rc {
             (@fixed_dimension $count:expr) => {
-                $crate::lib::io::ContinuousDimension::Fixed(
+                $crate::macros::io::ContinuousDimension::Fixed(
                     <usize>::try_from($count).expect("rc dimension must be nonnegative")
                 )
             };
             (@read [$ty:ty]; $($dims:tt)*) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 let dims = $crate::rc!(@dimensions [] [] $($dims)*);
                 io.read_continuous_shape::<$ty>(&dims)
             }};
             (@read []; $($dims:tt)*) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 let dims = $crate::rc!(@dimensions [] [] $($dims)*);
                 io.read_continuous_shape(&dims)
             }};
@@ -2553,7 +2567,7 @@ pub mod lib {
                 compile_error!("rc dimensions must be nonnegative")
             };
             (@dimension [*]) => {
-                $crate::lib::io::ContinuousDimension::FromInput
+                $crate::macros::io::ContinuousDimension::FromInput
             };
             (@dimension [($count:expr)]) => {
                 $crate::rc!(@fixed_dimension $count)
@@ -2602,7 +2616,7 @@ pub mod lib {
         #[macro_export]
         macro_rules! w {
             () => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 io.nl();
             }};
             (@write $io:ident; # $last:expr;) => {{ $io.write_text(&$last); }};
@@ -2616,7 +2630,7 @@ pub mod lib {
             (@write $io:ident; $first:expr, $($rest:tt)+) => {{ $io.write_flat(&$first); $io.sp(); $crate::w!(@write $io; $($rest)+); }};
             (@write $io:ident; $first:expr; $($rest:tt)+) => {{ $io.write_flat(&$first); $crate::w!(@write $io; $($rest)+); }};
             ($($tokens:tt)+) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 $crate::w!(@write io; $($tokens)+);
             }};
         }
@@ -2624,7 +2638,7 @@ pub mod lib {
         #[macro_export]
         macro_rules! wf {
             ($($arg:tt)*) => {{
-                let io = unsafe { $crate::lib::io::IO.as_mut().unwrap_unchecked() };
+                let io = unsafe { $crate::macros::io::IO.as_mut().unwrap_unchecked() };
                 io.wfmt(format_args!($($arg)*));
                 io.nl();
             }};
@@ -2633,7 +2647,7 @@ pub mod lib {
         #[macro_export]
         macro_rules! flush {
             () => {{
-                $crate::lib::io::flush_output();
+                $crate::macros::io::flush_output();
             }};
         }
 
@@ -2641,7 +2655,7 @@ pub mod lib {
         macro_rules! main {
             (single = $single_test_case:expr $(,)?) => {
                 fn main() {
-                    let _io = $crate::lib::io::Io::new();
+                    let _io = $crate::macros::io::Io::new();
                     if $single_test_case {
                         $crate::solve();
                     } else {
@@ -2658,7 +2672,7 @@ pub mod lib {
         macro_rules! d {
             () => {{
                 if cfg!(debug_assertions) {
-                    $crate::lib::io::flush_output();
+                    $crate::macros::io::flush_output();
                     eprintln!("[{}:{}:{}]", file!(), line!(), column!());
                 }
             }};
@@ -2666,8 +2680,8 @@ pub mod lib {
                 match $value {
                     value => {
                         if cfg!(debug_assertions) {
-                            let text = $crate::lib::io::debug_text(&value);
-                            $crate::lib::io::flush_output();
+                            let text = $crate::macros::io::debug_text(&value);
+                            $crate::macros::io::flush_output();
                             eprintln!(
                                 "[{}:{}:{}] {} = {}",
                                 file!(), line!(), column!(), stringify!($value), text,
@@ -2681,7 +2695,7 @@ pub mod lib {
                 match $value {
                     value => {
                         if cfg!(debug_assertions) {
-                            $crate::lib::io::flush_output();
+                            $crate::macros::io::flush_output();
                             eprintln!(
                                 "[{}:{}:{}] {} = {:?}",
                                 file!(), line!(), column!(), stringify!($value),
@@ -2698,7 +2712,7 @@ pub mod lib {
                         match $value {
                             value => {
                                 if cfg!(debug_assertions) {
-                                    $crate::lib::io::flush_output();
+                                    $crate::macros::io::flush_output();
                                     eprintln!(
                                         "[{}:{}:{}] {} = {:?}",
                                         file!(), line!(), column!(), stringify!($value),
@@ -2715,34 +2729,7 @@ pub mod lib {
     }
     // }}}
 
-    // {{{ imports
-    pub use self::imports::*;
-
-    mod imports {
-        #![allow(unused_imports)]
-
-        pub use itertools::*;
-        pub use itertools::{Intersperse, IntersperseWith, chain}; // remove once undeprecated from std::iter
-        pub use itertools::{max as imax, min as imin};
-        pub use std::cmp::{max, min};
-        pub use std::iter::{Product, RepeatN, Zip, repeat_n, zip};
-
-        pub use std::cmp::Ordering::*;
-        pub use std::cmp::*;
-        pub use std::collections::*;
-        pub use std::convert::*;
-        pub use std::hash::*;
-        pub use std::iter::*;
-        pub use std::mem::*;
-        pub use std::num::*;
-        pub use std::ops::*;
-    }
-    // }}}
-
     // {{{ helpers
-    #[allow(unused_imports)]
-    pub use helpers::*;
-
     mod helpers {
         #[macro_export]
         macro_rules! min {
@@ -2760,6 +2747,7 @@ pub mod lib {
     }
     // }}}
 }
+// }}}
 
 // }}}
 
